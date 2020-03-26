@@ -1,6 +1,6 @@
 {
   "name": "astria",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -26,6 +26,7 @@
     "@angular/router": "~9.1.0",
     "@nguniversal/express-engine": "^9.0.2",
     "express": "^4.15.2",
+    "normalize.css": "^8.0.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
