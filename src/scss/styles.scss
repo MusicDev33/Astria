@@ -1,4 +1,10 @@
 // You can add global styles to this file, and also import other style files
+@import './_colors';
+@import './astria/searchbar';
+
+*:focus {
+  outline: none!important;
+}
 
 html {
   overflow-y: overlay!important;

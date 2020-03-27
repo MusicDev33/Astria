@@ -1,0 +1,29 @@
+<div class="container p-4">
+  <div class="row py-2">
+    <div class="col-3 text-left my-auto">
+      <i class="fas fa-chevron-left"></i>
+    </div>
+
+    <div class="col-6 text-center">
+      <h3>{{ months[month - 1] }} {{ year }}</h3>
+    </div>
+
+    <div class="col-3 text-right my-auto">
+      <i class="fas fa-chevron-right"></i>
+    </div>
+  </div>
+
+  <section class="row">
+    <div *ngFor="let day of days" class="col text-center">
+      {{ day }}
+    </div>
+  </section>
+
+  <section *ngFor="let week of currentWeeks" class="row py-3">
+    <div *ngFor="let day of week" class="col text-center">
+      <div class="day">
+        <span *ngIf="day != 0">{{ day }}</span>
+      </div>
+    </div>
+  </section>
+</div>

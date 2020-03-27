@@ -10,7 +10,7 @@
           "style": "scss"
         }
       },
-      "root": "",
+      "root": "src",
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
@@ -30,6 +30,7 @@
             "styles": [
               "src/scss/styles.scss"
             ],
+            
             "scripts": []
           },
           "configurations": {
@@ -94,6 +95,7 @@
             "styles": [
               "src/styles.scss"
             ],
+
             "scripts": []
           }
         },
