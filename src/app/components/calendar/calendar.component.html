@@ -1,4 +1,4 @@
-<div class="container p-4">
+<div class="container px-4 py-2">
   <div class="row py-2">
     <div class="col-3 text-left my-auto">
       <i class="fas fa-chevron-left"></i>
@@ -20,7 +20,7 @@
   </section>
 
   <section *ngFor="let week of currentWeeks" class="row py-3">
-    <div *ngFor="let day of week" class="col text-center">
+    <div *ngFor="let day of week" class="col text-center px-2">
       <div class="day">
         <span *ngIf="day != 0">{{ day }}</span>
       </div>
