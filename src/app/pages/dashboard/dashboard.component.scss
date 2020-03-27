@@ -20,30 +20,6 @@ h5 {
   color: #3a3a3a;
 }
 
-.sidenav {
-  -webkit-box-shadow: 5px 5px 30px 3px rgba(219,219,219,.4);
-  box-shadow: 5px 5px 30px 3px rgba(219,219,219,.4);
-  border-radius: 999px;
-}
-
-.sidenav-icon {
-  border-radius: 20px;
-  font-size: 160%;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  cursor: pointer;
-  transition: all 0.23s;
-  color: #ccc;
-}
-
-.sidenav-icon:hover {
-  color: $color-primary;
-}
-
-.sidenav-icon.selected {
-  color: $color-primary;
-}
-
 .course-icon-top {
   font-size: 120%;
   transition: all 0.25s;
@@ -90,7 +66,7 @@ h5 {
 }
 
 .calendar-view {
-  background: #fbecfc;
+  background: $palette-2-bg;
   border-top-left-radius: 15px;
 }
 

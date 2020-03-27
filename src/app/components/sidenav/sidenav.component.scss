@@ -1,0 +1,25 @@
+@import '~scss/colors.scss';
+
+.sidenav {
+  -webkit-box-shadow: 5px 5px 30px 3px rgba(219,219,219,.4);
+  box-shadow: 5px 5px 30px 3px rgba(219,219,219,.4);
+  border-radius: 999px;
+}
+
+.sidenav-icon {
+  border-radius: 20px;
+  font-size: 160%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: all 0.23s;
+  color: #ccc;
+}
+
+.sidenav-icon:hover {
+  color: $palette-4;
+}
+
+.sidenav-icon.selected {
+  color: $palette-4;
+}
