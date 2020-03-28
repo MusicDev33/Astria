@@ -11,6 +11,8 @@ import { DashboardComponent } from '@pages/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { UpcomingEventsComponent } from './components/upcoming-events/upcoming-events.component';
+import { CourseLargeComponent } from './components/course-large/course-large.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     DashboardComponent,
     NavbarComponent,
     SidenavComponent,
-    CalendarComponent
+    CalendarComponent,
+    UpcomingEventsComponent,
+    CourseLargeComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

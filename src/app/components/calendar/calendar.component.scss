@@ -1,9 +1,17 @@
-.day {
+@import '~scss/colors.scss';
+
+.date {
   border-radius: 999px;
-  transition: all 0.3s;
+  transition: all 0.2s;
   cursor: pointer;
 }
 
-.day:hover {
-  background: #d0d0d0;
+.date:hover {
+  background: $palette-4;
+  color: #fff;
+}
+
+.day {
+  font-weight: 500;
+  font-size: 80%;
 }

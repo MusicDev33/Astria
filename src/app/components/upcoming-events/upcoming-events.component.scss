@@ -1,0 +1,46 @@
+.row.is-flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.row.is-flex > [class*='col-'] {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.card {
+  background: #fff;
+  border-radius: 20px;
+}
+
+.card-icon {
+  font-size: 180%;
+  color: #ff5700;
+}
+
+.card-icon-space {
+  background: #ffddcb;
+  border-radius: 999px;
+}
+
+.ci-twitter {
+  font-size: 180%;
+  color: #00aced;
+}
+
+.cis-twitter {
+  background: #d4f1fc;
+  border-radius: 999px;
+}

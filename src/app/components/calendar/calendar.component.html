@@ -15,13 +15,13 @@
 
   <section class="row">
     <div *ngFor="let day of days" class="col text-center">
-      {{ day }}
+      <span class="day">{{ day }}</span>
     </div>
   </section>
 
-  <section *ngFor="let week of currentWeeks" class="row py-3">
+  <section *ngFor="let week of currentWeeks" class="row py-2">
     <div *ngFor="let day of week" class="col text-center px-2">
-      <div class="day">
+      <div class="date">
         <span *ngIf="day != 0">{{ day }}</span>
       </div>
     </div>

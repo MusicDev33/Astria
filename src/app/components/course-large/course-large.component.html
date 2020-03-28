@@ -1,0 +1,39 @@
+<section class="row mb-3">
+  <div class="col-3">
+    <div class="course-bg h-100"[style.background]="course.iconBgColor">
+      <i class="{{ course.icon }} course-icon" [style.color]="course.iconColor"></i>
+    </div>
+  </div>
+
+  <div class="col-9">
+    <div class="row pt-1">
+      <div class="col-9">
+        <h5>{{ course.name }}</h5>
+      </div>
+      <div class="col-3 text-right">
+        <i class="far fa-bookmark misc-icon mr-4"></i>
+        <i class="fas fa-ellipsis-v misc-icon"></i>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12">
+        <span class="flavor-text">
+          {{ course.description }}
+        </span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 teach-text">
+        Taught by <span class="professor-text">{{ course.instructor }}</span>
+      </div>
+    </div>
+    <div class="row py-3">
+      <div class="col-12">
+        <span *ngFor="let tag of course.tags" class="tag py-1 px-3 mr-1"
+          [style.color]="course.iconColor" [style.background]="course.iconBgColor">
+          {{ tag }}
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
