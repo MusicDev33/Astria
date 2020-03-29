@@ -8,7 +8,14 @@
   <div class="col-9">
     <div class="row pt-1">
       <div class="col-9">
-        <h5>{{ course.name }}</h5>
+        <h5>
+          <span class="course-name"
+                (mouseover)="titleHovered=true"
+                (mouseout)="titleHovered=false"
+                [style.border-color]="titleHovered ? course.iconColor : 'rgba(255, 255, 255, 0)'">
+            {{ course.name }}
+          </span>
+        </h5>
       </div>
       <div class="col-3 text-right">
         <i class="far fa-bookmark misc-icon mr-4"></i>

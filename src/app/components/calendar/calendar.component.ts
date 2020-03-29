@@ -7,16 +7,27 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CalendarComponent implements OnInit {
 
-  @Input() month: number = new Date().getMonth() + 2;
+  @Input() month: number = new Date().getMonth() + 1;
   @Input() year: number = new Date().getFullYear();
 
-  currentWeeks = [];
+  currentDate = new Date();
+
+  // These are the numbers for the current date.
+  currentDay: number;
+  currentMonth: number;
+  currentYear: number;
+
+  currentWeeks: number[][] = [];
   months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   constructor() { }
 
   ngOnInit(): void {
+    this.currentDay = this.currentDate.getDate();
+    this.currentMonth = this.currentDate.getMonth() + 1;
+    this.currentYear = this.currentDate.getFullYear();
+
     this.constructMonth(this.month, this.year);
   }
 
@@ -26,6 +37,7 @@ export class CalendarComponent implements OnInit {
   }
 
   constructMonth(month: number, year: number) {
+    this.currentWeeks = [];
     const numDays = this.daysInMonth(month, year);
     const date = new Date(year, month - 1, 1);
     console.log(date.getDay());
@@ -45,6 +57,26 @@ export class CalendarComponent implements OnInit {
       currentWeek.push(0);
     }
     this.currentWeeks.push(currentWeek);
+  }
+
+  leftArrowClicked() {
+    this.month -= 1;
+    if (this.month === 0) {
+      this.month = 12;
+      this.year -= 1;
+    }
+
+    this.constructMonth(this.month, this.year);
+  }
+
+  rightArrowClicked() {
+    this.month += 1;
+    if (this.month === 13) {
+      this.month = 1;
+      this.year += 1;
+    }
+
+    this.constructMonth(this.month, this.year);
   }
 
 }

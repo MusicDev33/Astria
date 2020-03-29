@@ -9,11 +9,12 @@ import { ICourse } from '@interfaces/course.interface';
 export class CourseLargeComponent implements OnInit {
 
   @Input() course: ICourse;
+  titleHovered = false;
 
   constructor() { }
 
   ngOnInit(): void {
-    
+
   }
 
 }

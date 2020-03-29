@@ -1,3 +1,5 @@
+@import '~scss/variables';
+
 .course-bg {
   border-radius: 20px;
 }
@@ -27,4 +29,19 @@
 
 .tag {
   border-radius: 999px;
+  cursor: pointer;
+  font-weight: $font-weight-light;
+  transition: all 0.3s;
+  background: rgba(255, 255, 255, 0);
+}
+
+.tag:not(:hover) {
+  background: rgba(255, 255, 255, 0);
+}
+
+.course-name {
+  border-bottom: 3px solid rgb(255, 255, 255);
+  border-bottom: 3px solid rgba(255, 255, 255, 0);
+  transition: 0.3s;
+  cursor: pointer;
 }
