@@ -14,6 +14,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import { UpcomingEventsComponent } from './components/upcoming-events/upcoming-events.component';
 import { CourseLargeComponent } from './components/course-large/course-large.component';
 import { CourseSmallComponent } from './components/course-small/course-small.component';
+
 import { PCCalendarComponent } from './pg-components/p-c-calendar/p-c-calendar.component';
 import { PCTasklistComponent } from './pg-components/p-c-tasklist/p-c-tasklist.component';
 import { PCInstructorComponent } from './pg-components/p-c-instructor/p-c-instructor.component';

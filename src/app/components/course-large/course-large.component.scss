@@ -27,6 +27,14 @@
   transform: translate(-50%, -50%);
 }
 
+.course-icon-container {
+  cursor: pointer;
+  border: 1px solid rgb(255, 255, 255);
+  border: 1px solid rgba(255, 255, 255, 0);
+  transition: all 0.3s;
+  border-radius: 20px;
+}
+
 .misc-icon {
   font-size: 120%;
   transition: all 0.25s;

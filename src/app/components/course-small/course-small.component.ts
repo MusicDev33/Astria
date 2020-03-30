@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ICourse } from '@interfaces/course.interface';
 
 @Component({
   selector: 'app-course-small',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./course-small.component.scss']
 })
 export class CourseSmallComponent implements OnInit {
+
+  @Input() course: ICourse;
 
   constructor() { }
 

@@ -1,6 +1,7 @@
 <section class="row mb-3 test-card py-3 px-1">
   <div class="col-3">
-    <div class="course-bg h-100"[style.background]="course.iconBgColor">
+    <div class="course-icon-container h-100" [style.background]="course.iconBgColor" (mouseover)="iconHovered=true"
+          (mouseout)="iconHovered=false" [style.border-color]="iconHovered ? course.iconColor : 'rgba(255, 255, 255, 0)'">
       <i class="{{ course.icon }} course-icon" [style.color]="course.iconColor"></i>
     </div>
   </div>
