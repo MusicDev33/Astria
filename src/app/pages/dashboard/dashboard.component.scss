@@ -24,3 +24,16 @@ h5 {
   background: $palette-2-bg;
   border-radius: 20px;
 }
+
+.fill-container {
+  width: 100%!important;
+}
+
+.toggle-view {
+  font-size: 150%;
+  cursor: pointer;
+}
+
+.toggle-view:hover {
+  color: $palette-4;
+}

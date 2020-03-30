@@ -1,0 +1,56 @@
+@import '~scss/colors';
+@import '~scss/variables';
+
+.card-container {
+  background: rgb(255, 255, 255);
+  background: rgba(255, 255, 255, 0);
+  border-top-left-radius: $border-radius + 5px;
+  border-top-right-radius: $border-radius + 5px;
+  border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+  transition: 0.3s;
+}
+
+.name {
+  font-weight: $font-weight-heavy;
+}
+
+.course-icon {
+  font-size: 500%
+}
+
+.course-icon-container {
+  border-radius: $border-radius;
+  border: 1px solid rgb(255, 255, 255);
+  border: 1px solid rgba(255, 255, 255, 0);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.name-container {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.instructor-container {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.instructor {
+  font-weight: $font-weight-medium;
+}
+
+.action-icon {
+  font-size: 120%;
+  cursor: pointer;
+}
+
+.add-button {
+  transition: all 0.3s;
+  background: transparent;
+  border-radius: $border-radius;
+  color: $text-main;
+}

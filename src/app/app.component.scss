@@ -6,7 +6,7 @@
 }
 
 .sidenav {
-  width: 130px;
+  width: 100px;
 }
 
 .flex-container {
@@ -16,4 +16,9 @@
 
 .bg {
   background: $main-bg-color;
+}
+
+.grow {
+  flex: 1;
+  flex-shrink: 0;
 }

@@ -10,6 +10,12 @@ export class CourseSmallComponent implements OnInit {
 
   @Input() course: ICourse;
 
+  nameHovered = false;
+  instructorHovered = false;
+  iconHovered = false;
+  cardHovered = false;
+  addButtonHovered = false;
+
   constructor() { }
 
   ngOnInit(): void {

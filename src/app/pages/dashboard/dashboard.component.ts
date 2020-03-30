@@ -9,25 +9,29 @@ import { IEvent } from '@interfaces/event.interface';
 })
 export class DashboardComponent implements OnInit {
 
-  course: ICourse;
+  anatomy: ICourse;
   linAl: ICourse;
   oChem: ICourse;
+  compSci: ICourse;
+  psych: ICourse;
 
   eventOne: IEvent;
   eventTwo: IEvent;
 
+  smallView = false;
+
   constructor() { }
 
   ngOnInit(): void {
-    this.course = {
-      icon: 'fas fa-palette',
-      iconColor: '#d339fc',
-      iconBgColor: '#f2c1ff',
+    this.anatomy = {
+      icon: 'fas fa-skull',
+      iconColor: '#24ff00',
+      iconBgColor: '#dffce8',
       image: '',
-      name: 'Strategy, Design, Development',
-      instructor: 'Shelby McNotCowan',
-      description: 'Learn UX and web design from a guy who doesn\'t hold a formal degree in literally anything. You probably won\'t learn anything useful.',
-      tags: ['UI Design', 'UX Design', 'Web Design']
+      name: 'Human Anatomy',
+      instructor: 'Andy Andersen',
+      description: 'We go over how your body works, certainly something we all should know about.',
+      tags: ['Human', 'Anatomy', 'Biology']
     };
 
     this.linAl = {
@@ -50,6 +54,28 @@ export class DashboardComponent implements OnInit {
       instructor: 'Bradley Davidson',
       description: 'We go over the fundamentals of organic chemistry (and a bunch of other stuff you\'ll hate)',
       tags: ['Chemistry', 'Benzene', 'Failed Class']
+    };
+
+    this.compSci = {
+      icon: 'fas fa-laptop-code',
+      iconColor: '#ffde01',
+      iconBgColor: '#fffbcd',
+      image: '',
+      name: 'Computer Science II',
+      instructor: 'Karl Mortensen',
+      description: 'Computers and science but you won\'t learn how to code.',
+      tags: ['Computer', 'Code', 'Bruh']
+    };
+
+    this.psych = {
+      icon: 'fas fa-brain',
+      iconColor: '#f200ff',
+      iconBgColor: '#f6cffe',
+      image: '',
+      name: 'Abnormal Psychology',
+      instructor: 'Michael Twohig',
+      description: 'A course on unusual patterns of behvaiour, emotions, and thought.',
+      tags: ['Brain', 'Psychology', 'Clinical']
     };
 
     this.eventOne = {

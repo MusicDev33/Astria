@@ -1,8 +1,12 @@
 <app-navbar></app-navbar>
 
 <div class="container-fluid main bg">
-  <div class="flex-container">
-    <app-sidenav class="sidenav"></app-sidenav>
-    <router-outlet></router-outlet>
+  <div class="row">
+    <div class="col-auto sidenav">
+      <app-sidenav></app-sidenav>
+    </div>
+    <div class="col">
+      <router-outlet class="grow"></router-outlet>
+    </div>
   </div>
 </div>

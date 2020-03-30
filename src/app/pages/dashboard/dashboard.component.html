@@ -1,15 +1,28 @@
-<div class="row no-gutters">
+<div class="row no-gutters fill-container w-100">
   <div class="col-8 pr-5">
     <div class="row mb-3">
-      <div class="col-12">
+      <div class="col-10">
         <h2>Courses</h2>
       </div>
+      <div class="col-2 my-auto text-right">
+        <i class="fas fa-sliders-h toggle-view" (click)="smallView = !smallView"></i>
+      </div>
     </div>
-    <div *ngFor="let class of [course, linAl, oChem]">
-      <app-course-large [course]="class"></app-course-large>
+
+    <div class="row" *ngIf="smallView">
+      <div class="col-3 pb-2" *ngFor="let course of [anatomy, linAl, oChem, compSci, psych]">
+        <app-course-small [course]="course"></app-course-small>
+      </div>
     </div>
+
+    <div *ngIf="!smallView">
+      <div *ngFor="let course of [anatomy, linAl, oChem, compSci, psych]">
+        <app-course-large [course]="course"></app-course-large>
+      </div>
+    </div>
+
   </div>
-  <div class="col-4 pr-3">
+  <div class="col-4 pr-3 float-right">
     <div class="calendar-view pb-1 as-card">
       <app-calendar></app-calendar>
       <app-upcoming-events [events]="[eventOne, eventTwo]"></app-upcoming-events>
