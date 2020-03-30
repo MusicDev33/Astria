@@ -10,9 +10,9 @@
     <app-course-large [course]="oChem"></app-course-large>
   </div>
   <div class="col-4 pr-3">
-    <div class="calendar-view pb-3">
+    <div class="calendar-view pb-1 as-card">
       <app-calendar></app-calendar>
-      <app-upcoming-events></app-upcoming-events>
+      <app-upcoming-events [events]="[eventOne, eventTwo]"></app-upcoming-events>
     </div>
   </div>
 </div>

@@ -1,3 +1,5 @@
+@import '~scss/variables';
+
 .row.is-flex {
     display: -webkit-box;
     display: -webkit-flex;
@@ -20,27 +22,15 @@
     flex-direction: column;
 }
 
-.card {
-  background: #fff;
-  border-radius: 20px;
-}
-
 .card-icon {
-  font-size: 180%;
-  color: #ff5700;
+  font-size: 210%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .card-icon-space {
-  background: #ffddcb;
-  border-radius: 999px;
-}
-
-.ci-twitter {
-  font-size: 180%;
-  color: #00aced;
-}
-
-.cis-twitter {
-  background: #d4f1fc;
-  border-radius: 999px;
+  position: relative;
+  border-radius: $border-radius;
 }

@@ -1,9 +1,11 @@
+@import '~scss/colors';
+
 .navbar-brand {
   font-weight: 500;
 }
 
 .navbar {
-  background: #fff!important;
+  background: $main-bg-color!important;
 }
 
 .icon {

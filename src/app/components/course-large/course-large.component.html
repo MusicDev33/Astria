@@ -1,4 +1,4 @@
-<section class="row mb-3">
+<section class="row mb-3 test-card py-3">
   <div class="col-3">
     <div class="course-bg h-100"[style.background]="course.iconBgColor">
       <i class="{{ course.icon }} course-icon" [style.color]="course.iconColor"></i>
@@ -31,12 +31,16 @@
     </div>
     <div class="row">
       <div class="col-12 teach-text">
-        Taught by <span class="professor-text">{{ course.instructor }}</span>
+        Taught by
+        <span class="professor-text" (mouseover)="instructorHovered=true" (mouseout)="instructorHovered=false"
+              [style.border-color]="instructorHovered ? course.iconColor : 'rgba(255, 255, 255, 0)'">
+          {{ course.instructor }}
+        </span>
       </div>
     </div>
     <div class="row py-3">
       <div class="col-12">
-        <span *ngFor="let tag of course.tags" class="tag py-1 px-3 mr-1"
+        <span class="tag px-3 py-1 mr-2" *ngFor="let tag of course.tags"
           [style.color]="course.iconColor" [style.background]="course.iconBgColor">
           {{ tag }}
         </span>

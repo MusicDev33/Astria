@@ -10,6 +10,7 @@ export class CourseLargeComponent implements OnInit {
 
   @Input() course: ICourse;
   titleHovered = false;
+  instructorHovered = false;
 
   constructor() { }
 

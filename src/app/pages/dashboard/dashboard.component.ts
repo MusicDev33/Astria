@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ICourse } from '@interfaces/course.interface';
+import { IEvent } from '@interfaces/event.interface';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,6 +12,9 @@ export class DashboardComponent implements OnInit {
   course: ICourse;
   linAl: ICourse;
   oChem: ICourse;
+
+  eventOne: IEvent;
+  eventTwo: IEvent;
 
   constructor() { }
 
@@ -46,6 +50,22 @@ export class DashboardComponent implements OnInit {
       instructor: 'Bradley Davidson',
       description: 'We go over the fundamentals of organic chemistry (and a bunch of other stuff you\'ll hate)',
       tags: ['Chemistry', 'Benzene', 'Failed Class']
+    };
+
+    this.eventOne = {
+      icon: 'fas fa-bong',
+      iconColor: '#ff6161',
+      iconBgColor: '#fedede',
+      header: 'LearnSmarts are due!',
+      details: 'All LearnSmarts are due on the 30th!'
+    };
+
+    this.eventTwo = {
+      icon: 'fas fa-calculator',
+      iconColor: '#3472fe',
+      iconBgColor: '#c4f8ff',
+      header: 'Chapter 5.3 homework',
+      details: 'Reminder: your homework is released now.'
     };
   }
 

@@ -1,4 +1,4 @@
-<section class="row mb-3 justify-content-center">
+<section class="row justify-content-center mb-2">
   <div class="col-9">
     <h3 class="text-left pl-3">Upcoming Events</h3>
   </div>
@@ -9,44 +9,22 @@
   </div>
 </section>
 
-<section class="row justify-content-center mb-2">
-  <div class="col-10 card">
-    <div class="row is-flex pt-2">
-      <div class="col-3 text-center my-auto px-3">
-        <div class="cis-twitter py-2">
-          <i class="fab fa-twitter ci-twitter"></i>
+<article class="container-fluid">
+  <section class="row justify-content-center mb-3" *ngFor="let event of events">
+    <div class="col-11 as-card py-3">
+      <div class="row is-flex mx-0 pb-3">
+        <div class="col-3 card-icon-space" [style.background]="event.iconBgColor">
+          <i class="{{ event.icon }} card-icon" [style.color]="event.iconColor"></i>
+        </div>
+        <div class="col-9">
+          <h3>{{ event.header }}</h3>
         </div>
       </div>
-      <div class="col-9">
-        <h3 class="h-100">Send tweet @elonmusk</h3>
-      </div>
-    </div>
-
-    <div class="row pb-3">
-      <div class="col-9 offset-3">
-        Elon Musk needs to make more flamethrowers!!!
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="row justify-content-center">
-  <div class="col-10 card">
-    <div class="row is-flex pt-2">
-      <div class="col-3 text-center my-auto px-3">
-        <div class="card-icon-space py-2">
-          <i class="fab fa-reddit card-icon"></i>
+      <div class="row is-flex mx-0">
+        <div class="col-12 px-0">
+          {{ event.details }}
         </div>
       </div>
-      <div class="col-9">
-        <h3 class="h-100">Message Dave on Reddit</h3>
-      </div>
     </div>
-
-    <div class="row pb-3">
-      <div class="col-9 offset-3">
-        Dave desperately needs a message or something because he's lonely...
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
+</article>

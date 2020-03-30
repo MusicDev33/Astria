@@ -1,9 +1,8 @@
 @import '~scss/colors.scss';
 
 .sidenav {
-  -webkit-box-shadow: 5px 5px 30px 3px rgba(219,219,219,.4);
-  box-shadow: 5px 5px 30px 3px rgba(219,219,219,.4);
   border-radius: 999px;
+  background: $palette-2-bg;
 }
 
 .sidenav-icon {
@@ -13,7 +12,7 @@
   margin-bottom: 20px;
   cursor: pointer;
   transition: all 0.23s;
-  color: #ccc;
+  color: $palette-2-dark;
 }
 
 .sidenav-icon:hover {
