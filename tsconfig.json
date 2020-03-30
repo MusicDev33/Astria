@@ -9,7 +9,8 @@
       "@interfaces/*": ["app/interfaces/*"],
       "@globals/*": ["app/globals/*"],
       "@dialogs/*": ["app/dialogs/*"],
-      "@pages/*": ["app/pages/*"]
+      "@pages/*": ["app/pages/*"],
+      "@pg-components/*": ["app/pg-components/*"]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
