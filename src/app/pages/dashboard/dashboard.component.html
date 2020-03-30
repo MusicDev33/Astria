@@ -5,9 +5,9 @@
         <h2>Courses</h2>
       </div>
     </div>
-    <app-course-large [course]="course"></app-course-large>
-    <app-course-large [course]="linAl"></app-course-large>
-    <app-course-large [course]="oChem"></app-course-large>
+    <div *ngFor="let class of [course, linAl, oChem]">
+      <app-course-large [course]="class"></app-course-large>
+    </div>
   </div>
   <div class="col-4 pr-3">
     <div class="calendar-view pb-1 as-card">

@@ -13,6 +13,11 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { UpcomingEventsComponent } from './components/upcoming-events/upcoming-events.component';
 import { CourseLargeComponent } from './components/course-large/course-large.component';
+import { CourseSmallComponent } from './components/course-small/course-small.component';
+import { PCCalendarComponent } from './pg-components/p-c-calendar/p-c-calendar.component';
+import { PCTasklistComponent } from './pg-components/p-c-tasklist/p-c-tasklist.component';
+import { PCInstructorComponent } from './pg-components/p-c-instructor/p-c-instructor.component';
+import { PCEventComponent } from './pg-components/p-c-event/p-c-event.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +29,12 @@ import { CourseLargeComponent } from './components/course-large/course-large.com
     SidenavComponent,
     CalendarComponent,
     UpcomingEventsComponent,
-    CourseLargeComponent
+    CourseLargeComponent,
+    CourseSmallComponent,
+    PCCalendarComponent,
+    PCTasklistComponent,
+    PCInstructorComponent,
+    PCEventComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

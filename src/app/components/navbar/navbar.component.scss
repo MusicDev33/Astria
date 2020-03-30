@@ -10,5 +10,26 @@
 
 .icon {
   font-size: 140%;
-  color: #333;
+  color: $text-main;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.icon:hover {
+  color: $palette-4;
+}
+
+.caret {
+  font-size: 80%;
+  color: $text-main;
+  transition: all 0.15s;
+}
+
+.icon-group {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.icon-group:hover * {
+  color: $palette-4;
 }

@@ -1,4 +1,5 @@
 @import '~scss/variables';
+@import '~scss/colors';
 
 .course-bg {
   border-radius: 20px;
@@ -29,6 +30,12 @@
 .misc-icon {
   font-size: 120%;
   transition: all 0.25s;
+  color: $text-main;
+  cursor: pointer;
+}
+
+.misc-icon:hover {
+  color: $palette-4;
 }
 
 .tag {
@@ -37,10 +44,6 @@
   font-weight: $font-weight-light;
   transition: all 0.3s;
   background: rgba(255, 255, 255, 0);
-}
-
-.tag:hover {
-
 }
 
 .tag-container {
