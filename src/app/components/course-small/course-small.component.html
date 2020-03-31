@@ -26,8 +26,8 @@
   <section class="row">
     <div class="col-12 text-center">
       <button class="btn add-button w-100" (mouseover)="addButtonHovered=true" (mouseout)="addButtonHovered=false"
-              [style.opacity]="cardHovered ? '1' : '0'" [style.color]="addButtonHovered ? '' : course.iconColor">
-        <i class="fas fa-plus"></i>
+              [style.opacity]="cardHovered ? '1' : '0'" [style.color]="addButtonHovered ? course.iconColor : ''">
+        <i class="fas fa-plus"></i> Add
       </button>
     </div>
   </section>
