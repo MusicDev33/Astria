@@ -19,6 +19,7 @@ import { PCCalendarComponent } from './pg-components/p-c-calendar/p-c-calendar.c
 import { PCTasklistComponent } from './pg-components/p-c-tasklist/p-c-tasklist.component';
 import { PCInstructorComponent } from './pg-components/p-c-instructor/p-c-instructor.component';
 import { PCEventComponent } from './pg-components/p-c-event/p-c-event.component';
+import { PricingComponent } from './pages/pricing/pricing.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { PCEventComponent } from './pg-components/p-c-event/p-c-event.component'
     PCCalendarComponent,
     PCTasklistComponent,
     PCInstructorComponent,
-    PCEventComponent
+    PCEventComponent,
+    PricingComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

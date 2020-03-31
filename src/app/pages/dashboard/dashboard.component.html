@@ -24,6 +24,14 @@
   </div>
   <div class="col-4 pr-3 float-right">
     <div class="calendar-view pb-1 as-card">
+      <div class="row no-gutters">
+        <div class="col text-center py-3 module-icon-panel left" [ngClass]="{'selected': selectedModule === 'calendar'}" (click)="selectedModule='calendar'">
+          <i class="far fa-calendar module-icon" [ngClass]="{'selected': selectedModule === 'calendar'}"></i>
+        </div>
+        <div class="col text-center py-3 module-icon-panel right" [ngClass]="{'selected': selectedModule === 'tasklist'}" (click)="selectedModule='tasklist'">
+          <i class="fas fa-list-ul module-icon" [ngClass]="{'selected': selectedModule === 'tasklist'}"></i>
+        </div>
+      </div>
       <app-calendar></app-calendar>
       <app-upcoming-events [events]="[eventOne, eventTwo]"></app-upcoming-events>
     </div>

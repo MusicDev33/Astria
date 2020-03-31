@@ -20,6 +20,8 @@ export class DashboardComponent implements OnInit {
 
   smallView = false;
 
+  selectedModule = 'calendar';
+
   constructor() { }
 
   ngOnInit(): void {

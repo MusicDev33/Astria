@@ -1,4 +1,5 @@
 @import '~scss/colors.scss';
+@import '~scss/variables';
 
 h2 {
   color: #3a3a3a;
@@ -37,4 +38,38 @@ h5 {
 
 .toggle-view:hover {
   color: $palette-4;
+}
+
+.module-icon-panel {
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.module-icon-panel:hover {
+  background: $palette-4;
+}
+
+.module-icon-panel:hover:not(.selected) {
+  background: $palette-4-bg;
+}
+
+.module-icon-panel.selected {
+  background: $palette-4;
+}
+
+.left {
+  border-top-left-radius: $border-radius;
+}
+
+.right {
+  border-top-right-radius: $border-radius;
+}
+
+.module-icon {
+  font-size: 180%;
+  transition: all 0.3s;
+}
+
+.module-icon.selected {
+  color: #fff;
 }
