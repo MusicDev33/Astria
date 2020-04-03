@@ -14,12 +14,13 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import { UpcomingEventsComponent } from './components/upcoming-events/upcoming-events.component';
 import { CourseLargeComponent } from './components/course-large/course-large.component';
 import { CourseSmallComponent } from './components/course-small/course-small.component';
+import { PricingComponent } from './pages/pricing/pricing.component';
+import { TasklistComponent } from './components/tasklist/tasklist.component';
 
 import { PCCalendarComponent } from './pg-components/p-c-calendar/p-c-calendar.component';
 import { PCTasklistComponent } from './pg-components/p-c-tasklist/p-c-tasklist.component';
 import { PCInstructorComponent } from './pg-components/p-c-instructor/p-c-instructor.component';
 import { PCEventComponent } from './pg-components/p-c-event/p-c-event.component';
-import { PricingComponent } from './pages/pricing/pricing.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { PricingComponent } from './pages/pricing/pricing.component';
     PCTasklistComponent,
     PCInstructorComponent,
     PCEventComponent,
-    PricingComponent
+    PricingComponent,
+    TasklistComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
