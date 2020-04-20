@@ -1,0 +1,27 @@
+@import '~scss/astria/mixins/no-shadow';
+@import '~scss/variables';
+@import '~scss/colors';
+
+input {
+  padding: 15px 20px;
+  background: #f0f0f0!important;
+  border-color: #f0f0f0!important;
+  border-radius: 999px!important;
+  padding: 20px 23px!important;
+  transition: all $time-mid!important;
+}
+
+input:hover {
+  background: #fafafa!important;
+  border-color: #fafafa!important;
+}
+
+input:focus {
+  border-color: #fff!important;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)!important;
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)!important;
+  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)!important;
+  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)!important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)!important;
+  background: #fff!important;
+}

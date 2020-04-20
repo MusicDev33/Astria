@@ -1,7 +1,7 @@
-<app-navbar></app-navbar>
+<app-navbar *ngIf="showTopNav"></app-navbar>
 
 <div class="container-fluid main bg">
-  <div class="row">
+  <div class="row" *ngIf="showSideNav">
     <div class="col-auto sidenav">
       <app-sidenav></app-sidenav>
     </div>
@@ -9,4 +9,5 @@
       <router-outlet class="grow"></router-outlet>
     </div>
   </div>
+  <router-outlet class="grow" *ngIf="!showSideNav"></router-outlet>
 </div>
