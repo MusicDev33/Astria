@@ -1,0 +1,15 @@
+@import '~scss/colors';
+@import '~scss/variables';
+
+.as-btn-1 {
+  border-radius: 999px;
+  border-color: $palette-1;
+  color: $palette-1;
+  padding: 5px 25px!important;
+  transition: all $time-mid;
+}
+
+.as-btn-1:hover {
+  background: $palette-1;
+  color: #fff;
+}

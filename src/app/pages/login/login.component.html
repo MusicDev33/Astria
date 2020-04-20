@@ -1,7 +1,25 @@
-<div class="container-fluid d-flex full-height">
-  <div class="row justify-content-center align-self-center w-100">
-    <div class="col-6 text-center">
-      <input class="form-control" placeholder="Enter username"/>
+<div class="container-fluid d-flex full-height gradient-bg">
+  <div class="align-self-center w-100">
+    <div class="row justify-content-center mb-4">
+      <div class="col-12 col-md-8 text-center">
+        <h1 class="d-none d-sm-block">
+          <span class="welcome-header one">Welcome</span>
+          <span class="welcome-header two"> to Astria!</span>
+        </h1>
+
+        <h2 class="d-block d-sm-none">
+          <span class="welcome-header one">Welcome</span>
+          <span class="welcome-header two"> to Astria!</span>
+        </h2>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-10 col-sm-8 col-md-6 text-center">
+        <input class="form-control mb-3" placeholder="Enter username"/>
+        <input class="form-control mb-4" placeholder="Enter password"/>
+        <button class="btn as-btn-1 mb-2"><b>Log In</b></button>
+        <span class="d-block"><a class="black" [routerLink]="['/register']">I'd like to register!</a></span>
+      </div>
     </div>
   </div>
 </div>

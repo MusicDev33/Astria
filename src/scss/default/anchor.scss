@@ -1,0 +1,33 @@
+a {
+  border-bottom: 2px solid white;
+  border-bottom: 2px solid rgba(#fff, 0);
+  transition: $time-mid;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a.black {
+  color: $text-main;
+}
+
+a.black:hover {
+  border-color: $palette-1;
+}
+
+a.primary {
+  color: $palette-1;
+}
+
+a.primary:hover {
+  border-color: $palette-1;
+}
+
+a.secondary {
+  border-color: $palette-2;
+}
+
+a.tertiary {
+  border-color: $palette-4;
+}

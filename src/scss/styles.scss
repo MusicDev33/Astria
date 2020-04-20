@@ -1,6 +1,8 @@
 // You can add global styles to this file, and also import other style files
 @import './_colors';
 @import './astria/export';
+@import './default/export';
+@import './mixins/export';
 @import './_variables';
 
 *:focus {
@@ -13,5 +15,5 @@ html {
 
 body {
   overflow-x: hidden;
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'Noto Sans JP', sans-serif!important;
 }
