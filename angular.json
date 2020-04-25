@@ -30,7 +30,7 @@
             "styles": [
               "src/scss/styles.scss"
             ],
-            
+
             "scripts": []
           },
           "configurations": {
@@ -61,6 +61,14 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "local": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.local.ts"
+                }
+              ]
             }
           }
         },
@@ -71,6 +79,9 @@
           },
           "configurations": {
             "production": {
+              "browserTarget": "astria:build:production"
+            },
+            "local": {
               "browserTarget": "astria:build:production"
             }
           }
@@ -93,7 +104,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/scss/styles.scss"
             ],
 
             "scripts": []

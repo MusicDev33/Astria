@@ -2,6 +2,7 @@ a {
   border-bottom: 2px solid white;
   border-bottom: 2px solid rgba(#fff, 0);
   transition: $time-mid;
+  cursor: pointer;
 }
 
 a:hover {

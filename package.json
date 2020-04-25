@@ -25,6 +25,7 @@
     "@angular/platform-server": "~9.1.0",
     "@angular/router": "~9.1.0",
     "@nguniversal/express-engine": "^9.1.0",
+    "cookie-parser": "^1.4.5",
     "express": "^4.15.2",
     "normalize.css": "^8.0.1",
     "rxjs": "~6.5.4",

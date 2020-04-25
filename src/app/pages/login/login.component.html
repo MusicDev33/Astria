@@ -1,6 +1,7 @@
-<div class="container-fluid d-flex full-height gradient-bg">
+<article class="container-fluid d-flex full-height gradient-bg">
   <div class="align-self-center w-100">
-    <div class="row justify-content-center mb-4">
+
+    <section class="row justify-content-center mb-4">
       <div class="col-12 col-md-8 text-center">
         <h1 class="d-none d-sm-block">
           <span class="welcome-header one">Welcome</span>
@@ -12,14 +13,28 @@
           <span class="welcome-header two"> to Astria!</span>
         </h2>
       </div>
-    </div>
-    <div class="row justify-content-center">
+    </section>
+
+    <section class="row justify-content-center" *ngIf="mode === 'login'">
       <div class="col-10 col-sm-8 col-md-6 text-center">
         <input class="form-control mb-3" placeholder="Enter username"/>
-        <input class="form-control mb-4" placeholder="Enter password"/>
-        <button class="btn as-btn-1 mb-2"><b>Log In</b></button>
-        <span class="d-block"><a class="black" [routerLink]="['/register']">I'd like to register!</a></span>
+        <input class="form-control mb-4" placeholder="Enter password" type="password"/>
+        <button class="btn as-btn-4 mb-2"><b>Log In</b></button>
+        <span class="d-block"><a class="black" (click)="mode='register'">I'd like to register!</a></span>
       </div>
-    </div>
+    </section>
+
+    <section class="row justify-content-center" *ngIf="mode === 'register'">
+      <div class="col-10 col-sm-8 col-md-6 text-center">
+        <input class="form-control mb-3" placeholder="Full Name"/>
+        <input class="form-control mb-3" placeholder="Email"/>
+        <input class="form-control mb-3" placeholder="University Name"/>
+        <input class="form-control mb-3" placeholder="Password" type="password"/>
+        <input class="form-control mb-4" placeholder="Confirm Password" type="password"/>
+        <button class="btn as-btn-4 mb-2"><b>Sign Up</b></button>
+        <span class="d-block"><a class="black" (click)="mode='login'">I'd like to log in!</a></span>
+      </div>
+    </section>
+
   </div>
-</div>
+</article>
