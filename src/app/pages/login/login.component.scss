@@ -33,3 +33,8 @@
 .register-text:hover {
   @include text-underline-h($palette-1);
 }
+
+.pass-field {
+  font: large Verdana,sans-serif;
+  letter-spacing: 1px;
+}

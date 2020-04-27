@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +24,10 @@ import { PCTasklistComponent } from './pg-components/p-c-tasklist/p-c-tasklist.c
 import { PCInstructorComponent } from './pg-components/p-c-instructor/p-c-instructor.component';
 import { PCEventComponent } from './pg-components/p-c-event/p-c-event.component';
 
+// Services
+import { RegisterService } from '@services/register.service';
+import { AuthService } from '@services/auth.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,9 +49,14 @@ import { PCEventComponent } from './pg-components/p-c-event/p-c-event.component'
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    RegisterService,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

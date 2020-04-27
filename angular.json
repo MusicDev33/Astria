@@ -82,7 +82,7 @@
               "browserTarget": "astria:build:production"
             },
             "local": {
-              "browserTarget": "astria:build:production"
+              "browserTarget": "astria:build:local"
             }
           }
         },
@@ -153,6 +153,14 @@
               ],
               "sourceMap": false,
               "optimization": true
+            },
+            "local": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.local.ts"
+                }
+              ]
             }
           }
         },

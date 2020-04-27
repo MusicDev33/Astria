@@ -26,12 +26,12 @@
 
     <section class="row justify-content-center" *ngIf="mode === 'register'">
       <div class="col-10 col-sm-8 col-md-6 text-center">
-        <input class="form-control mb-3" placeholder="Full Name"/>
-        <input class="form-control mb-3" placeholder="Email"/>
-        <input class="form-control mb-3" placeholder="University Name"/>
-        <input class="form-control mb-3" placeholder="Password" type="password"/>
-        <input class="form-control mb-4" placeholder="Confirm Password" type="password"/>
-        <button class="btn as-btn-4 mb-2"><b>Sign Up</b></button>
+        <input class="form-control mb-3" placeholder="Full Name" [(ngModel)]="nameField" name="nameField"/>
+        <input class="form-control mb-3" placeholder="Email" [(ngModel)]="emailField" name="emailField"/>
+        <input class="form-control mb-3" placeholder="University Name" [(ngModel)]="schoolIDField" name="schoolIDField"/>
+        <input class="form-control mb-3 pass-field" placeholder="Password" type="password" [(ngModel)]="passwordField" name="passwordField"/>
+        <input class="form-control mb-4 pass-field" placeholder="Confirm Password" type="password" [(ngModel)]="confirmPassField" name="confirmPassField"/>
+        <button class="btn as-btn-4 mb-2" (click)="sendRegister()"><b>Sign Up</b></button>
         <span class="d-block"><a class="black" (click)="mode='login'">I'd like to log in!</a></span>
       </div>
     </section>
