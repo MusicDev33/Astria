@@ -34,7 +34,11 @@
   @include text-underline-h($palette-1);
 }
 
-.pass-field {
+.pass-field-full {
   font: large Verdana,sans-serif;
   letter-spacing: 1px;
+}
+
+.pass-field {
+  transition: font 0s, letter-spacing 0s!important;
 }

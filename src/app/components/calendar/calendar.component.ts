@@ -40,7 +40,6 @@ export class CalendarComponent implements OnInit {
     this.currentWeeks = [];
     const numDays = this.daysInMonth(month, year);
     const date = new Date(year, month - 1, 1);
-    console.log(date.getDay());
     let currentWeek = [];
     for (let j = 0; j < date.getDay(); j++) {
       currentWeek.push(0);

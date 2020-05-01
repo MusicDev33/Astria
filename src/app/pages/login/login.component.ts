@@ -14,14 +14,14 @@ export class LoginComponent implements OnInit {
 
   mode = 'login';
 
-  nameField = 'Shelby McCowan';
-  emailField = 'itsme@shelbymccowan.com';
-  schoolIDField = 'usu';
-  passwordField = 'password';
-  confirmPassField = 'password';
+  nameField = '';
+  emailField = '';
+  schoolIDField = '';
+  passwordField = '';
+  confirmPassField = '';
 
-  loginField = 'itsme@shelbymccowan.com';
-  loginPassField = 'password';
+  loginField = '';
+  loginPassField = '';
 
   constructor(
     private registerService: RegisterService,
@@ -52,7 +52,6 @@ export class LoginComponent implements OnInit {
   }
 
   sendLogin() {
-    console.log('test');
     this.authService.sendLogin(this.loginField, this.loginPassField).subscribe((res: any) => {
       if (res.success) {
         this.cookieService.set('jwt', res.jwt);
