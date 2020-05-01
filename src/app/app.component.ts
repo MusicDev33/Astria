@@ -32,6 +32,7 @@ export class AppComponent implements OnInit {
 
       const routeName = this.currentRoute.replace(/[\/]/, '');
       if (routeNavMap.hasOwnProperty(routeName)) {
+        console.log('changed');
         this.showTopNav = routeNavMap[routeName].topNav;
         this.showSideNav = routeNavMap[routeName].sideNav;
       }

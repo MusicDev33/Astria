@@ -146,7 +146,8 @@
     "ordered-imports": false,
     "member-access": false,
     "prefer-for-of": true,
-    "arrow-parens": false
+    "arrow-parens": false,
+    "no-string-literal": false
   },
   "rulesDirectory": [
     "codelyzer"

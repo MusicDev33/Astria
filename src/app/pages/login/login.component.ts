@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
+
 import { RegisterService } from '@services/register.service';
+import { AuthService } from '@services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +20,15 @@ export class LoginComponent implements OnInit {
   passwordField = 'password';
   confirmPassField = 'password';
 
-  constructor(public registerService: RegisterService) { }
+  loginField = 'itsme@shelbymccowan.com';
+  loginPassField = 'password';
+
+  constructor(
+    private registerService: RegisterService,
+    private authService: AuthService,
+    private cookieService: CookieService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
@@ -36,6 +48,16 @@ export class LoginComponent implements OnInit {
 
     this.registerService.sendRegistration(newPerson).subscribe((res: any) => {
       console.log(res);
+    });
+  }
+
+  sendLogin() {
+    console.log('test');
+    this.authService.sendLogin(this.loginField, this.loginPassField).subscribe((res: any) => {
+      if (res.success) {
+        this.cookieService.set('jwt', res.jwt);
+        this.router.navigate(['/dashboard']);
+      }
     });
   }
 

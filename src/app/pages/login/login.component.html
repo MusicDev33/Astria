@@ -17,9 +17,9 @@
 
     <section class="row justify-content-center" *ngIf="mode === 'login'">
       <div class="col-10 col-sm-8 col-md-6 text-center">
-        <input class="form-control mb-3" placeholder="Enter username"/>
-        <input class="form-control mb-4" placeholder="Enter password" type="password"/>
-        <button class="btn as-btn-4 mb-2"><b>Log In</b></button>
+        <input class="form-control mb-3" placeholder="Email" [(ngModel)]="loginField"/>
+        <input class="form-control mb-4" placeholder="Password" type="password" [(ngModel)]="loginPassField"/>
+        <button class="btn as-btn-4 mb-2" (click)="sendLogin()"><b>Log In</b></button>
         <span class="d-block"><a class="black" (click)="mode='register'">I'd like to register!</a></span>
       </div>
     </section>

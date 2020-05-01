@@ -6,6 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { CookieService } from 'ngx-cookie-service';
+
 import { LoginComponent } from '@pages/login/login.component';
 import { RegisterComponent } from '@pages/register/register.component';
 import { DashboardComponent } from '@pages/dashboard/dashboard.component';
@@ -55,7 +57,8 @@ import { AuthService } from '@services/auth.service';
   ],
   providers: [
     RegisterService,
-    AuthService
+    AuthService,
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

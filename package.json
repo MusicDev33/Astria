@@ -27,6 +27,7 @@
     "@nguniversal/express-engine": "^9.1.0",
     "cookie-parser": "^1.4.5",
     "express": "^4.15.2",
+    "ngx-cookie-service": "^3.0.4",
     "normalize.css": "^8.0.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
