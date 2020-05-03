@@ -1,4 +1,5 @@
 @import '~scss/colors';
+@import '~scss/variables';
 
 .navbar-brand {
   font-weight: 500;
@@ -32,4 +33,27 @@
 
 .icon-group:hover * {
   color: $palette-4;
+}
+
+.dropdown-item {
+  font-size: 17px;
+  font-weight: $font-weight-light;
+}
+
+.dropdown-item:hover {
+  color: $palette-3!important;
+}
+
+.dropdown-item:hover .dropdown-icon {
+  color: $palette-3!important;
+  transition: $time-fast;
+}
+
+.dropdown-icon {
+  margin-right: 5px;
+}
+
+.dropdown-item:hover.logout {
+  color: #f9501a!important;
+  background: #f1f1f1;
 }
