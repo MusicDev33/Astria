@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
     };
 
     this.registerService.sendRegistration(newPerson).subscribe((res: any) => {
-      console.log(res);
+      this.mode = 'login';
     });
   }
 
