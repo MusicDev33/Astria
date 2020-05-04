@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit {
     };
 
     this.registerService.sendRegistration(newPerson).subscribe((res: any) => {
+      this.deleteFields();
       this.mode = 'login';
     });
   }
@@ -67,6 +68,17 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/dashboard']);
       }
     });
+  }
+
+  deleteFields() {
+    this.nameField = '';
+    this.emailField = '';
+    this.schoolIDField = '';
+    this.passwordField = '';
+    this.confirmPassField = '';
+
+    this.loginPassField = '';
+    this.loginField = '';
   }
 
 }

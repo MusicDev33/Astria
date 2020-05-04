@@ -3,12 +3,11 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { CookieService } from 'ngx-cookie-service';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { CookieService } from 'ngx-cookie-service';
-
-import { LoginComponent } from '@pages/login/login.component';
 import { RegisterComponent } from '@pages/register/register.component';
 import { DashboardComponent } from '@pages/dashboard/dashboard.component';
 
@@ -26,14 +25,19 @@ import { PCTasklistComponent } from './pg-components/p-c-tasklist/p-c-tasklist.c
 import { PCInstructorComponent } from './pg-components/p-c-instructor/p-c-instructor.component';
 import { PCEventComponent } from './pg-components/p-c-event/p-c-event.component';
 
+// Admin
+import { AdminDashboardComponent } from './admin-pages/admin-dashboard/admin-dashboard.component';
+
 // Services
 import { RegisterService } from '@services/register.service';
 import { AuthService } from '@services/auth.service';
 
+// Modules
+import { AuthenticationModule } from '@modules/authentication/authentication.module';
+
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     RegisterComponent,
     DashboardComponent,
     NavbarComponent,
@@ -47,13 +51,15 @@ import { AuthService } from '@services/auth.service';
     PCInstructorComponent,
     PCEventComponent,
     PricingComponent,
-    TasklistComponent
+    TasklistComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AuthenticationModule
   ],
   providers: [
     RegisterService,

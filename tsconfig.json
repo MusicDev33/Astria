@@ -11,7 +11,9 @@
       "@dialogs/*": ["app/dialogs/*"],
       "@pages/*": ["app/pages/*"],
       "@pg-components/*": ["app/pg-components/*"],
-      "@env/*": ["environments/*"]
+      "@env/*": ["environments/*"],
+      "@admin-pages/*": ["app/admin-pages/*"],
+      "@modules/*": ["app/modules/*"]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
