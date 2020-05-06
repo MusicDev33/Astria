@@ -32,6 +32,7 @@ import { AdminDashboardComponent } from './admin-pages/admin-dashboard/admin-das
 import { RegisterService } from '@services/register.service';
 import { AuthService } from '@services/auth.service';
 import { JwtService } from '@services/jwt.service';
+import { UserDataService } from '@services/user-data.service';
 
 // Modules
 import { AuthenticationModule } from '@modules/authentication/authentication.module';
@@ -66,7 +67,8 @@ import { AuthenticationModule } from '@modules/authentication/authentication.mod
     RegisterService,
     AuthService,
     CookieService,
-    JwtService
+    JwtService,
+    UserDataService
   ],
   bootstrap: [AppComponent]
 })

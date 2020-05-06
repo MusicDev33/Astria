@@ -8,6 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "local": "ng serve --ssl false --configuration=local",
     "dev:ssr": "ng run astria:serve-ssr",
     "serve:ssr": "node dist/astria/server/main.js",
     "build:ssr": "ng build --prod && ng run astria:server:production",

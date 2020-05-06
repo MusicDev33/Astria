@@ -1,5 +1,43 @@
 <article class="row">
-  <section class="col-6">
-    <h4>Welcome to Astria!</h4>
+  <section class="col-4">
+    <h4 class="text-center mb-3">
+      Schools <span *ngIf="!createSchoolMode"><i class="fas fa-plus-circle add-button" (click)="createSchoolMode=true"></i></span>
+    </h4>
+
+    <div class="selected-circle-container my-3">
+      <section class="row as-card py-3 px-1" *ngIf="createSchoolMode">
+        <i class="far fa-times-circle exit-button" (click)="createSchoolMode=false"></i>
+        <div class="col-4">
+          <img class="img-fluid" src="https://i.pinimg.com/originals/3c/4a/ae/3c4aae17af2106d390f9290874809210.png">
+        </div>
+        <div class="col-7 text-center">
+          <input placeholder="Institution Name" class="form-control mb-2">
+          <input placeholder="Insitution Location" class="form-control my-2">
+          <button class="btn as-btn-4 mb-2">Create Institution</button>
+        </div>
+      </section>
+    </div>
+
+    <div class="selected-circle-container my-3" *ngFor="let school of schools">
+      <section class="row as-card select hover py-3 px-1" (click)="selectSchool(school.asID)">
+        <div class="selected-circle" *ngIf="selectedClassID === school.asID"></div>
+        <div class="col-4">
+          <img class="img-fluid" src="{{ school.img }}">
+        </div>
+        <div class="col-8">
+          <h6>{{ school.name }}</h6>
+          <h6>{{ school.location }}</h6>
+        </div>
+      </section>
+    </div>
+
+  </section>
+
+  <section class="col-4">
+    <h4 class="text-center mb-3">Teachers <span><i class="fas fa-plus-circle add-button"></i></span></h4>
+  </section>
+
+  <section class="col-4">
+    <h4 class="text-center mb-3">Courses <span><i class="fas fa-plus-circle add-button"></i></span></h4>
   </section>
 </article>

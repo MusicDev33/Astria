@@ -1,0 +1,43 @@
+@import '~scss/colors';
+@import '~scss/variables';
+
+.selected-circle {
+  position: absolute;
+  right: 0;
+  top: 13px;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: $palette-4;
+}
+
+.selected-circle-container {
+  position: relative;
+}
+
+.add-button {
+  color: $palette-4;
+  font-size: 90%;
+  padding-left: 5px;
+  cursor: pointer;
+  transition: $time-mid;
+}
+
+.add-button:hover {
+  color: $palette-4-dark;
+}
+
+.exit-button {
+  position: absolute;
+  right: 0;
+  top: 13px;
+  font-size: 150%;
+  transition: $time-mid;
+  color: $text-main;
+  cursor: pointer;
+}
+
+.exit-button:hover {
+  color: $as-red;
+  z-index: 99999999999;
+}

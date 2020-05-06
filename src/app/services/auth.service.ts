@@ -21,4 +21,11 @@ export class AuthService {
     return this.http.post(environment.apiURL + 'persons/auth', {email: login, password}, {headers, withCredentials: true})
       .pipe(map(res => res));
   }
+
+  authRequest(scope: string) {
+    const headers = BaseHeaders;
+
+    return this.http.get(environment.apiURL + 'persons/auth/request/' + scope, {headers, withCredentials: true})
+      .pipe(map(res => res));
+  }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ICourse } from '@interfaces/course.interface';
 import { IEvent } from '@interfaces/event.interface';
-import { JwtService } from '@services/jwt.service';
+import { AuthService } from '@services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,10 +23,12 @@ export class DashboardComponent implements OnInit {
 
   selectedModule = 'calendar';
 
-  constructor(private jwtService: JwtService) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    console.log(this.jwtService.getAuthLevel()['personType']);
+    this.authService.authRequest('as-admin').subscribe((res: any) => {
+      console.log(res);
+    });
     this.anatomy = {
       icon: 'fas fa-skull',
       iconColor: '#24ff00',
