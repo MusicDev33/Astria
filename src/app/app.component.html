@@ -1,13 +1,21 @@
 <app-navbar *ngIf="showTopNav"></app-navbar>
 
+
 <div class="container-fluid main bg">
-  <div class="row" *ngIf="showSideNav">
-    <div class="col-auto sidenav">
+  <div class="row">
+    <div class="col-auto sidenav" *ngIf="showSideNav">
       <app-sidenav></app-sidenav>
     </div>
     <div class="col">
-      <router-outlet class="grow"></router-outlet>
+      <router-outlet></router-outlet>
     </div>
   </div>
-  <router-outlet class="grow" *ngIf="!showSideNav"></router-outlet>
 </div>
+
+
+<!--
+If the route changes but the component does not, the above code is the culprit
+<div class="container-fluid main bg">
+  <router-outlet class="grow"></router-outlet>
+</div>
+-->
