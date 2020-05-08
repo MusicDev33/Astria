@@ -13,7 +13,8 @@
       "@pg-components/*": ["app/pg-components/*"],
       "@env/*": ["environments/*"],
       "@admin-pages/*": ["app/admin-pages/*"],
-      "@modules/*": ["app/modules/*"]
+      "@modules/*": ["app/modules/*"],
+      "@instructor-pages/*": ["app/instructor-pages/*"]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,

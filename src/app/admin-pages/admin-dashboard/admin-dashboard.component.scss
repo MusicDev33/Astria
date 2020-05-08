@@ -16,15 +16,34 @@
 }
 
 .add-button {
-  color: $palette-4;
   font-size: 90%;
   padding-left: 5px;
   cursor: pointer;
   transition: $time-mid;
 }
 
-.add-button:hover {
+.add-button.palette-1:hover {
+  color: $palette-1-dark;
+}
+
+.add-button.palette-2:hover {
+  color: $palette-2-dark;
+}
+
+.add-button.palette-4:hover {
   color: $palette-4-dark;
+}
+
+.add-button.palette-1 {
+  color: $palette-1;
+}
+
+.add-button.palette-2 {
+  color: $palette-2;
+}
+
+.add-button.palette-4 {
+  color: $palette-4;
 }
 
 .exit-button {

@@ -4,28 +4,27 @@ import { map } from 'rxjs/operators';
 import { environment } from '@env/environment';
 
 import { BaseHeaders } from '@globals/network.headers';
-import { IPerson } from '@interfaces/person.interface';
+import { ISchool } from '@interfaces/school.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class SchoolService {
 
   constructor(private http: HttpClient) {
 
   }
 
-  sendLogin(login: string, password: string) {
+  createSchool(school: ISchool) {
     const headers = BaseHeaders;
-
-    return this.http.post(environment.apiURL + 'persons/auth', {email: login, password}, {headers, withCredentials: true})
+    console.log(school);
+    return this.http.post(environment.apiURL + 'schools/add', school, {headers, withCredentials: true})
       .pipe(map(res => res));
   }
 
-  authRequest(scopes: string[]) {
+  getAllSchools() {
     const headers = BaseHeaders;
-    const body = {scopes};
-    return this.http.post(environment.apiURL + 'persons/auth/request/', body, {headers, withCredentials: true})
+    return this.http.get(environment.apiURL + 'schools/', {headers, withCredentials: true})
       .pipe(map(res => res));
   }
 }

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { CookieService } from 'ngx-cookie-service';
 
@@ -33,9 +34,12 @@ import { RegisterService } from '@services/register.service';
 import { AuthService } from '@services/auth.service';
 import { JwtService } from '@services/jwt.service';
 import { UserDataService } from '@services/user-data.service';
+import { SchoolService } from '@services/school.service';
 
 // Modules
 import { AuthenticationModule } from '@modules/authentication/authentication.module';
+import { InstructorCoursesComponent } from './instructor-pages/instructor-courses/instructor-courses.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -54,21 +58,25 @@ import { AuthenticationModule } from '@modules/authentication/authentication.mod
     PCEventComponent,
     PricingComponent,
     TasklistComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    InstructorCoursesComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    AuthenticationModule
+    AuthenticationModule,
+    RouterModule
   ],
   providers: [
     RegisterService,
     AuthService,
     CookieService,
     JwtService,
-    UserDataService
+    UserDataService,
+    SchoolService
   ],
   bootstrap: [AppComponent]
 })

@@ -9,23 +9,21 @@ import { IPerson } from '@interfaces/person.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class PersonService {
 
   constructor(private http: HttpClient) {
 
   }
 
-  sendLogin(login: string, password: string) {
+  createInstructor(person: IPerson) {
     const headers = BaseHeaders;
-
-    return this.http.post(environment.apiURL + 'persons/auth', {email: login, password}, {headers, withCredentials: true})
+    return this.http.post(environment.apiURL + 'persons/add', person, {headers, withCredentials: true})
       .pipe(map(res => res));
   }
 
-  authRequest(scopes: string[]) {
+  getSchoolInstructors(schoolID: string) {
     const headers = BaseHeaders;
-    const body = {scopes};
-    return this.http.post(environment.apiURL + 'persons/auth/request/', body, {headers, withCredentials: true})
+    return this.http.get(environment.apiURL + 'person/schoolID/' + schoolID, {headers, withCredentials: true})
       .pipe(map(res => res));
   }
 }

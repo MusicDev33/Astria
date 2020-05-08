@@ -20,9 +20,14 @@
               <a class="dropdown-item top" href="#">
                 <i class="fas fa-user-alt dropdown-icon"></i> Profile
               </a>
-              <a class="dropdown-item" [routerLink]="['/dashboard/admin']" *ngIf="user.personType === 'as-admin'">
+              <a class="dropdown-item" [routerLink]="['/admindash']" *ngIf="adminAuth">
                 <i class="fas fa-user-shield dropdown-icon"></i> Admin
               </a>
+
+              <a class="dropdown-item" [routerLink]="['/admindash']" *ngIf="adminAuth">
+                <i class="fas fa-book dropdown-icon"></i> Courses
+              </a>
+
               <a class="dropdown-item" href="#">
                 <i class="fas fa-comment-dots dropdown-icon"></i> Feedback
               </a>

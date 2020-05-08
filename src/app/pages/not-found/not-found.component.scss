@@ -1,0 +1,16 @@
+@import '~scss/colors';
+@import '~scss/variables';
+
+.bean-container {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.bean-container:hover {
+  border-color: $palette-1;
+}
+
+.click-text {
+  font-size: 110%;
+  font-weight: $font-weight-medium;
+}

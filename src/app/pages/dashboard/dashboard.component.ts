@@ -26,9 +26,6 @@ export class DashboardComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.authService.authRequest('as-admin').subscribe((res: any) => {
-      console.log(res);
-    });
     this.anatomy = {
       icon: 'fas fa-skull',
       iconColor: '#24ff00',

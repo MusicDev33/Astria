@@ -1,7 +1,7 @@
 <article class="row">
-  <section class="col-4">
+  <section class="col-4 px-4" *ngIf="schools">
     <h4 class="text-center mb-3">
-      Schools <span *ngIf="!createSchoolMode"><i class="fas fa-plus-circle add-button" (click)="createSchoolMode=true"></i></span>
+      Schools <span *ngIf="!createSchoolMode"><i class="fas fa-plus-circle add-button palette-4" (click)="createSchoolMode=true"></i></span>
     </h4>
 
     <div class="selected-circle-container my-3">
@@ -11,16 +11,16 @@
           <img class="img-fluid" src="https://i.pinimg.com/originals/3c/4a/ae/3c4aae17af2106d390f9290874809210.png">
         </div>
         <div class="col-7 text-center">
-          <input placeholder="Institution Name" class="form-control mb-2">
-          <input placeholder="Insitution Location" class="form-control my-2">
-          <button class="btn as-btn-4 mb-2">Create Institution</button>
+          <input placeholder="Institution Name" [(ngModel)]="instNameField" class="form-control mb-2">
+          <input placeholder="Insitution Location" [(ngModel)]="instLocationField" class="form-control my-2">
+          <button class="btn as-btn-4 mb-2" (click)="sendSchool()">Create Institution</button>
         </div>
       </section>
     </div>
 
     <div class="selected-circle-container my-3" *ngFor="let school of schools">
       <section class="row as-card select hover py-3 px-1" (click)="selectSchool(school.asID)">
-        <div class="selected-circle" *ngIf="selectedClassID === school.asID"></div>
+        <div class="selected-circle" *ngIf="selectedSchoolID === school.asID"></div>
         <div class="col-4">
           <img class="img-fluid" src="{{ school.img }}">
         </div>
@@ -33,11 +33,30 @@
 
   </section>
 
-  <section class="col-4">
-    <h4 class="text-center mb-3">Teachers <span><i class="fas fa-plus-circle add-button"></i></span></h4>
+  <section class="col-4 px-4">
+    <h4 class="text-center mb-3">
+      Teachers <span *ngIf="selectedSchoolID.length"><i class="fas fa-plus-circle add-button palette-2" (click)="createTeacherMode=true"></i></span>
+    </h4>
+
+    <div class="selected-circle-container my-3">
+      <section class="row as-card py-3 px-1" *ngIf="createTeacherMode">
+        <i class="far fa-times-circle exit-button" (click)="createTeacherMode=false"></i>
+        <div class="col-4">
+          <img class="img-fluid" src="https://i.pinimg.com/originals/02/5b/aa/025baa5b2cd7e46b6b4730247f6663ed.png">
+        </div>
+        <div class="col-7 text-center">
+          <input placeholder="Instructor Name" [(ngModel)]="instructorNameField" class="form-control mb-2">
+          <input placeholder="Instructor Email" [(ngModel)]="instructorEmailField" class="form-control my-2">
+          <button class="btn as-btn-4 mb-2" (click)="sendInstructor()">Create Instructor</button>
+        </div>
+      </section>
+    </div>
+
   </section>
 
-  <section class="col-4">
-    <h4 class="text-center mb-3">Courses <span><i class="fas fa-plus-circle add-button"></i></span></h4>
+  <section class="col-4 px-4">
+    <h4 class="text-center mb-3">
+      Courses <span><i class="fas fa-plus-circle add-button palette-1" (click)="createCourseMode=true"></i></span>
+    </h4>
   </section>
 </article>

@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from '@services/auth.service';
+import { SchoolService } from '@services/school.service';
+import { PersonService } from '@services/person.service';
 
 import { ISchool } from '@interfaces/school.interface';
+import { IPerson } from '@interfaces/person.interface';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -12,62 +15,50 @@ import { ISchool } from '@interfaces/school.interface';
 })
 export class AdminDashboardComponent implements OnInit {
 
-  selectedClassID = '';
+  selectedSchoolID = '';
+  selectedTeacherID = '';
+
   createSchoolMode = false;
+  createTeacherMode = false;
+  createCourseMode = false;
 
   // Create School Mode
   instNameField = '';
   instLocationField = '';
 
-  usu = {
-    name: 'Utah State University',
-    location: 'Logan, Utah',
-    asID: 'usu',
-    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Utah_State_Aggies_logo.svg/1200px-Utah_State_Aggies_logo.svg.png'
-  };
+  instructorNameField = '';
+  instructorEmailField = '';
 
-  bsu = {
-    name: 'Boise State University',
-    location: 'Boise, Idaho',
-    asID: 'bsu',
-    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Boise_State_%22B%22_logo.svg/1280px-Boise_State_%22B%22_logo.svg.png'
-  };
-
-  osu = {
-    name: 'Ohio State University',
-    location: 'Columbus, Ohio',
-    asID: 'osu',
-    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Ohio_State_Buckeyes_logo.svg/1041px-Ohio_State_Buckeyes_logo.svg.png'
-  };
-
-  tamu = {
-    name: 'Texas A&M University',
-    location: 'College Station, Texas',
-    asID: 'tamu',
-    img: 'https://i.pinimg.com/originals/3c/4a/ae/3c4aae17af2106d390f9290874809210.png'
-  };
-
-  schools = [this.usu, this.bsu, this.osu, this.tamu];
+  schools: ISchool[];
 
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private schoolService: SchoolService,
+    private personService: PersonService
   ) { }
 
   ngOnInit(): void {
-    this.authService.authRequest('as-admin').subscribe((res: any) => {
+    this.authService.authRequest(['as-admin', 'instructor']).subscribe((res: any) => {
       if (!res.success) {
+        console.log('move');
         this.router.navigate(['/dashboard']);
+      }
+    });
+
+    this.schoolService.getAllSchools().subscribe((res: any) => {
+      if (res.success) {
+        this.schools = res.schools;
       }
     });
   }
 
   selectSchool(classID: string) {
-    if (classID === this.selectedClassID) {
-      this.selectedClassID = '';
+    if (classID === this.selectedSchoolID) {
+      this.selectedSchoolID = '';
       return;
     }
-    this.selectedClassID = classID;
+    this.selectedSchoolID = classID;
   }
 
   sendSchool() {
@@ -75,8 +66,38 @@ export class AdminDashboardComponent implements OnInit {
       name: this.instNameField,
       location: this.instLocationField,
       img: 'https://i.pinimg.com/originals/3c/4a/ae/3c4aae17af2106d390f9290874809210.png',
-      asID: this.instNameField.replace(/[a-z &-_!.,]/g, '')
+      asID: this.instNameField.replace(/[a-z &\-_!.,]/g, '').toLowerCase()
     };
+
+    this.schoolService.createSchool(newSchool).subscribe((res: any) => {
+      if (res.success) {
+        this.instNameField = '';
+        this.instLocationField = '';
+        this.createSchoolMode = false;
+      }
+    });
   }
 
+  sendInstructor() {
+    const newInstructor: IPerson = {
+      bio: '',
+      profileURL: '',
+      schoolID: this.selectedSchoolID,
+      name: this.instructorNameField,
+      email: this.instructorEmailField,
+      password: '',
+      enrolledCourses: [],
+      taughtCourses: [],
+      personType: 'instructor'
+    };
+
+    this.personService.createInstructor(newInstructor).subscribe((res: any) => {
+      if (res.success) {
+        this.instructorNameField = '';
+        this.instructorEmailField = '';
+        this.createTeacherMode = false;
+        console.log(res);
+      }
+    });
+  }
 }
