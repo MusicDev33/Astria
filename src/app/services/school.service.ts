@@ -27,4 +27,10 @@ export class SchoolService {
     return this.http.get(environment.apiURL + 'schools/', {headers, withCredentials: true})
       .pipe(map(res => res));
   }
+
+  getSchoolInstructors(schoolID: string) {
+    const headers = BaseHeaders;
+    return this.http.get(environment.apiURL + 'schools/' + schoolID + '/instructors', {headers, withCredentials: true})
+      .pipe(map(res => res));
+  }
 }

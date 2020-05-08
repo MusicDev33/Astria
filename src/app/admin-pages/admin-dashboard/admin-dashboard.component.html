@@ -52,6 +52,19 @@
       </section>
     </div>
 
+    <div class="selected-circle-container my-3" *ngFor="let instructor of instructors">
+      <section class="row as-card select hover py-3 px-1" (click)="selectInstructor(instructor.profileURL)">
+        <div class="selected-circle" *ngIf="selectedTeacherID === instructor.profileURL"></div>
+        <div class="col-4">
+          <img class="img-fluid" src="https://i.pinimg.com/originals/02/5b/aa/025baa5b2cd7e46b6b4730247f6663ed.png">
+        </div>
+        <div class="col-8">
+          <h6>{{ instructor.name }}</h6>
+          <h6>{{ instructor.email }}</h6>
+        </div>
+      </section>
+    </div>
+
   </section>
 
   <section class="col-4 px-4">

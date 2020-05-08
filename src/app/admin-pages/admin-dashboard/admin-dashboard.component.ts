@@ -30,6 +30,7 @@ export class AdminDashboardComponent implements OnInit {
   instructorEmailField = '';
 
   schools: ISchool[];
+  instructors: IPerson[];
 
   constructor(
     private router: Router,
@@ -53,12 +54,25 @@ export class AdminDashboardComponent implements OnInit {
     });
   }
 
-  selectSchool(classID: string) {
-    if (classID === this.selectedSchoolID) {
+  selectSchool(schoolID: string) {
+    if (schoolID === this.selectedSchoolID) {
       this.selectedSchoolID = '';
       return;
     }
-    this.selectedSchoolID = classID;
+    this.selectedSchoolID = schoolID;
+    this.schoolService.getSchoolInstructors(schoolID).subscribe((res: any) => {
+      if (res.success) {
+        this.instructors = res.instructors;
+      }
+    });
+  }
+
+  selectInstructor(profileURL: string) {
+    if (profileURL === this.selectedTeacherID) {
+      this.selectedTeacherID = '';
+      return;
+    }
+    this.selectedTeacherID = profileURL;
   }
 
   sendSchool() {
