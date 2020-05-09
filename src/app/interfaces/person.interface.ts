@@ -1,5 +1,6 @@
 export interface IPerson {
   profileURL: string;
+  img: string;
   name: string;
   bio: string;
   schoolID: string;

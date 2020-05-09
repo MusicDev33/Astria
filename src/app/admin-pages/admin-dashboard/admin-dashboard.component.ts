@@ -102,7 +102,8 @@ export class AdminDashboardComponent implements OnInit {
       password: '',
       enrolledCourses: [],
       taughtCourses: [],
-      personType: 'instructor'
+      personType: 'instructor',
+      img: 'https://i.pinimg.com/originals/02/5b/aa/025baa5b2cd7e46b6b4730247f6663ed.png'
     };
 
     this.personService.createInstructor(newInstructor).subscribe((res: any) => {

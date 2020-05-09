@@ -20,6 +20,8 @@ import { CourseLargeComponent } from './components/course-large/course-large.com
 import { CourseSmallComponent } from './components/course-small/course-small.component';
 import { PricingComponent } from './pages/pricing/pricing.component';
 import { TasklistComponent } from './components/tasklist/tasklist.component';
+import { InstructorCoursesComponent } from './instructor-pages/instructor-courses/instructor-courses.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 import { PCCalendarComponent } from './pg-components/p-c-calendar/p-c-calendar.component';
 import { PCTasklistComponent } from './pg-components/p-c-tasklist/p-c-tasklist.component';
@@ -35,11 +37,10 @@ import { AuthService } from '@services/auth.service';
 import { JwtService } from '@services/jwt.service';
 import { UserDataService } from '@services/user-data.service';
 import { SchoolService } from '@services/school.service';
+import { CourseService } from '@services/course.service';
 
 // Modules
 import { AuthenticationModule } from '@modules/authentication/authentication.module';
-import { InstructorCoursesComponent } from './instructor-pages/instructor-courses/instructor-courses.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     CookieService,
     JwtService,
     UserDataService,
-    SchoolService
+    SchoolService,
+    CourseService
   ],
   bootstrap: [AppComponent]
 })

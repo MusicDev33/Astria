@@ -21,9 +21,16 @@ export class PersonService {
       .pipe(map(res => res));
   }
 
+  // WTF is this for?
   getSchoolInstructors(schoolID: string) {
     const headers = BaseHeaders;
-    return this.http.get(environment.apiURL + 'person/schoolID/' + schoolID, {headers, withCredentials: true})
+    return this.http.get(environment.apiURL + 'persons/schoolID/' + schoolID, {headers, withCredentials: true})
+      .pipe(map(res => res));
+  }
+
+  getInstructorCourses(schoolID: string, instructorID: string) {
+    const headers = BaseHeaders;
+    return this.http.get(environment.apiURL + `persons/${schoolID}/${instructorID}/courses`, {headers, withCredentials: true})
       .pipe(map(res => res));
   }
 }

@@ -52,7 +52,8 @@ export class LoginComponent implements OnInit {
       profileURL: '',
       enrolledCourses: [],
       taughtCourses: [],
-      bio: ''
+      bio: '',
+      img: 'https://i.pinimg.com/originals/02/5b/aa/025baa5b2cd7e46b6b4730247f6663ed.png'
     };
 
     this.registerService.sendRegistration(newPerson).subscribe((res: any) => {
