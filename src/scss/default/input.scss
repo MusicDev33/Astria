@@ -1,26 +1,42 @@
 @import '~scss/variables';
 @import '~scss/colors';
 
-input {
-  padding: 15px 20px;
+@mixin as-input($border-radius: 999px, $pad-x: 23px, $pad-y: 20px) {
   background: #f0f0f0!important;
   border-color: #f0f0f0!important;
-  border-radius: 999px!important;
-  padding: 20px 23px!important;
+  border-radius: $border-radius!important;
+  padding: $pad-y $pad-x!important;
   transition: all $time-mid!important;
+
+  &:hover {
+    background: #fafafa!important;
+    border-color: #fafafa!important;
+  }
+
+  &:focus {
+    border-color: #fff!important;
+    background: #fff!important;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)!important;
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)!important;
+    -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)!important;
+    -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)!important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)!important;
+  }
 }
 
-input:hover {
-  background: #fafafa!important;
-  border-color: #fafafa!important;
+input {
+  @include as-input(999px);
 }
 
-input:focus {
-  border-color: #fff!important;
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)!important;
-  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)!important;
-  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)!important;
-  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)!important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)!important;
-  background: #fff!important;
+textarea {
+  @include as-input(15px, $pad-y: 13px);
 }
+
+/*
+::-webkit-resizer {
+  border: 2px solid black;
+  background: red;
+  box-shadow: 0 0 5px 5px blue;
+  outline: 2px solid yellow;
+}
+*/

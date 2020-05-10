@@ -10,13 +10,13 @@
     </div>
 
     <div class="row" *ngIf="smallView">
-      <div class="col-3 pb-2" *ngFor="let course of [anatomy, linAl, oChem, compSci, psych]">
+      <div class="col-3 pb-2" *ngFor="let course of []">
         <app-course-small [course]="course"></app-course-small>
       </div>
     </div>
 
     <div *ngIf="!smallView">
-      <div *ngFor="let course of [anatomy, linAl, oChem, compSci, psych]">
+      <div *ngFor="let course of []">
         <app-course-large [course]="course"></app-course-large>
       </div>
     </div>

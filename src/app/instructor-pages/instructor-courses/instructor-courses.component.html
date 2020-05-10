@@ -1,1 +1,19 @@
-<p>instructor-courses works!</p>
+<article class="row" *ngIf="courses && courses.length === 0 && !createCourseMode">
+  <div class="col-12">
+    <h2>
+      It looks like you haven't created any courses!<br><br>
+      <span class="create-course" (click)="createCourseMode=true">Create one here</span>
+    </h2>
+  </div>
+</article>
+
+<article class="row" *ngIf="createCourseMode">
+  <div class="col-6 text-center">
+    <input class="form-control my-2" placeholder="Course Name" [(ngModel)]="courseNameField"/>
+    <textarea class="form-control desc-field my-2" placeholder="Course Description" [(ngModel)]="courseDescField"></textarea>
+
+    <button class="btn as-btn-4" [disabled]="!courseNameField.length || !courseDescField.length">
+      <b>Send</b>
+    </button>
+  </div>
+</article>

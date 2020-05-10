@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+    /*
     this.anatomy = {
       icon: 'fas fa-skull',
       iconColor: '#24ff00',
@@ -80,6 +81,7 @@ export class DashboardComponent implements OnInit {
       description: 'A course on unusual patterns of behvaiour, emotions, and thought.',
       tags: ['Brain', 'Psychology', 'Clinical']
     };
+    */
 
     this.eventOne = {
       icon: 'fas fa-bong',

@@ -1,0 +1,17 @@
+@import '~scss/colors';
+@import '~scss/variables';
+
+@import '~scss/mixins/text-underline';
+
+.create-course {
+  color: $palette-1;
+  @include text-underline(4px, $time-mid);
+}
+
+.create-course:hover {
+  @include text-underline-h($palette-1);
+}
+
+.desc-field {
+  min-height: 160px;
+}

@@ -24,7 +24,7 @@
                 <i class="fas fa-user-shield dropdown-icon"></i> Admin
               </a>
 
-              <a class="dropdown-item" [routerLink]="['/admindash']" *ngIf="adminAuth">
+              <a class="dropdown-item" [routerLink]="[navigateToInstructorCourses()]" *ngIf="adminAuth">
                 <i class="fas fa-book dropdown-icon"></i> Courses
               </a>
 

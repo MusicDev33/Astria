@@ -17,6 +17,8 @@ export class NavbarComponent implements OnInit {
   user: IPerson;
   adminAuth = false;
 
+  allowedPersonTypes = ['instructor', 'as-admin'];
+
   constructor(
     private cookieService: CookieService,
     private router: Router,
@@ -31,6 +33,15 @@ export class NavbarComponent implements OnInit {
         this.adminAuth = true;
       }
     });
+  }
+
+  navigateToInstructorCourses(): string {
+    const instructor = this.jwtService.decodeJwt(this.cookieService.get('jwt'));
+
+    if (!this.allowedPersonTypes.includes(instructor.personType)) {
+      return '';
+    }
+    return `instructor/${instructor.schoolID}/${instructor.profileURL}`;
   }
 
   logOut() {
