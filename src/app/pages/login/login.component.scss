@@ -27,11 +27,7 @@
 }
 
 .register-text {
-  @include text-underline(2px, $time-mid);
-}
-
-.register-text:hover {
-  @include text-underline-h($palette-1);
+  @include text-underline(2px, $time-mid, $palette-1);
 }
 
 .pass-field-full {

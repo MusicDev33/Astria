@@ -1,10 +1,10 @@
-@mixin text-underline($width, $transition) {
+@mixin text-underline($width, $transition, $color: #FFFC00) {
   border-bottom: $width solid #fff;
   border-bottom: $width solid rgba(#fff,0);
   cursor: pointer;
   transition: all $transition;
-}
 
-@mixin text-underline-h($color) {
-  border-color: $color;
+  &:hover {
+    border-color: $color;
+  }
 }

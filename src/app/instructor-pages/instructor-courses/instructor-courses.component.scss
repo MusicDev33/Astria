@@ -5,11 +5,7 @@
 
 .create-course {
   color: $palette-1;
-  @include text-underline(4px, $time-mid);
-}
-
-.create-course:hover {
-  @include text-underline-h($palette-1);
+  @include text-underline(4px, $time-mid, $palette-1);
 }
 
 .desc-field {

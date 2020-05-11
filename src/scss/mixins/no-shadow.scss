@@ -1,6 +1,6 @@
+@import '~scss/mixins/set-box-shadow';
+
 @mixin no-shadow {
-  -webkit-box-shadow: none!important;
-	-moz-box-shadow: none!important;
-	box-shadow: none!important;
+  @include set-box-shadow(none!important);
   outline: none!important;
 }
