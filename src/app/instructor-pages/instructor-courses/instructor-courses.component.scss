@@ -3,6 +3,10 @@
 
 @import '~scss/mixins/text-underline';
 
+$create-course-height: 325px;
+
+$nav-and-create: $create-course-height + $navbar-height;
+
 .create-course {
   color: $palette-1;
   @include text-underline(4px, $time-mid, $palette-1);
@@ -19,5 +23,11 @@
 
 .create-course-container {
   overflow-y: auto;
-  height: 100vh - $navbar-height;
+  overflow-x: hidden;
+  height: $create-course-height;
+}
+
+.icons-container {
+  overflow-y: auto;
+  height: $nav-and-create;
 }
