@@ -10,6 +10,7 @@ import { NotFoundComponent } from '@pages/not-found/not-found.component';
 import { InstructorCoursesComponent } from '@instructor-pages/instructor-courses/instructor-courses.component';
 
 import { AdminGuard } from '@guards/admin.guard';
+import { InstructorGuard } from '@guards/instructor.guard';
 
 const routes: Routes = [
   { path: 'login',
@@ -17,7 +18,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'dashboard', pathMatch: 'full', component: DashboardComponent },
   { path: 'admindash', pathMatch: 'full', component: AdminDashboardComponent, canActivate: [AdminGuard] },
-  { path: 'instructor/:schoolID/:instructorID', component: InstructorCoursesComponent},
+  { path: 'instructor/:schoolID/:instructorID', component: InstructorCoursesComponent, canActivate: [InstructorGuard]},
   { path: '**', component: NotFoundComponent }
 ];
 

@@ -36,6 +36,10 @@ export class JwtService {
     return this.jwtHelper.decodeToken(jwt);
   }
 
+  decodeCookieByName(name: string) {
+    return this.jwtHelper.decodeToken(this.cookieService.get(name));
+  }
+
   tokenExpired() {
     return this.jwtHelper.isTokenExpired(this.cookieService.get('jwt'));
   }

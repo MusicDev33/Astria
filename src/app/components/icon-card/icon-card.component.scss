@@ -2,9 +2,17 @@
 
 $default-grey: #a4a4a4;
 
+$default-select: #1618f2;
+$default-select-bg: #d6d7ff;
+
 .icon {
   font-size: 800%;
   color: $default-grey;
+  transition: $time-mid;
+
+  &.selected {
+    color: $default-select;
+  }
 }
 
 .icon-container {
@@ -21,6 +29,7 @@ $default-grey: #a4a4a4;
   }
 
   &.selected {
-    border-color: $default-grey;
+    border-color: $default-select;
+    background: $default-select-bg;
   }
 }

@@ -8,9 +8,9 @@ import { JwtService } from '@services/jwt.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuard implements CanActivate {
+export class InstructorGuard implements CanActivate {
 
-  acceptedTypes = ['as-admin'];
+  acceptedTypes = ['instructor', 'as-admin'];
 
   constructor(
     private jwtService: JwtService,
@@ -24,7 +24,7 @@ export class AdminGuard implements CanActivate {
       return false;
     }
 
-    if (this.jwtService.tokenExpired() && !this.acceptedTypes.includes(decodedPerson.personType)) {
+    if (this.jwtService.tokenExpired() || !this.acceptedTypes.includes(decodedPerson.personType)) {
       this.router.navigate(['/dashboard']);
       return false;
     }
