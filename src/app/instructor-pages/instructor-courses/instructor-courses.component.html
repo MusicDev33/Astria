@@ -7,13 +7,41 @@
   </div>
 </article>
 
-<article class="row" *ngIf="createCourseMode">
-  <div class="col-6 text-center">
+<article class="row pr-4">
+  <section [ngClass]="{'col-6': createCourseMode, 'col-12': !createCourseMode}" *ngIf="courses.length">
+    <div class="row">
+      <app-course-card [course]="course" *ngFor="let course of courses" class="px-4 py-2"
+        [ngClass]="{'col-6': createCourseMode, 'col-3': !createCourseMode}">
+      </app-course-card>
+      <app-course-card (createCourseClicked)="changeCourseMode($event)"
+        [ngClass]="{'col-6': createCourseMode, 'col-3': !createCourseMode}" class="px-4 py-2">
+      </app-course-card>
+    </div>
+  </section>
+
+  <section class="col-6 text-center create-course-container" *ngIf="createCourseMode">
     <input class="form-control my-2" placeholder="Course Name" [(ngModel)]="courseNameField"/>
     <textarea class="form-control desc-field my-2" placeholder="Course Description" [(ngModel)]="courseDescField"></textarea>
 
-    <button class="btn as-btn-4" [disabled]="!courseNameField.length || !courseDescField.length">
+    <button class="btn as-btn-cancel mr-1 course-form-btn" (click)="cancelAddCourse()">
+      <b>Cancel</b>
+    </button>
+
+    <button class="btn as-btn-4 ml-1 course-form-btn" [disabled]="!courseNameField.length || !courseDescField.length" (click)="sendNewCourse()">
       <b>Send</b>
     </button>
-  </div>
+
+    <div class="row mb2 mt-3">
+      <div class="col-12">
+        <h2>Select an icon:</h2>
+      </div>
+    </div>
+
+    <div class="row mt-3 px-3">
+      <app-icon-card class="col-6 px-4 py-2" *ngFor="let icon of availableIcons"
+        (click)="selectIcon(icon)" [icon]="icon" [selected]="icon === selectedIcon">
+      </app-icon-card>
+    </div>
+
+  </section>
 </article>

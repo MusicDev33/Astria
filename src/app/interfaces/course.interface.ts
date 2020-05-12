@@ -1,5 +1,4 @@
 export interface ICourse {
-  _id: string;
   icon: string;
   iconColor: string;
   iconBgColor: string;

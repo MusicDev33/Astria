@@ -1,0 +1,29 @@
+@import '~scss/colors';
+@import '~scss/variables';
+
+.course-icon {
+  font-size: 800%;
+
+  &.add {
+    color: $palette-1;
+    transition: $time-mid;
+  }
+}
+
+
+
+.course-icon-container {
+  cursor: pointer;
+  border: 1px solid rgb(255, 255, 255);
+  border: 1px solid rgba(255, 255, 255, 0);
+  transition: $time-mid;
+  border-radius: 20px;
+
+  &:hover .add {
+    color: $palette-4;
+  }
+
+  &:hover {
+    background: #ffe4f1;
+  }
+}

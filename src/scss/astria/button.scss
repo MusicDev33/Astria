@@ -25,3 +25,7 @@
 .as-btn-4 {
   @include as-button($palette-4, #fff);
 }
+
+.as-btn-cancel {
+  @include as-button($as-red, #fff);
+}

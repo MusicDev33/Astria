@@ -41,6 +41,10 @@ import { CourseService } from '@services/course.service';
 
 // Modules
 import { AuthenticationModule } from '@modules/authentication/authentication.module';
+import { CourseCardComponent } from './components/course-card/course-card.component';
+import { InstructorCourseComponent } from './instructor-pages/instructor-course/instructor-course.component';
+import { StudentCoursesComponent } from './pages/student-courses/student-courses.component';
+import { IconCardComponent } from './components/icon-card/icon-card.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +65,11 @@ import { AuthenticationModule } from '@modules/authentication/authentication.mod
     TasklistComponent,
     AdminDashboardComponent,
     InstructorCoursesComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    CourseCardComponent,
+    InstructorCourseComponent,
+    StudentCoursesComponent,
+    IconCardComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

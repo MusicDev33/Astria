@@ -1,0 +1,26 @@
+@import '~scss/variables';
+
+$default-grey: #a4a4a4;
+
+.icon {
+  font-size: 800%;
+  color: $default-grey;
+}
+
+.icon-container {
+  $bg-color: #f1f1f1;
+
+  background: $bg-color;
+  border-radius: $border-radius;
+  cursor: pointer;
+  transition: $time-mid;
+  border: 1px solid $bg-color;
+
+  &:hover {
+    border-color: $default-grey;
+  }
+
+  &.selected {
+    border-color: $default-grey;
+  }
+}

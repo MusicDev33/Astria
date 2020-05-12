@@ -10,4 +10,14 @@
 
 .desc-field {
   min-height: 160px;
+  resize: none;
+}
+
+.course-form-btn {
+  min-width: 110px;
+}
+
+.create-course-container {
+  overflow-y: auto;
+  height: 100vh - $navbar-height;
 }
