@@ -21,4 +21,11 @@ export class CourseService {
     return this.http.post(environment.apiURL + 'courses/add', course, {headers, withCredentials: true})
       .pipe(map(res => res));
   }
+
+  getOneCourseForInstructor(schoolID: string, instructorID: string, courseCode: string) {
+    const headers = BaseHeaders;
+    const url = `${environment.apiURL}courses/course/${schoolID}/${instructorID}/${courseCode}`;
+    return this.http.get(url, {headers, withCredentials: true})
+      .pipe(map(res => res));
+  }
 }

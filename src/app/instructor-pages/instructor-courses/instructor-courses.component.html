@@ -1,3 +1,4 @@
+<!-- INSTRUCTOR COURSE - PLURAL -->
 <article class="row" *ngIf="courses && courses.length === 0 && !createCourseMode">
   <div class="col-12">
     <h2>
@@ -10,7 +11,8 @@
 <article class="row pr-4">
   <section [ngClass]="{'col-6': createCourseMode, 'col-12': !createCourseMode}" *ngIf="courses.length">
     <div class="row">
-      <app-course-card [course]="course" *ngFor="let course of courses" class="px-4 py-2"
+      <app-course-card [course]="course" [courseLink]="getCourseLink(course.courseCode)"
+        *ngFor="let course of courses" class="px-4 py-2"
         [ngClass]="{'col-6': createCourseMode, 'col-3': !createCourseMode}">
       </app-course-card>
       <app-course-card (createCourseClicked)="changeCourseMode($event)"

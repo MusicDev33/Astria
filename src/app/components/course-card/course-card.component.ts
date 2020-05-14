@@ -10,6 +10,7 @@ import { ICourse } from '@interfaces/course.interface';
 export class CourseCardComponent implements OnInit {
 
   @Input() course: ICourse;
+  @Input() courseLink = '';
 
   @Output() createCourseClicked = new EventEmitter<boolean>();
 

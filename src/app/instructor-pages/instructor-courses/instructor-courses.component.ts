@@ -114,4 +114,16 @@ export class InstructorCoursesComponent implements OnInit {
       });
     });
   }
+
+  getCourseLink(courseID: string) {
+    const person = this.jwtService.decodeCookieByName('jwt');
+    let url = '/instructor/';
+
+    if (person && person.personType === 'instructor') {
+      url += `${person.schoolID}/${person.profileURL}/${courseID}`;
+      return url;
+    }
+
+    return '/dashboard';
+  }
 }

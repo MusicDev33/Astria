@@ -47,3 +47,10 @@ a {
   @include as-anchor();
   @include as-anchor-colors();
 }
+
+a {
+    &.no-style:link, &.no-style:visited {
+      text-decoration: inherit;
+      color: inherit;
+    }
+}

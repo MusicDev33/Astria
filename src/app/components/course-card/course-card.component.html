@@ -1,4 +1,4 @@
-<article class="row as-card hover select py-3" *ngIf="course">
+<a class="row as-card hover select py-3 no-style" *ngIf="course" [routerLink]="[courseLink]">
   <div class="col-12">
     <div class="course-icon-container text-center py-2" [style.background]="course.iconBgColor" (mouseover)="iconHovered=true"
           (mouseout)="iconHovered=false" [style.border-color]="iconHovered ? course.iconColor : 'rgba(255, 255, 255, 0)'">
@@ -8,9 +8,9 @@
   <div class="col-12 mt-3">
     <h4 class="text-center">{{ course.name }}</h4>
   </div>
-</article>
+</a>
 
-<article class="row as-card hover select py-3" *ngIf="!course" (click)="sendCreateCourseClicked()">
+<a class="row as-card hover select py-3" *ngIf="!course" (click)="sendCreateCourseClicked()">
   <div class="col-12">
     <div class="course-icon-container text-center py-2">
       <i class="fas fa-plus course-icon add"></i>
@@ -19,4 +19,4 @@
   <div class="col-12 mt-3">
     <h4 class="text-center">Create Course</h4>
   </div>
-</article>
+</a>
