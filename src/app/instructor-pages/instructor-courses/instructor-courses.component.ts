@@ -93,6 +93,7 @@ export class InstructorCoursesComponent implements OnInit {
     const course: ICourse = {
       name: this.courseNameField,
       description: this.courseDescField,
+      introText: '',
       icon: this.selectedIcon,
       iconColor: '#3472fe',
       iconBgColor: '#c4f8ff',

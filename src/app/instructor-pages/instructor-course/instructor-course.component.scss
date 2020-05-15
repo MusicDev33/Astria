@@ -1,0 +1,23 @@
+@import '~scss/colors';
+@import '~scss/variables';
+
+.nav-option.top {
+  border-radius: 999px;
+  background: $palette-4;
+  color: #fff;
+  transition: $time-mid;
+  cursor: pointer;
+
+  padding: 5px 20px;
+
+  font-weight: $font-weight-medium;
+  font-size: 110%;
+
+  &.selected {
+    background: $palette-1-light;
+  }
+
+  &:hover:not(.selected) {
+    background: $palette-4-dark;
+  }
+}

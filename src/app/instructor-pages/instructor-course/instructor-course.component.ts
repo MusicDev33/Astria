@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { JwtService } from '@services/jwt.service';
 import { CourseService } from '@services/course.service';
 
-import { ICourse } from '@interfaces/course.interface';
+import { ICourse } from '@models/course.model';
 
 @Component({
   selector: 'app-instructor-course',
@@ -20,6 +20,8 @@ export class InstructorCourseComponent implements OnInit {
   courseCode: string;
 
   course: ICourse;
+
+  selectedNavOption = 'Home';
 
   constructor(
     private jwtService: JwtService,
@@ -43,6 +45,26 @@ export class InstructorCourseComponent implements OnInit {
             }
           });
       });
+    }
+  }
+
+  // Function is a little messy
+  getInstructors(): string {
+    const instructors = this.course.instructors;
+    if (this.course.instructors.length === 1) {
+      return `Taught by ${instructors[0]}`;
+    } else if (instructors.length > 1) {
+      let returnString = `Taught by ${instructors[0]}`;
+      for (let i = 1; i < instructors.length; i++) {
+        if (i === instructors.length - 1) {
+          returnString += `, and ${instructors[i]}`;
+          continue;
+        }
+        returnString += `, ${instructors[i]}`;
+      }
+      return returnString;
+    } else {
+      return 'This course seems to have no instructors. That shouldn\'t be possible. Darn.';
     }
   }
 }

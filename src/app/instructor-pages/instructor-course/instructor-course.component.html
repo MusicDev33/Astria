@@ -1,4 +1,37 @@
 <!-- INSTRUCTOR COURSE - SINGULAR -->
-<article class="row" *ngIf="course">
-  <h4>{{ course.name }}</h4>
+<article *ngIf="course">
+  <section class="row">
+    <div class="col-12">
+      <h2>{{ course.name }}</h2>
+      <span>{{ getInstructors() }}</span>
+    </div>
+  </section>
+  <section class="row pl-1 pr-4 mt-3">
+
+    <div class="col px-2">
+      <div class="nav-option top text-center align-middle" (click)="selectedNavOption='Home'"
+        [ngClass]="{'selected': selectedNavOption === 'Home'}">Home</div>
+    </div>
+
+    <div class="col px-2">
+      <div class="nav-option top text-center align-middle" (click)="selectedNavOption='Assignments'"
+        [ngClass]="{'selected': selectedNavOption === 'Assignments'}">Assignments</div>
+    </div>
+
+    <div class="col px-2">
+      <div class="nav-option top text-center align-middle" (click)="selectedNavOption='Syllabus'"
+        [ngClass]="{'selected': selectedNavOption === 'Syllabus'}">Syllabus</div>
+    </div>
+
+    <div class="col px-2">
+      <div class="nav-option top text-center align-middle" (click)="selectedNavOption='Announcements'"
+        [ngClass]="{'selected': selectedNavOption === 'Announcements'}">Announcements</div>
+    </div>
+
+    <div class="col px-2">
+      <div class="nav-option top text-center align-middle" (click)="selectedNavOption='Grades'"
+        [ngClass]="{'selected': selectedNavOption === 'Grades'}">Grades</div>
+    </div>
+
+  </section>
 </article>
