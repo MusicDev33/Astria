@@ -2,9 +2,8 @@
 @import '~scss/variables';
 
 .nav-option.top {
-  border-radius: 999px;
-  background: $palette-4;
-  color: #fff;
+  border-bottom: 2px solid $transparent;
+  color: $palette-4-light;
   transition: $time-mid;
   cursor: pointer;
 
@@ -14,10 +13,11 @@
   font-size: 110%;
 
   &.selected {
-    background: $palette-1-light;
+    border-color: $palette-4;
+    color: $palette-4;
   }
 
   &:hover:not(.selected) {
-    background: $palette-4-dark;
+    border-color: $palette-4-light;
   }
 }

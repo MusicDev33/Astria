@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { JwtService } from '@services/jwt.service';
@@ -21,13 +21,49 @@ export class InstructorCourseComponent implements OnInit {
 
   course: ICourse;
 
-  selectedNavOption = 'Home';
+  selectedNavIndex = 0;
+
+  topNavOptions = ['Home', 'Announcements', 'Syllabus', 'Assignments', 'Grades'];
+
+  keyIsDown = false;
 
   constructor(
     private jwtService: JwtService,
     private courseService: CourseService,
     private route: ActivatedRoute,
   ) { }
+
+  @HostListener('document:keydown.arrowright', ['$event'])
+  onArrowRightHandler(event: KeyboardEvent) {
+    if (this.keyIsDown) {
+      return;
+    }
+    if (this.selectedNavIndex === this.topNavOptions.length - 1) {
+      this.selectedNavIndex = 0;
+    } else {
+      this.selectedNavIndex += 1;
+    }
+    this.keyIsDown = true;
+  }
+
+  @HostListener('document:keydown.arrowleft', ['$event'])
+  onArrowLeftHandler(event: KeyboardEvent) {
+    if (this.keyIsDown) {
+      return;
+    }
+    if (this.selectedNavIndex === 0) {
+      this.selectedNavIndex = this.topNavOptions.length - 1;
+    } else {
+      this.selectedNavIndex -= 1;
+    }
+    this.keyIsDown = true;
+  }
+
+  @HostListener('document:keyup.arrowright', ['$event'])
+  @HostListener('document:keyup.arrowleft', ['$event'])
+  onKeyUp() {
+    this.keyIsDown = false;
+  }
 
   ngOnInit(): void {
     const person = this.jwtService.decodeCookieByName('jwt');

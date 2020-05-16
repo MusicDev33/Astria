@@ -8,29 +8,9 @@
   </section>
   <section class="row pl-1 pr-4 mt-3">
 
-    <div class="col px-2">
-      <div class="nav-option top text-center align-middle" (click)="selectedNavOption='Home'"
-        [ngClass]="{'selected': selectedNavOption === 'Home'}">Home</div>
-    </div>
-
-    <div class="col px-2">
-      <div class="nav-option top text-center align-middle" (click)="selectedNavOption='Assignments'"
-        [ngClass]="{'selected': selectedNavOption === 'Assignments'}">Assignments</div>
-    </div>
-
-    <div class="col px-2">
-      <div class="nav-option top text-center align-middle" (click)="selectedNavOption='Syllabus'"
-        [ngClass]="{'selected': selectedNavOption === 'Syllabus'}">Syllabus</div>
-    </div>
-
-    <div class="col px-2">
-      <div class="nav-option top text-center align-middle" (click)="selectedNavOption='Announcements'"
-        [ngClass]="{'selected': selectedNavOption === 'Announcements'}">Announcements</div>
-    </div>
-
-    <div class="col px-2">
-      <div class="nav-option top text-center align-middle" (click)="selectedNavOption='Grades'"
-        [ngClass]="{'selected': selectedNavOption === 'Grades'}">Grades</div>
+    <div class="col px-2" *ngFor="let option of topNavOptions; let i = index;">
+      <div class="nav-option top text-center align-middle" (click)="selectedNavIndex=i"
+        [ngClass]="{'selected': selectedNavIndex === i}">{{ option }}</div>
     </div>
 
   </section>

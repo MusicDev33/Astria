@@ -2,11 +2,13 @@
   <div class="container-fluid">
     <article class="row justify-content-center w-100">
 
-      <section class="col-3">
-        <a class="navbar-brand" [routerLink]="['/dashboard']">Astria</a>
+      <section class="col-3 pt-1">
+        <a [routerLink]="['/dashboard']">
+          <img src="assets/as-logo/cover.png" alt="Astria Logo" class="navbar-logo d-inline">
+        </a>
       </section>
 
-      <section class="col-4">
+      <section class="col-4 py-4">
         <input class="form-control py-3" placeholder="Search"/>
       </section>
 

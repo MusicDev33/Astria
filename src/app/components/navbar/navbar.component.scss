@@ -1,6 +1,11 @@
 @import '~scss/colors';
 @import '~scss/variables';
 
+.navbar-logo {
+  max-height: $navbar-height;
+  width: auto;
+}
+
 .navbar-brand {
   font-weight: 500;
   color: $text-main;
