@@ -23,7 +23,7 @@ export class InstructorCourseComponent implements OnInit {
 
   selectedNavIndex = 0;
 
-  topNavOptions = ['Home', 'Announcements', 'Syllabus', 'Assignments', 'Grades'];
+  topNavOptions = ['Home', 'Announcements', 'Syllabus', 'Assignments', 'Students'];
 
   keyIsDown = false;
 
