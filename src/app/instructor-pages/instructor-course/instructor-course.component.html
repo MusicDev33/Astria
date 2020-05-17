@@ -5,12 +5,22 @@
       <h2>{{ course.name }}</h2>
     </div>
   </section>
-  <section class="row pl-1 pr-4 mt-3">
+  <section class="row pl-1 pr-4 mt-3 mb-4">
 
     <div class="col px-2" *ngFor="let option of topNavOptions; let i = index;">
       <div class="nav-option top text-center align-middle" (click)="selectedNavIndex=i"
         [ngClass]="{'selected': selectedNavIndex === i}">{{ option }}</div>
     </div>
 
+  </section>
+
+  <section class="row">
+    <div class="col-7">
+      <markdown [data]="course.introText" class="markdown"></markdown>
+    </div>
+
+    <div class="col-5 pr-5">
+      <app-inst-ctx-home (sendContentFieldChange)="changeCourseIntroText($event)"></app-inst-ctx-home>
+    </div>
   </section>
 </article>

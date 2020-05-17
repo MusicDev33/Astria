@@ -15,7 +15,8 @@
       "@admin-pages/*": ["app/admin-pages/*"],
       "@modules/*": ["app/modules/*"],
       "@models/*": ["app/models/*"],
-      "@instructor-pages/*": ["app/instructor-pages/*"]
+      "@instructor-pages/*": ["app/instructor-pages/*"],
+      "@context-menus/*": ["app/context-menus/*"]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,

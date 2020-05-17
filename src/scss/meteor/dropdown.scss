@@ -1,0 +1,44 @@
+@import '~scss/colors';
+@import '~scss/variables';
+
+.mt-dropdown-menu {
+  border-radius: $border-radius;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.dropdown:hover .dropdown-item {
+  color: $text-main!important;
+}
+
+.dropdown:hover .dropdown-item .dropdown-icon {
+  color: $text-main!important;
+}
+
+.dropdown-item.top {
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.dropdown-item.bottom {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+}
+
+.dropdown-item {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 20px;
+  padding-right: 70px;
+  transition: $time-fast;
+  color: $text-main;
+}
+
+.dropdown-item:hover {
+  background: $palette-4;
+  color: $palette-3!important;
+}

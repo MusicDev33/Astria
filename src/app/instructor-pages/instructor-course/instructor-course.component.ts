@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MarkdownService } from 'ngx-markdown';
 
 import { JwtService } from '@services/jwt.service';
 import { CourseService } from '@services/course.service';
@@ -20,6 +21,7 @@ export class InstructorCourseComponent implements OnInit {
   courseCode: string;
 
   course: ICourse;
+  compiledIntroText: string;
 
   selectedNavIndex = 0;
 
@@ -31,6 +33,7 @@ export class InstructorCourseComponent implements OnInit {
     private jwtService: JwtService,
     private courseService: CourseService,
     private route: ActivatedRoute,
+    private mdService: MarkdownService
   ) { }
 
   @HostListener('document:keydown.arrowright', ['$event'])
@@ -102,5 +105,9 @@ export class InstructorCourseComponent implements OnInit {
     } else {
       return 'This course seems to have no instructors. That shouldn\'t be possible. Darn.';
     }
+  }
+
+  changeCourseIntroText(text: string) {
+    this.course.introText = text;
   }
 }

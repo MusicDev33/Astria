@@ -30,6 +30,20 @@ input {
   @include as-input(999px);
 }
 
+input.context-input, textarea.context-input {
+  background: #fff!important;
+  border: 1px solid #eaeaea!important;
+
+  &:hover:not(:focus) {
+    border-color: #e0e0e0!important;
+    background: #fff!important;
+  }
+
+  &:focus {
+    border-color: #fff!important;
+  }
+}
+
 textarea {
   @include as-input(15px, $pad-y: 13px);
 }

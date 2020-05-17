@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { MarkdownModule } from 'ngx-markdown';
 
 import { CookieService } from 'ngx-cookie-service';
 
@@ -45,6 +46,11 @@ import { CourseCardComponent } from './components/course-card/course-card.compon
 import { InstructorCourseComponent } from './instructor-pages/instructor-course/instructor-course.component';
 import { StudentCoursesComponent } from './pages/student-courses/student-courses.component';
 import { IconCardComponent } from './components/icon-card/icon-card.component';
+import { ContextMenuComponent } from './components/context-menu/context-menu.component';
+import { InstCtxHomeComponent } from './context-menus/inst-ctx-home/inst-ctx-home.component';
+import { InstCtxAnnouncementsComponent } from './context-menus/inst-ctx-announcements/inst-ctx-announcements.component';
+import { InstCtxStudentsComponent } from './context-menus/inst-ctx-students/inst-ctx-students.component';
+import { InstCtxAssignmentsComponent } from './context-menus/inst-ctx-assignments/inst-ctx-assignments.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +75,12 @@ import { IconCardComponent } from './components/icon-card/icon-card.component';
     CourseCardComponent,
     InstructorCourseComponent,
     StudentCoursesComponent,
-    IconCardComponent
+    IconCardComponent,
+    ContextMenuComponent,
+    InstCtxHomeComponent,
+    InstCtxAnnouncementsComponent,
+    InstCtxStudentsComponent,
+    InstCtxAssignmentsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -77,7 +88,8 @@ import { IconCardComponent } from './components/icon-card/icon-card.component';
     FormsModule,
     HttpClientModule,
     AuthenticationModule,
-    RouterModule
+    RouterModule,
+    MarkdownModule.forRoot()
   ],
   providers: [
     RegisterService,

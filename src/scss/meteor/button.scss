@@ -1,0 +1,31 @@
+@import '~scss/colors';
+@import '~scss/variables';
+
+@mixin mt-button($btn-color, $btn-text-color) {
+  border-radius: 999px;
+  border-color: $btn-color;
+  color: $btn-color;
+  padding: 5px 25px!important;
+  transition: all $time-mid;
+
+  &:hover {
+    background: $btn-color;
+    color: $btn-text-color;
+  }
+
+  &:disabled {
+    pointer-events: none;
+  }
+}
+
+.mt-btn-1 {
+  @include mt-button($palette-1, #fff);
+}
+
+.mt-btn-4 {
+  @include mt-button($palette-4, #fff);
+}
+
+.mt-btn-cancel {
+  @include mt-button($as-red, #fff);
+}
