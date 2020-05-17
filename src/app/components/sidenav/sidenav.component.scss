@@ -1,8 +1,16 @@
-@import '~scss/colors.scss';
+@import '~scss/colors';
+@import '~scss/variables';
 
 .sidenav {
   border-radius: 999px;
   background: $palette-2-bg;
+
+  opacity: 0.5;
+  transition: $time-mid;
+
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .sidenav-icon {

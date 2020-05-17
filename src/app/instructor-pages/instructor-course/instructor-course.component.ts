@@ -81,6 +81,7 @@ export class InstructorCourseComponent implements OnInit {
           .subscribe((res: any) => {
             if (res.success) {
               this.course = res.course;
+              this.topNavOptions[0] = this.course.name;
             }
           });
       });
@@ -109,5 +110,12 @@ export class InstructorCourseComponent implements OnInit {
 
   changeCourseIntroText(text: string) {
     this.course.introText = text;
+  }
+
+  saveCourseIntroText(text: string) {
+    this.courseService.saveCourseParam(this.schoolID, this.instructorID, this.courseCode, 'introText', text)
+      .subscribe((res: any) => {
+        console.log(res);
+      });
   }
 }

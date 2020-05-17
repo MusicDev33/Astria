@@ -13,6 +13,9 @@ export class InstCtxHomeComponent implements OnInit {
   @Output()
   sendContentFieldChange = new EventEmitter<string>();
 
+  @Output()
+  sendSaveContent = new EventEmitter<string>();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -20,5 +23,9 @@ export class InstCtxHomeComponent implements OnInit {
 
   onContentFieldChange(text: string) {
     this.sendContentFieldChange.emit(text);
+  }
+
+  onSaveContentButton() {
+    this.sendSaveContent.emit(this.contentField);
   }
 }
