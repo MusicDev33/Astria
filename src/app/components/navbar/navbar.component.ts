@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -15,6 +15,8 @@ import { IPerson } from '@interfaces/person.interface';
 export class NavbarComponent implements OnInit {
 
   user: IPerson;
+
+  @Input()
   adminAuth = false;
 
   allowedPersonTypes = ['instructor', 'as-admin'];
@@ -28,11 +30,6 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.jwtService.decodeJwt(this.cookieService.get('jwt'));
-    this.authService.authRequest(['as-admin', 'instructor']).subscribe((res: any) => {
-      if (res.success) {
-        this.adminAuth = true;
-      }
-    });
   }
 
   navigateToInstructorCourses(): string {

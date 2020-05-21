@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Router, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+
+import { AuthService } from '@services/auth.service';
 
 import { routeNavMap } from './app.component.config';
 
@@ -16,9 +17,12 @@ export class AppComponent implements OnInit {
   showTopNav = true;
   showSideNav = true;
 
+  adminAuth = false;
+
   constructor(
     public activatedRoute: ActivatedRoute,
-    public router: Router
+    public router: Router,
+    public authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -34,6 +38,14 @@ export class AppComponent implements OnInit {
       if (routeNavMap.hasOwnProperty(routeName)) {
         this.showTopNav = routeNavMap[routeName].topNav;
         this.showSideNav = routeNavMap[routeName].sideNav;
+      }
+
+      if (routeName === 'dashboard') {
+        this.authService.authRequest(['as-admin', 'instructor']).subscribe((res: any) => {
+          if (res.success) {
+            this.adminAuth = true;
+          }
+        });
       }
     }
   }
