@@ -30,7 +30,6 @@
             "styles": [
               "src/scss/styles.scss"
             ],
-
             "scripts": [
               "node_modules/marked/lib/marked.js"
             ]
@@ -108,7 +107,6 @@
             "styles": [
               "src/scss/styles.scss"
             ],
-
             "scripts": [
               "node_modules/marked/lib/marked.js"
             ]
@@ -195,6 +193,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "astria"
+    }
+  },
+  "defaultProject": "astria",
+  "cli": {
+    "analytics": "ea528cdb-3453-4126-a870-19d43e798e4a"
+  }
 }
