@@ -1,0 +1,36 @@
+@import '~scss/colors';
+@import '~scss/variables';
+
+@mixin mt-ctx-field($radius: 999px, $pad-x: 23px, $pad-y: 20px) {
+  background: #fff!important;
+  border: 2px solid #f3f3f3!important;
+  border-radius: $radius!important;
+  padding: $pad-y $pad-x!important;
+  transition: all $time-mid!important;
+
+  &:hover {
+    background: #fafafa!important;
+    border-color: #ddd!important;
+  }
+
+  &:hover:not(:focus) {
+    border-color: #ddd!important;
+    background: #fff!important;
+  }
+
+  &:focus {
+    $box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)!important;
+
+    border-color: #fff!important;
+    background: #fff!important;
+    box-shadow: $box-shadow;
+  }
+}
+
+input.mt-ctx-field {
+  @include mt-ctx-field($pad-x: 17px, $pad-y: 20px)
+}
+
+textarea.mt-ctx-field {
+  @include mt-ctx-field($border-radius, 17px, 12px)
+}

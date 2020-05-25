@@ -18,10 +18,6 @@
 
     border-color: #fff!important;
     background: #fff!important;
-    -webkit-box-shadow: $box-shadow;
-    -moz-box-shadow: $box-shadow;
-    -ms-box-shadow: $box-shadow;
-    -o-box-shadow: $box-shadow;
     box-shadow: $box-shadow;
   }
 }
@@ -30,29 +26,6 @@ input {
   @include as-input(999px);
 }
 
-input.context-input, textarea.context-input {
-  background: #fff!important;
-  border: 1px solid #eaeaea!important;
-
-  &:hover:not(:focus) {
-    border-color: #e0e0e0!important;
-    background: #fff!important;
-  }
-
-  &:focus {
-    border-color: #fff!important;
-  }
-}
-
 textarea {
   @include as-input(15px, $pad-y: 13px);
 }
-
-/*
-::-webkit-resizer {
-  border: 2px solid black;
-  background: red;
-  box-shadow: 0 0 5px 5px blue;
-  outline: 2px solid yellow;
-}
-*/

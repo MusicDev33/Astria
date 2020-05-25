@@ -10,13 +10,21 @@
   </section>
 
   <section class="row">
-    <div class="col-7">
+    <div class="col-7" *ngIf="topNavOptions[selectedNavIndex] !== 'Announcements'">
       <markdown [data]="course.introText" class="markdown"></markdown>
+    </div>
+
+    <div class="col-7" *ngIf="topNavOptions[selectedNavIndex] === 'Announcements'">
+
     </div>
 
     <div class="col-5 pr-5">
       <app-inst-ctx-home [contentField]="course.introText" (sendContentFieldChange)="changeCourseIntroText($event)"
-        (sendSaveContent)="saveCourseIntroText($event)"></app-inst-ctx-home>
+        (sendSaveContent)="saveCourseIntroText($event)"
+        *ngIf="topNavOptions[selectedNavIndex] !== 'Announcements'"></app-inst-ctx-home>
+
+      <app-inst-ctx-announcements *ngIf="topNavOptions[selectedNavIndex] === 'Announcements'">
+      </app-inst-ctx-announcements>
     </div>
   </section>
 </article>

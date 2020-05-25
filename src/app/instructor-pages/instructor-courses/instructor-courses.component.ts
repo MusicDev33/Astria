@@ -6,8 +6,8 @@ import { PersonService } from '@services/person.service';
 import { JwtService } from '@services/jwt.service';
 import { CourseService } from '@services/course.service';
 
-import { ICourse } from '@interfaces/course.interface';
-import { IPerson } from '@interfaces/person.interface';
+import { ICourse } from '@models/course.model';
+import { IPerson } from '@models/person.model';
 
 @Component({
   selector: 'app-instructor-courses',
@@ -102,7 +102,8 @@ export class InstructorCoursesComponent implements OnInit {
       instructorIDs: [instructor.profileURL],
       courseCode: '',
       schoolID: instructor.schoolID,
-      tags: []
+      tags: [],
+      active: true
     };
 
     this.courseService.createCourse(course).subscribe((res: any) => {

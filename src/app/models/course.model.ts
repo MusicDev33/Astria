@@ -11,4 +11,5 @@ export interface ICourse {
   courseCode: string;
   tags: string[];
   schoolID: string;
+  active: true;
 }

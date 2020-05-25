@@ -29,6 +29,7 @@
     "@auth0/angular-jwt": "^4.0.0",
     "@nguniversal/express-engine": "^9.1.0",
     "angular-html-parser": "^1.7.0",
+    "autoprefixer": "^9.8.0",
     "cookie-parser": "^1.4.5",
     "express": "^4.15.2",
     "ngx-cookie-service": "^3.0.4",
@@ -40,7 +41,7 @@
     "zone.js": "^0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.901.4",
+    "@angular-devkit/build-angular": "^0.901.7",
     "@angular/cli": "^9.1.4",
     "@angular/compiler-cli": "^9.1.4",
     "@angular/language-service": "^9.1.4",
