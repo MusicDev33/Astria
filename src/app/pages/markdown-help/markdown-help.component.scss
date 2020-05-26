@@ -1,0 +1,24 @@
+@import '~scss/variables';
+@import '~scss/colors';
+
+textarea {
+  height: 100%;
+  resize: none;
+
+  &:hover {
+    background: #f0f0f0!important;
+  }
+}
+
+.md-container {
+  background: #f3f3f3;
+  border-radius: $border-radius-2;
+}
+
+.outside {
+  color: #b6b6b6;
+}
+
+.markdown {
+  font-size: 110%!important;
+}

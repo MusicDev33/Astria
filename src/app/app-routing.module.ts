@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from '@pages/register/register.component';
 import { DashboardComponent } from '@pages/dashboard/dashboard.component';
 import { AdminDashboardComponent } from '@admin-pages/admin-dashboard/admin-dashboard.component';
+import { MarkdownHelpComponent } from '@pages/markdown-help/markdown-help.component';
 
 import { NotFoundComponent } from '@pages/not-found/not-found.component';
 
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'instructor/:schoolID/:instructorID', component: InstructorCoursesComponent, canActivate: [InstructorGuard]},
   { path: 'instructor/:schoolID/:instructorID/:courseCode', component: InstructorCourseComponent, canActivate: [InstructorGuard]},
   { path: 'courses/:schoolID/:courseCode', component: InstructorCourseComponent, canActivate: [InstructorGuard]},
+  { path: 'help/markdown', component: MarkdownHelpComponent },
   { path: '**', component: NotFoundComponent }
 ];
 

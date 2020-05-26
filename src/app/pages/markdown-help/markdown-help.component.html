@@ -1,1 +1,39 @@
-<p>markdown-help works!</p>
+<div class="px-3">
+  <article class="row mb-3">
+    <section class="col-6">
+      <h2>Rendered Markdown</h2>
+      <p>
+        On this side, all of the Markdown from the right side is rendered.
+      </p>
+    </section>
+
+    <section class="col-6">
+      <h2>Input Markdown</h2>
+      <p>
+        On this side, you can see the Markdown that is input
+      </p>
+    </section>
+  </article>
+
+  <article class="row mb-3">
+    <div class="col-12">
+      <h6 class="outside">
+        Note - Go
+          <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank" rel="noopen noreferrer">
+            here
+          </a>
+        to learn even more about Markdown
+      </h6>
+    </div>
+  </article>
+
+  <article class="row my-5" *ngFor="let section of sections">
+    <section class="col-6">
+      <markdown class="markdown" [data]="section"></markdown>
+    </section>
+
+    <section class="col-6">
+      <textarea disabled class="form-control" [ngModel]="section"></textarea>
+    </section>
+  </article>
+</div>
