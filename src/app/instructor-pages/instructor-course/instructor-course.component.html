@@ -27,7 +27,7 @@
       <section class="row px-3" *ngFor="let announcement of announcements">
         <div class="col-12 mt-card">
           <h4>{{ announcement.header }}</h4>
-          <markdown [data]="announcement.description"
+          <markdown [data]="announcement.description"></markdown>
         </div>
       </section>
     </div>
