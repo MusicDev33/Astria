@@ -1,4 +1,5 @@
 export interface ICourse {
+  _id: string;
   icon: string;
   iconColor: string;
   iconBgColor: string;
@@ -11,5 +12,5 @@ export interface ICourse {
   courseCode: string;
   tags: string[];
   schoolID: string;
-  active: true;
+  active: boolean;
 }

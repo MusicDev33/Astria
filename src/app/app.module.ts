@@ -39,6 +39,7 @@ import { JwtService } from '@services/jwt.service';
 import { UserDataService } from '@services/user-data.service';
 import { SchoolService } from '@services/school.service';
 import { CourseService } from '@services/course.service';
+import { AnnouncementService } from '@services/announcement.service';
 
 // Modules
 import { AuthenticationModule } from '@modules/authentication/authentication.module';
@@ -51,6 +52,7 @@ import { InstCtxHomeComponent } from './context-menus/inst-ctx-home/inst-ctx-hom
 import { InstCtxAnnouncementsComponent } from './context-menus/inst-ctx-announcements/inst-ctx-announcements.component';
 import { InstCtxStudentsComponent } from './context-menus/inst-ctx-students/inst-ctx-students.component';
 import { InstCtxAssignmentsComponent } from './context-menus/inst-ctx-assignments/inst-ctx-assignments.component';
+import { MarkdownHelpComponent } from './pages/markdown-help/markdown-help.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +82,8 @@ import { InstCtxAssignmentsComponent } from './context-menus/inst-ctx-assignment
     InstCtxHomeComponent,
     InstCtxAnnouncementsComponent,
     InstCtxStudentsComponent,
-    InstCtxAssignmentsComponent
+    InstCtxAssignmentsComponent,
+    MarkdownHelpComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -98,7 +101,8 @@ import { InstCtxAssignmentsComponent } from './context-menus/inst-ctx-assignment
     JwtService,
     UserDataService,
     SchoolService,
-    CourseService
+    CourseService,
+    AnnouncementService
   ],
   bootstrap: [AppComponent]
 })

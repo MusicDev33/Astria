@@ -91,6 +91,7 @@ export class InstructorCoursesComponent implements OnInit {
     const instructor: IPerson = this.jwtService.decodeJwt(this.cookieService.get('jwt'));
 
     const course: ICourse = {
+      _id: '',
       name: this.courseNameField,
       description: this.courseDescField,
       introText: '',

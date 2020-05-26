@@ -1,11 +1,12 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MarkdownService } from 'ngx-markdown';
 
 import { JwtService } from '@services/jwt.service';
 import { CourseService } from '@services/course.service';
+import { AnnouncementService } from '@services/announcement.service';
 
 import { ICourse } from '@models/course.model';
+import { IAnnouncement } from '@models/announcement.model';
 
 @Component({
   selector: 'app-instructor-course',
@@ -29,11 +30,15 @@ export class InstructorCourseComponent implements OnInit {
 
   keyIsDown = false;
 
+  announcements: IAnnouncement[] = [];
+  newAnnouncementHeading = 'Placeholder Header';
+  newAnnouncementDetails = 'Placeholder text';
+
   constructor(
     private jwtService: JwtService,
     private courseService: CourseService,
     private route: ActivatedRoute,
-    private mdService: MarkdownService
+    private announcementService: AnnouncementService
   ) { }
 
   @HostListener('document:keydown.arrowright', ['$event'])
@@ -103,9 +108,9 @@ export class InstructorCourseComponent implements OnInit {
         returnString += `, ${instructors[i]}`;
       }
       return returnString;
-    } else {
-      return 'This course seems to have no instructors. That shouldn\'t be possible. Darn.';
     }
+
+    return 'This course seems to have no instructors. That shouldn\'t be possible. Darn.';
   }
 
   changeCourseIntroText(text: string) {
@@ -117,5 +122,13 @@ export class InstructorCourseComponent implements OnInit {
       .subscribe((res: any) => {
         console.log(res);
       });
+  }
+
+  getAnnouncements() {
+    this.announcementService.getCourseAnnouncements(this.course._id).subscribe((res: any) => {
+      if (res.success) {
+        this.announcements = res.announcements;
+      }
+    });
   }
 }
