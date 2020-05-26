@@ -3,5 +3,6 @@ export interface IAnnouncement {
   description: string;
   courseID: string;
   author: string;
+  authorID: string;
   time: Date;
 }

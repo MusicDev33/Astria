@@ -19,3 +19,8 @@ body {
   font-family: 'Noto Sans JP', sans-serif!important;
   color: $text-main;
 }
+
+// Utils
+.mt-break-word {
+  word-break: break-word;
+}

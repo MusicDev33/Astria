@@ -17,14 +17,14 @@ export class AnnouncementService {
 
   getCourseAnnouncements(courseID: string) {
     const authObject = {headers: BaseHeaders, withCredentials: true};
-    const url = `${environment.apiURL}/announcements/param/courseID/${courseID}`;
+    const url = `${environment.apiURL}announcements/param/courseID/${courseID}`;
 
     return this.http.get(url, authObject).pipe(map(res => res));
   }
 
   createCourseAnnouncement(announcement: IAnnouncement) {
     const authObject = {headers: BaseHeaders, withCredentials: true};
-    const url = `${environment.apiURL}/announcements/create`;
+    const url = `${environment.apiURL}announcements/create`;
 
     return this.http.post(url, announcement, authObject).pipe(map(res => res));
   }

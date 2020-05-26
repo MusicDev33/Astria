@@ -8,6 +8,8 @@ import { AnnouncementService } from '@services/announcement.service';
 import { ICourse } from '@models/course.model';
 import { IAnnouncement } from '@models/announcement.model';
 
+import { shortMonths } from '@globals/time';
+
 @Component({
   selector: 'app-instructor-course',
   templateUrl: './instructor-course.component.html',
@@ -31,8 +33,8 @@ export class InstructorCourseComponent implements OnInit {
   keyIsDown = false;
 
   announcements: IAnnouncement[] = [];
-  newAnnouncementHeading = 'Placeholder Header';
-  newAnnouncementDetails = 'Placeholder text';
+  newAnnouncementHeading = '';
+  newAnnouncementDetails = '';
 
   constructor(
     private jwtService: JwtService,
@@ -89,6 +91,7 @@ export class InstructorCourseComponent implements OnInit {
               this.topNavOptions[0] = this.course.name;
             }
           });
+         this.getAnnouncements();
       });
     }
   }
@@ -132,11 +135,39 @@ export class InstructorCourseComponent implements OnInit {
     this.newAnnouncementDetails = text;
   }
 
+  sendNewAnnouncement(data: string[]) {
+    const user = this.jwtService.decodeCookieByName('jwt');
+    const newAnnouncement: IAnnouncement = {
+      header: data[0],
+      description: data[1],
+      author: user.name,
+      authorID: user._id,
+      courseID: this.courseCode,
+      time: new Date()
+    };
+
+    this.announcementService.createCourseAnnouncement(newAnnouncement).subscribe((res: any) => {
+      if (res.success) {
+        this.announcements.unshift(res.announcement);
+        return;
+      }
+      console.log(res);
+    });
+  }
+
   getAnnouncements() {
-    this.announcementService.getCourseAnnouncements(this.course._id).subscribe((res: any) => {
+    this.announcementService.getCourseAnnouncements(this.courseCode).subscribe((res: any) => {
       if (res.success) {
         this.announcements = res.announcements;
       }
     });
+  }
+
+  getAnnouncementDate(passedDate: Date) {
+    const date = new Date(passedDate);
+    let dateString = 'On ';
+    dateString += `${shortMonths[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+    // dateString += ` at ${date.get}`;
+    return dateString;
   }
 }
