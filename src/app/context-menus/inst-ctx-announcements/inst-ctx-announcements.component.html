@@ -2,11 +2,13 @@
   <div class="col-12 mt-card context-menu py-3">
     <section class="row">
       <div class="col-12">
-        <input class="form-control mt-ctx-field mb-2" placeholder="Announcement Heading" [(ngModel)]="headerField">
+        <input class="form-control mt-ctx-field mb-2" placeholder="Announcement Heading" [(ngModel)]="headerField"
+          (input)="onHeaderFieldChange($event.target.value)">
       </div>
 
       <div class="col-12">
-        <textarea placeholder="Announcement Details" class="form-control content-textarea mt-ctx-field" [(ngModel)]="descField">
+        <textarea placeholder="Announcement Details" class="form-control content-textarea mt-ctx-field"
+          [(ngModel)]="descField" (input)="onDescFieldChange($event.target.value)">
         </textarea>
       </div>
     </section>

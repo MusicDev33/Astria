@@ -38,7 +38,8 @@
         *ngIf="topNavOptions[selectedNavIndex] !== 'Announcements'"></app-inst-ctx-home>
 
       <app-inst-ctx-announcements *ngIf="topNavOptions[selectedNavIndex] === 'Announcements'"
-        [headerField]="newAnnouncementHeading" [descField]="newAnnouncementDetails">
+        [headerField]="newAnnouncementHeading" [descField]="newAnnouncementDetails" 
+        (headerFieldChange)="changeAnnouncementHeaderText($event)" (descFieldChange)="changeAnnouncementDescText($event)">
       </app-inst-ctx-announcements>
     </div>
   </section>

@@ -124,6 +124,14 @@ export class InstructorCourseComponent implements OnInit {
       });
   }
 
+  changeAnnouncementHeaderText(text: string) {
+    this.newAnnouncementHeading = text;
+  }
+
+  changeAnnouncementDescText(text: string) {
+    this.newAnnouncementDetails = text;
+  }
+
   getAnnouncements() {
     this.announcementService.getCourseAnnouncements(this.course._id).subscribe((res: any) => {
       if (res.success) {
