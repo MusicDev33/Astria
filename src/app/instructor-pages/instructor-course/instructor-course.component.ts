@@ -127,6 +127,17 @@ export class InstructorCourseComponent implements OnInit {
       });
   }
 
+  changeCourseSyllabus(text: string) {
+    this.course.syllabus = text;
+  }
+
+  saveCourseSyllabus(text: string) {
+    this.courseService.saveCourseParam(this.schoolID, this.instructorID, this.courseCode, 'syllabus', text)
+      .subscribe((res: any) => {
+        console.log(res);
+      });
+  }
+
   changeAnnouncementHeaderText(text: string) {
     this.newAnnouncementHeading = text;
   }
@@ -149,6 +160,8 @@ export class InstructorCourseComponent implements OnInit {
     this.announcementService.createCourseAnnouncement(newAnnouncement).subscribe((res: any) => {
       if (res.success) {
         this.announcements.unshift(res.announcement);
+        this.newAnnouncementDetails = '';
+        this.newAnnouncementHeading = '';
         return;
       }
       console.log(res);

@@ -53,6 +53,7 @@ import { InstCtxAnnouncementsComponent } from './context-menus/inst-ctx-announce
 import { InstCtxStudentsComponent } from './context-menus/inst-ctx-students/inst-ctx-students.component';
 import { InstCtxAssignmentsComponent } from './context-menus/inst-ctx-assignments/inst-ctx-assignments.component';
 import { MarkdownHelpComponent } from './pages/markdown-help/markdown-help.component';
+import { InstCtxSyllabusComponent } from './context-menus/inst-ctx-syllabus/inst-ctx-syllabus.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { MarkdownHelpComponent } from './pages/markdown-help/markdown-help.compo
     InstCtxAnnouncementsComponent,
     InstCtxStudentsComponent,
     InstCtxAssignmentsComponent,
-    MarkdownHelpComponent
+    MarkdownHelpComponent,
+    InstCtxSyllabusComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

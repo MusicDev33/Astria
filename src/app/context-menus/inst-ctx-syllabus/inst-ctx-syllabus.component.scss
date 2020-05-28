@@ -1,6 +1,11 @@
 @import '~scss/colors';
 @import '~scss/variables';
 
+.context-menu {
+  background: $palette-2-bg;
+  min-height: 630px;
+}
+
 .content-textarea {
   min-height: 500px;
   resize: none;

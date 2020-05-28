@@ -10,8 +10,12 @@
   </section>
 
   <section class="row">
-    <div class="col-7 mt-break-word" *ngIf="topNavOptions[selectedNavIndex] !== 'Announcements'">
+    <div class="col-7 mt-break-word" *ngIf="topNavOptions[selectedNavIndex] === course.name">
       <markdown [data]="course.introText" class="markdown"></markdown>
+    </div>
+
+    <div class="col-7 mt-break-word" *ngIf="topNavOptions[selectedNavIndex] === 'Syllabus'">
+      <markdown [data]="course.syllabus" class="markdown"></markdown>
     </div>
 
     <div class="col-7" *ngIf="topNavOptions[selectedNavIndex] === 'Announcements'">
@@ -26,7 +30,7 @@
 
       <h3 class="text-center">Announcements</h3>
 
-      <section class="row px-3" *ngFor="let announcement of announcements">
+      <section class="row px-3 mb-3" *ngFor="let announcement of announcements">
         <div class="col-12 px-4 pt-3 mt-card select hover">
           <h4>{{ announcement.header }}</h4>
           <markdown [data]="announcement.description"></markdown>
@@ -35,10 +39,11 @@
       </section>
     </div>
 
+    <!-- Context Menus -->
     <div class="col-5 pr-5">
       <app-inst-ctx-home [contentField]="course.introText" (sendContentFieldChange)="changeCourseIntroText($event)"
         (sendSaveContent)="saveCourseIntroText($event)"
-        *ngIf="topNavOptions[selectedNavIndex] !== 'Announcements'"></app-inst-ctx-home>
+        *ngIf="topNavOptions[selectedNavIndex] === course.name"></app-inst-ctx-home>
 
       <app-inst-ctx-announcements *ngIf="topNavOptions[selectedNavIndex] === 'Announcements'"
         [headerField]="newAnnouncementHeading" [descField]="newAnnouncementDetails"
@@ -46,6 +51,10 @@
         (descFieldChange)="changeAnnouncementDescText($event)"
         (sendNewAnnouncement)="sendNewAnnouncement($event)">
       </app-inst-ctx-announcements>
+
+      <app-inst-ctx-syllabus [contentField]="course.syllabus" (sendContentFieldChange)="changeCourseSyllabus($event)"
+        (sendSaveContent)="saveCourseSyllabus($event)"
+        *ngIf="topNavOptions[selectedNavIndex] === 'Syllabus'"></app-inst-ctx-syllabus>
     </div>
   </section>
 </article>
