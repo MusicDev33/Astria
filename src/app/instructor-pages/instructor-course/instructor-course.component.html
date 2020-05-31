@@ -39,6 +39,17 @@
       </section>
     </div>
 
+    <div class="col-7" *ngIf="topNavOptions[selectedNavIndex] === 'Students'">
+      <h3 class="text-center">Students</h3>
+
+      <section class="row px-3 mb-3" *ngFor="let enrollment of enrollments">
+        <div class="col-12 px-4 pt-3 mt-card select hover">
+          <h4>Enrollment</h4>
+          <h6>{{ enrollment.studentName }}</h6>
+        </div>
+      </section>
+    </div>
+
     <!-- Context Menus -->
     <div class="col-5 pr-5">
       <app-inst-ctx-home [contentField]="course.introText" (sendContentFieldChange)="changeCourseIntroText($event)"
@@ -55,6 +66,9 @@
       <app-inst-ctx-syllabus [contentField]="course.syllabus" (sendContentFieldChange)="changeCourseSyllabus($event)"
         (sendSaveContent)="saveCourseSyllabus($event)"
         *ngIf="topNavOptions[selectedNavIndex] === 'Syllabus'"></app-inst-ctx-syllabus>
+
+        <app-inst-ctx-students (sendEnrollStudentPressed)="enrollStudent($event)"
+          *ngIf="topNavOptions[selectedNavIndex] === 'Students'"></app-inst-ctx-students>
     </div>
   </section>
 </article>

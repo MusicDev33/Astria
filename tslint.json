@@ -147,7 +147,9 @@
     "member-access": false,
     "prefer-for-of": true,
     "arrow-parens": false,
-    "no-string-literal": false
+    "no-string-literal": false,
+    "no-bitwise": false,
+    "object-literal-shorthand": false
   },
   "rulesDirectory": [
     "codelyzer"

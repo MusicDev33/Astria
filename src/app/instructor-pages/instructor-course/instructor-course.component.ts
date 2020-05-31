@@ -4,9 +4,14 @@ import { ActivatedRoute } from '@angular/router';
 import { JwtService } from '@services/jwt.service';
 import { CourseService } from '@services/course.service';
 import { AnnouncementService } from '@services/announcement.service';
+import { EnrollmentService } from '@services/enrollment.service';
 
 import { ICourse } from '@models/course.model';
 import { IAnnouncement } from '@models/announcement.model';
+import { IPerson } from '@models/person.model';
+import { IEnrollment } from '@models/enrollment.model';
+
+import { IResponse } from '@interfaces/response.interface';
 
 import { shortMonths } from '@globals/time';
 
@@ -36,11 +41,15 @@ export class InstructorCourseComponent implements OnInit {
   newAnnouncementHeading = '';
   newAnnouncementDetails = '';
 
+  selectedStudent: IPerson;
+  enrollments: IEnrollment[] = [];
+
   constructor(
     private jwtService: JwtService,
     private courseService: CourseService,
     private route: ActivatedRoute,
-    private announcementService: AnnouncementService
+    private announcementService: AnnouncementService,
+    private enrollmentService: EnrollmentService
   ) { }
 
   @HostListener('document:keydown.arrowright', ['$event'])
@@ -89,6 +98,12 @@ export class InstructorCourseComponent implements OnInit {
             if (res.success) {
               this.course = res.course;
               this.topNavOptions[0] = this.course.name;
+
+              this.enrollmentService.getCourseEnrollments(this.course._id).subscribe((enrollRes: IResponse<IEnrollment[]>) => {
+                if (res.success) {
+                  this.enrollments = enrollRes.payload;
+                }
+              });
             }
           });
          this.getAnnouncements();
@@ -182,5 +197,20 @@ export class InstructorCourseComponent implements OnInit {
     dateString += `${shortMonths[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
     // dateString += ` at ${date.get}`;
     return dateString;
+  }
+
+  enrollStudent(studentID: string) {
+    const newEnrollment: IEnrollment = {
+      studentID: studentID,
+      courseID: this.course._id,
+      schoolID: this.schoolID,
+      studentName: ''
+    };
+
+    this.enrollmentService.createCourseEnrollment(newEnrollment).subscribe((res: IResponse<IEnrollment>) => {
+      if (res.success) {
+        this.enrollments.unshift(res.payload);
+      }
+    });
   }
 }

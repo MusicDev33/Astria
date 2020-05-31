@@ -4,4 +4,8 @@
 .mt-ctx-menu {
   background: $palette-2-bg;
   min-height: 630px;
+
+  &.no-min-height {
+    min-height: 0;
+  }
 }

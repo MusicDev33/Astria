@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-inst-ctx-students',
@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InstCtxStudentsComponent implements OnInit {
 
+  @Input()
+  mode = 'create';
+
+  // Create Mode Variables
+  studentIDField = '';
+
+  @Output()
+  sendEnrollStudentPressed = new EventEmitter<string>();
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onEnrollStudentPressed() {
+    this.sendEnrollStudentPressed.emit(this.studentIDField);
+    this.studentIDField = '';
+  }
 }

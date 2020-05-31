@@ -11,13 +11,15 @@ import { routeNavMap } from './app.component.config';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'Astria';
+  title = 'Meteor';
   currentRoute: string;
 
   showTopNav = true;
   showSideNav = true;
 
   adminAuth = false;
+
+  excludedAuthRoutes = ['login', 'register'];
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -40,7 +42,7 @@ export class AppComponent implements OnInit {
         this.showSideNav = routeNavMap[routeName].sideNav;
       }
 
-      if (routeName === 'dashboard') {
+      if (!this.excludedAuthRoutes.includes(routeName)) {
         this.authService.authRequest(['as-admin', 'instructor']).subscribe((res: any) => {
           if (res.success) {
             this.adminAuth = true;
