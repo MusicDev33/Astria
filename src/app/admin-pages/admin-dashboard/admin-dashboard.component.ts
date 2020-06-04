@@ -40,7 +40,7 @@ export class AdminDashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.authService.authRequest(['as-admin', 'instructor']).subscribe((res: any) => {
+    this.authService.authRequest(['mt-admin', 'instructor']).subscribe((res: any) => {
       if (!res.success) {
         console.log('move');
         this.router.navigate(['/dashboard']);

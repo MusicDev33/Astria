@@ -1,5 +1,5 @@
 {
-  "name": "astria",
+  "name": "meteor",
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
@@ -9,19 +9,21 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "local": "ng serve --ssl false --configuration=local",
-    "dev:ssr": "ng run astria:serve-ssr",
-    "serve:ssr": "node dist/astria/server/main.js",
-    "build:ssr": "ng build --prod && ng run astria:server:production",
-    "prerender": "ng run astria:prerender",
+    "dev:ssr": "ng run meteor:serve-ssr",
+    "serve:ssr": "node dist/meteor/server/main.js",
+    "build:ssr": "ng build --prod && ng run meteor:server:production",
+    "prerender": "ng run meteor:prerender",
     "ng-update": "npm update @angular-devkit/build-angular @angular/cli @angular/common @angular/compiler @angular/compiler-cli @angular/core @angular/forms @angular/language-service @angular/platform-browser @angular/platform-browser-dynamic @angular/platform-server @angular/router"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^9.1.4",
+    "@angular/cdk": "^9.2.4",
     "@angular/common": "^9.1.4",
     "@angular/compiler": "^9.1.4",
     "@angular/core": "^9.1.4",
     "@angular/forms": "^9.1.4",
+    "@angular/material": "^9.2.4",
     "@angular/platform-browser": "^9.1.4",
     "@angular/platform-browser-dynamic": "^9.1.4",
     "@angular/platform-server": "^9.1.4",

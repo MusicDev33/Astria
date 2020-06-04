@@ -54,6 +54,7 @@ import { InstCtxStudentsComponent } from './context-menus/inst-ctx-students/inst
 import { InstCtxAssignmentsComponent } from './context-menus/inst-ctx-assignments/inst-ctx-assignments.component';
 import { MarkdownHelpComponent } from './pages/markdown-help/markdown-help.component';
 import { InstCtxSyllabusComponent } from './context-menus/inst-ctx-syllabus/inst-ctx-syllabus.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -94,7 +95,8 @@ import { InstCtxSyllabusComponent } from './context-menus/inst-ctx-syllabus/inst
     HttpClientModule,
     AuthenticationModule,
     RouterModule,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [
     RegisterService,

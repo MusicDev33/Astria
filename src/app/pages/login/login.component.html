@@ -20,7 +20,7 @@
         <input class="form-control mb-3" placeholder="Email" [(ngModel)]="loginField"/>
         <input class="form-control mb-4 pass-field" [ngClass]="{'pass-field-full': loginPassField.length}"
           placeholder="Password" type="password" [(ngModel)]="loginPassField"/>
-        <button class="btn as-btn-4 mb-2" (click)="sendLogin()"><b>Log In</b></button>
+        <button class="btn mt-btn-4 mb-2" (click)="sendLogin()"><b>Log In</b></button>
         <span class="d-block"><a class="black" (click)="mode='register'">I'd like to register!</a></span>
       </div>
     </section>
@@ -36,7 +36,7 @@
         <input class="form-control mb-4 pass-field" [ngClass]="{'pass-field-full': confirmPassField.length}"
           placeholder="Confirm Password" type="password" [(ngModel)]="confirmPassField" name="confirmPassField"/>
 
-        <button class="btn as-btn-4 mb-2" (click)="sendRegister()"><b>Sign Up</b></button>
+        <button class="btn mt-btn-4 mb-2" (click)="sendRegister()"><b>Sign Up</b></button>
         <span class="d-block"><a class="black" (click)="mode='login'">I'd like to log in!</a></span>
       </div>
     </section>

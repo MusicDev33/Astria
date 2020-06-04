@@ -10,7 +10,7 @@ import { JwtService } from '@services/jwt.service';
 })
 export class InstructorGuard implements CanActivate {
 
-  acceptedTypes = ['instructor', 'as-admin'];
+  acceptedTypes = ['instructor', 'mt-admin'];
 
   constructor(
     private jwtService: JwtService,

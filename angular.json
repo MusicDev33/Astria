@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "astria": {
+    "meteor": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/astria/browser",
+            "outputPath": "dist/meteor/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -76,21 +76,21 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "astria:build"
+            "browserTarget": "meteor:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "astria:build:production"
+              "browserTarget": "meteor:build:production"
             },
             "local": {
-              "browserTarget": "astria:build:local"
+              "browserTarget": "meteor:build:local"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "astria:build"
+            "browserTarget": "meteor:build"
           }
         },
         "test": {
@@ -129,18 +129,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "astria:serve"
+            "devServerTarget": "meteor:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "astria:serve:production"
+              "devServerTarget": "meteor:serve:production"
             }
           }
         },
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/astria/server",
+            "outputPath": "dist/meteor/server",
             "main": "server.ts",
             "tsConfig": "tsconfig.server.json"
           },
@@ -169,21 +169,21 @@
         "serve-ssr": {
           "builder": "@nguniversal/builders:ssr-dev-server",
           "options": {
-            "browserTarget": "astria:build",
-            "serverTarget": "astria:server"
+            "browserTarget": "meteor:build",
+            "serverTarget": "meteor:server"
           },
           "configurations": {
             "production": {
-              "browserTarget": "astria:build:production",
-              "serverTarget": "astria:server:production"
+              "browserTarget": "meteor:build:production",
+              "serverTarget": "meteor:server:production"
             }
           }
         },
         "prerender": {
           "builder": "@nguniversal/builders:prerender",
           "options": {
-            "browserTarget": "astria:build:production",
-            "serverTarget": "astria:server:production",
+            "browserTarget": "meteor:build:production",
+            "serverTarget": "meteor:server:production",
             "routes": [
               "/"
             ]
@@ -195,7 +195,7 @@
       }
     }
   },
-  "defaultProject": "astria",
+  "defaultProject": "meteor",
   "cli": {
     "analytics": "ea528cdb-3453-4126-a870-19d43e798e4a"
   }

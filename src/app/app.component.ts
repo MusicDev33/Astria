@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
       }
 
       if (!this.excludedAuthRoutes.includes(routeName)) {
-        this.authService.authRequest(['as-admin', 'instructor']).subscribe((res: any) => {
+        this.authService.authRequest(['mt-admin', 'instructor']).subscribe((res: any) => {
           if (res.success) {
             this.adminAuth = true;
           }

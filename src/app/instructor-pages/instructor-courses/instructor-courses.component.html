@@ -26,11 +26,11 @@
       <input class="form-control my-2" placeholder="Course Name" [(ngModel)]="courseNameField"/>
       <textarea class="form-control desc-field my-2" placeholder="Course Description" [(ngModel)]="courseDescField"></textarea>
 
-      <button class="btn as-btn-cancel mr-1 course-form-btn" (click)="cancelAddCourse()">
+      <button class="btn mt-btn-cancel mr-1 course-form-btn" (click)="cancelAddCourse()">
         <b>Cancel</b>
       </button>
 
-      <button class="btn as-btn-4 ml-1 course-form-btn" [disabled]="!courseNameField.length || !courseDescField.length" (click)="sendNewCourse()">
+      <button class="btn mt-btn-4 ml-1 course-form-btn" [disabled]="!courseNameField.length || !courseDescField.length" (click)="sendNewCourse()">
         <b>Send</b>
       </button>
 

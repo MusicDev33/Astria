@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
   @Input()
   adminAuth = false;
 
-  allowedPersonTypes = ['instructor', 'as-admin'];
+  allowedPersonTypes = ['instructor', 'mt-admin'];
 
   constructor(
     private cookieService: CookieService,

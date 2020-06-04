@@ -8,7 +8,7 @@ import { JwtService } from '@services/jwt.service';
 })
 export class AdminGuard implements CanActivate {
 
-  acceptedTypes = ['as-admin'];
+  acceptedTypes = ['mt-admin'];
 
   constructor(
     private jwtService: JwtService,

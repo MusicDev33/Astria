@@ -1,0 +1,18 @@
+@import '~scss/colors';
+@import '~scss/variables';
+
+.mt-table {
+
+  thead {
+    background: $palette-1;
+
+    tr th {
+      color: #fff;
+    }
+  }
+}
+
+.mt-table-wrapper {
+  border-radius: $border-radius;
+  overflow: hidden;
+}
