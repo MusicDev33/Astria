@@ -28,7 +28,6 @@ $astria-theme: mat-light-theme($astria-primary, $astria-accent, $astria-warn);
 
 // You can add global styles to this file, and also import other style files
 @import './_colors';
-@import './astria/export';
 @import './meteor/export';
 @import './default/export';
 @import './mixins/export';

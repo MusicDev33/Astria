@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 
 import { AuthService } from '@services/auth.service';
+import {  CookieService } from 'ngx-cookie-service';
 
 import { routeNavMap } from './app.component.config';
 
@@ -24,7 +25,8 @@ export class AppComponent implements OnInit {
   constructor(
     public activatedRoute: ActivatedRoute,
     public router: Router,
-    public authService: AuthService
+    public authService: AuthService,
+    private cookieService: CookieService
   ) { }
 
   ngOnInit() {
@@ -40,6 +42,10 @@ export class AppComponent implements OnInit {
       if (routeNavMap.hasOwnProperty(routeName)) {
         this.showTopNav = routeNavMap[routeName].topNav;
         this.showSideNav = routeNavMap[routeName].sideNav;
+      }
+
+      if (routeName === 'login' && !this.cookieService.check('jwt')) {
+        this.adminAuth = false;
       }
 
       if (!this.excludedAuthRoutes.includes(routeName)) {
