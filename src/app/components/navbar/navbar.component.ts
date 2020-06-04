@@ -43,6 +43,7 @@ export class NavbarComponent implements OnInit {
 
   logOut() {
     this.cookieService.deleteAll();
+    this.cookieService.delete('jwt');
     this.router.navigate(['/login']);
   }
 }
