@@ -1,4 +1,5 @@
 export interface IPerson {
+  _id?: string;
   profileURL: string;
   img: string;
   name: string;

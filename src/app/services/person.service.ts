@@ -33,4 +33,10 @@ export class PersonService {
     return this.http.get(environment.apiURL + `persons/${schoolID}/${instructorID}/courses`, {headers, withCredentials: true})
       .pipe(map(res => res));
   }
+
+  getEnrolledCourses(studentID: string) {
+    const headers = BaseHeaders;
+    return this.http.get(environment.apiURL + `enrollments/studentID${studentID}`, {headers, withCredentials: true})
+      .pipe(map(res => res));
+  }
 }

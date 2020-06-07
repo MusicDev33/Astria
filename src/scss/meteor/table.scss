@@ -2,6 +2,7 @@
 @import '~scss/variables';
 
 .mt-table {
+  padding-top: 0!important;
 
   thead {
     background: $palette-1;
@@ -12,7 +13,10 @@
   }
 }
 
+// Basically what allows the tables to be rounded
 .mt-table-wrapper {
   border-radius: $border-radius;
   overflow: hidden;
+  border: 1px solid $palette-1-light;
+  padding-top: 0!important;
 }
