@@ -16,6 +16,7 @@
       "@modules/*": ["app/modules/*"],
       "@models/*": ["app/models/*"],
       "@instructor-pages/*": ["app/instructor-pages/*"],
+      "@student-pages/*": ["app/student-pages/*"],
       "@context-menus/*": ["app/context-menus/*"]
     },
     "outDir": "./dist/out-tsc",

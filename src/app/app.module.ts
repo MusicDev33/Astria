@@ -55,6 +55,7 @@ import { InstCtxAssignmentsComponent } from './context-menus/inst-ctx-assignment
 import { MarkdownHelpComponent } from './pages/markdown-help/markdown-help.component';
 import { InstCtxSyllabusComponent } from './context-menus/inst-ctx-syllabus/inst-ctx-syllabus.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StudentCourseComponent } from './student-pages/student-course/student-course.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     InstCtxStudentsComponent,
     InstCtxAssignmentsComponent,
     MarkdownHelpComponent,
-    InstCtxSyllabusComponent
+    InstCtxSyllabusComponent,
+    StudentCourseComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

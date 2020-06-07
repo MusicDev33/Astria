@@ -13,10 +13,20 @@ export class CourseLargeComponent implements OnInit {
   instructorHovered = false;
   iconHovered = false;
 
+  url: string;
+
   constructor() { }
 
   ngOnInit(): void {
-
+    const course = this.course;
+    this.url = `/student/${course.schoolID}/${course.instructorIDs[0]}/${course.courseCode}`;
   }
 
+  onClick() {
+    console.log('Clicked');
+  }
+
+  testClick() {
+    console.log('tiny');
+  }
 }

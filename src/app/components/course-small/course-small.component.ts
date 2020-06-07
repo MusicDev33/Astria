@@ -16,9 +16,13 @@ export class CourseSmallComponent implements OnInit {
   cardHovered = false;
   addButtonHovered = false;
 
+  url: string;
+
   constructor() { }
 
   ngOnInit(): void {
+    const course = this.course;
+    this.url = `/student/${course.schoolID}/${course.instructorIDs[0]}/${course.courseCode}`;
   }
 
 }

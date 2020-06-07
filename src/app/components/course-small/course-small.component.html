@@ -5,7 +5,7 @@
       <div class="col-12 text-center">
         <div class="course-icon-container py-3" [style.background]="course.iconBgColor" (mouseover)="iconHovered=true"
               (mouseout)="iconHovered=false" [style.border-color]="iconHovered ? course.iconColor : 'rgba(255, 255, 255, 0)'">
-          <i class="{{ course.icon }} course-icon" [style.color]="course.iconColor"></i>
+          <i class="{{ course.icon }} course-icon" [style.color]="course.iconColor" [routerLink]="[url]"></i>
         </div>
       </div>
     </div>

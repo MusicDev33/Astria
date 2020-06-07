@@ -1,4 +1,4 @@
-<section class="row mb-3 mt-card py-3 px-1">
+<section class="row mb-3 mt-card hover select py-3 px-1" (click)="onClick()" [routerLink]="[url]">
   <div class="col-3">
     <div class="course-icon-container h-100" [style.background]="course.iconBgColor" (mouseover)="iconHovered=true"
           (mouseout)="iconHovered=false" [style.border-color]="iconHovered ? course.iconColor : 'rgba(255, 255, 255, 0)'">
@@ -19,7 +19,7 @@
         </h5>
       </div>
       <div class="col-3 text-right">
-        <i class="far fa-bookmark misc-icon mr-4"></i>
+        <i class="far fa-bookmark misc-icon mr-4" (click)="testClick(); $event.stopPropagation()"></i>
         <i class="fas fa-ellipsis-v misc-icon"></i>
       </div>
     </div>
