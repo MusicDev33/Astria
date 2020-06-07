@@ -36,7 +36,7 @@ export class PersonService {
 
   getEnrolledCourses(studentID: string) {
     const headers = BaseHeaders;
-    return this.http.get(environment.apiURL + `enrollments/studentID${studentID}`, {headers, withCredentials: true})
+    return this.http.get(environment.apiURL + `enrollments/courses/${studentID}`, {headers, withCredentials: true})
       .pipe(map(res => res));
   }
 }

@@ -1,7 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ICourse } from '@interfaces/course.interface';
 import { IEvent } from '@interfaces/event.interface';
+import { IEnrollment } from '@models/enrollment.model';
+import { IPerson } from '@models/person.model';
+
+import { IResponse } from '@interfaces/response.interface';
+
 import { AuthService } from '@services/auth.service';
+import { PersonService } from '@services/person.service';
+import { JwtService } from '@services/jwt.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,7 +28,10 @@ export class DashboardComponent implements OnInit {
   enrolledCourses: ICourse[] = [];
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private personService: PersonService,
+    private jwtService: JwtService,
+    private cookieService: CookieService
   ) { }
 
   ngOnInit(): void {
@@ -38,6 +50,16 @@ export class DashboardComponent implements OnInit {
       header: 'Chapter 5.3 homework',
       details: 'Reminder: your homework is released now.'
     };
+
+    const jwt = this.cookieService.get('jwt');
+    console.log(jwt);
+    const person: IPerson = this.jwtService.decodeJwt(jwt);
+
+    this.personService.getEnrolledCourses(person._id).subscribe((res: IResponse<ICourse[]>) => {
+      if (res.success) {
+        this.enrolledCourses = res.payload;
+      }
+    });
   }
 
 }
