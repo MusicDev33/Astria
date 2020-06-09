@@ -9,6 +9,7 @@ export class IconCardComponent implements OnInit {
 
   @Input() icon: string;
   @Input() selected = false;
+  @Input() color: any;
 
   constructor() { }
 

@@ -3,9 +3,9 @@
 
 @import '~scss/mixins/text-underline';
 
-$create-course-height: 325px;
+$create-course-height: 410px;
 
-$nav-and-create: $create-course-height + $navbar-height;
+$nav-and-create: $create-course-height + $navbar-height - 170px;
 
 .create-course {
   color: $palette-1;

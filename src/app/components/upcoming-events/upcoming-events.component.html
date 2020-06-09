@@ -9,6 +9,7 @@
   </div>
 </section>
 
+<!--
 <article class="container-fluid">
   <section class="row justify-content-center mb-3" *ngFor="let event of events">
     <div class="col-11 mt-card hover select py-3">
@@ -23,6 +24,28 @@
       <div class="row is-flex mx-0">
         <div class="col-12 px-0">
           {{ event.details }}
+        </div>
+      </div>
+    </div>
+  </section>
+</article>
+-->
+
+
+<article class="container-fluid">
+  <section class="row justify-content-center mb-3" *ngFor="let announcement of announcements">
+    <div class="col-11 mt-card hover select py-3">
+      <div class="row is-flex mx-0 pb-3">
+        <div class="col-3 card-icon-space double-line-height" [style.background]="announcement.iconBgColor">
+          <i class="{{ announcement.icon }} card-icon" [style.color]="announcement.iconColor"></i>
+        </div>
+        <div class="col-9 double-line-height">
+          <h3 class="my-auto">{{ announcement.header }}</h3>
+        </div>
+      </div>
+      <div class="row is-flex mx-0">
+        <div class="col-12 px-0">
+          {{ announcement.description }}
         </div>
       </div>
     </div>

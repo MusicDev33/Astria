@@ -1,0 +1,13 @@
+@import '~scss/colors';
+@import '~scss/variables';
+
+.picker-icon {
+  font-size: 200%;
+}
+
+.picker-container {
+  border-radius: $border-radius;
+  border: 1px solid $transparent;
+  transition: $time-mid;
+  cursor: pointer;
+}

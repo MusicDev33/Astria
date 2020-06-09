@@ -1,0 +1,5 @@
+<div class="picker-container py-3" [style.background]="color.bg"
+    [style.border-color]="(iconHovered || selected) ? color.main : 'rgba(255, 255, 255, 0)'" (mouseover)="iconHovered=true"
+    (mouseout)="iconHovered=false">
+  <i class="fas fa-info-circle picker-icon" [style.color]="color.main"></i>
+</div>

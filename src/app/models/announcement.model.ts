@@ -5,4 +5,7 @@ export interface IAnnouncement {
   author: string;
   authorID: string;
   time: Date;
+  icon: string;
+  iconColor: string;
+  iconBgColor: string;
 }

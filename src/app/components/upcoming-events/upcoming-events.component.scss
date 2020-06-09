@@ -34,3 +34,11 @@
   position: relative;
   border-radius: $border-radius;
 }
+
+.double-line-height {
+  $line-height: 30px;
+  height: $line-height * 2!important;
+  white-space: nowrap;
+  overflow-y: hidden;
+  text-overflow: ellipsis;
+}

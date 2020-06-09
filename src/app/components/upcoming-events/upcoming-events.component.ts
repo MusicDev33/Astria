@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IEvent } from '@interfaces/event.interface';
+import { IAnnouncement } from '@models/announcement.model';
 
 @Component({
   selector: 'app-upcoming-events',
@@ -8,7 +9,7 @@ import { IEvent } from '@interfaces/event.interface';
 })
 export class UpcomingEventsComponent implements OnInit {
 
-  @Input() events: IEvent[];
+  @Input() announcements: IAnnouncement[];
 
   constructor() { }
 

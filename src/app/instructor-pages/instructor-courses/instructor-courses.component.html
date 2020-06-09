@@ -34,7 +34,21 @@
         <b>Send</b>
       </button>
 
-      <div class="row mb2 mt-3">
+      <div class="row my-3">
+        <div class="col-1 my-auto">
+          <i class="fas fa-chevron-left"></i>
+        </div>
+
+        <div class="col px-3" *ngFor="let color of getColorOffset(); let i = index;">
+          <app-color-select [color]="color" [selected]="i === selectedColorIndex" (click)="setColor(i)"></app-color-select>
+        </div>
+
+        <div class="col-1 my-auto">
+          <i class="fas fa-chevron-right"></i>
+        </div>
+      </div>
+
+      <div class="row mt-3">
         <div class="col-12">
           <h2>Select an icon:</h2>
         </div>
@@ -42,8 +56,8 @@
     </section>
 
     <div class="row mt-3 px-3 icons-container">
-      <app-icon-card class="col-6 px-4 py-2" *ngFor="let icon of availableIcons"
-        (click)="selectIcon(icon)" [icon]="icon" [selected]="icon === selectedIcon">
+      <app-icon-card class="col-6 px-4 py-2" *ngFor="let icon of icons"
+        (click)="selectIcon(icon)" [icon]="icon" [selected]="icon === selectedIcon" [color]="selectedColor">
       </app-icon-card>
     </div>
 

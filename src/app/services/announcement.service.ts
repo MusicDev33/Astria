@@ -28,4 +28,11 @@ export class AnnouncementService {
 
     return this.http.post(url, announcement, authObject).pipe(map(res => res));
   }
+
+  getStudentAnnouncements(studentID: string) {
+    const authObject = {headers: BaseHeaders, withCredentials: true};
+    const url = `${environment.apiURL}announcements/student/${studentID}`;
+
+    return this.http.get(url, authObject).pipe(map(res => res));
+  }
 }

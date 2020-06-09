@@ -1,5 +1,12 @@
-<article class="row icon-container py-5" [ngClass]="{'selected': selected}">
+<article class="row icon-container py-5" [ngClass]="{'selected': selected}" *ngIf="!selected">
   <div class="col-12 text-center">
     <i class="{{ icon }} icon" [ngClass]="{'selected': selected}"></i>
+  </div>
+</article>
+
+<article class="row icon-container py-5" [style.border-color]="color.main" [style.background]="color.bg"
+        *ngIf="selected">
+  <div class="col-12 text-center">
+    <i class="{{ icon }} icon" [style.color]="color.main"></i>
   </div>
 </article>

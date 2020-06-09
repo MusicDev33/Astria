@@ -168,8 +168,11 @@ export class InstructorCourseComponent implements OnInit {
       description: data[1],
       author: user.name,
       authorID: user._id,
-      courseID: this.courseCode,
-      time: new Date()
+      courseID: this.course._id,
+      time: new Date(),
+      icon: this.course.icon,
+      iconColor: this.course.iconColor,
+      iconBgColor: this.course.iconBgColor
     };
 
     this.announcementService.createCourseAnnouncement(newAnnouncement).subscribe((res: any) => {
@@ -204,6 +207,7 @@ export class InstructorCourseComponent implements OnInit {
       studentID: studentID,
       courseID: this.course._id,
       schoolID: this.schoolID,
+      active: true,
       studentName: ''
     };
 
