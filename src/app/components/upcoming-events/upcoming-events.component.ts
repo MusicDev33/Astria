@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { IEvent } from '@interfaces/event.interface';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IAnnouncement } from '@models/announcement.model';
 
 @Component({
@@ -11,9 +10,15 @@ export class UpcomingEventsComponent implements OnInit {
 
   @Input() announcements: IAnnouncement[];
 
+  @Output() outAnnouncementClicked = new EventEmitter<IAnnouncement>();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onAnnouncementClicked(announcement: IAnnouncement) {
+    this.outAnnouncementClicked.emit(announcement);
   }
 
 }

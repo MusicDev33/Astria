@@ -33,7 +33,9 @@
         </div>
       </div>
       <app-calendar></app-calendar>
-      <app-upcoming-events [announcements]="allAnnouncements"></app-upcoming-events>
+      <app-upcoming-events [announcements]="allAnnouncements"
+          (outAnnouncementClicked)="openAnnouncementDialog($event)">
+      </app-upcoming-events>
     </div>
   </div>
 </div>

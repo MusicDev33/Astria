@@ -53,5 +53,8 @@ body {
   word-break: break-word;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// Material Overrides
+.mt-dialog .mat-dialog-container {
+  border-radius: $border-radius;
+  color: $text-main;
+}

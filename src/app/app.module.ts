@@ -3,8 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { MarkdownModule } from 'ngx-markdown';
+import { MatDialogModule } from '@angular/material/dialog';
 
+import { MarkdownModule } from 'ngx-markdown';
 import { CookieService } from 'ngx-cookie-service';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -43,20 +44,23 @@ import { AnnouncementService } from '@services/announcement.service';
 
 // Modules
 import { AuthenticationModule } from '@modules/authentication/authentication.module';
-import { CourseCardComponent } from './components/course-card/course-card.component';
-import { InstructorCourseComponent } from './instructor-pages/instructor-course/instructor-course.component';
-import { StudentCoursesComponent } from './pages/student-courses/student-courses.component';
-import { IconCardComponent } from './components/icon-card/icon-card.component';
-import { ContextMenuComponent } from './components/context-menu/context-menu.component';
-import { InstCtxHomeComponent } from './context-menus/inst-ctx-home/inst-ctx-home.component';
-import { InstCtxAnnouncementsComponent } from './context-menus/inst-ctx-announcements/inst-ctx-announcements.component';
-import { InstCtxStudentsComponent } from './context-menus/inst-ctx-students/inst-ctx-students.component';
-import { InstCtxAssignmentsComponent } from './context-menus/inst-ctx-assignments/inst-ctx-assignments.component';
-import { MarkdownHelpComponent } from './pages/markdown-help/markdown-help.component';
-import { InstCtxSyllabusComponent } from './context-menus/inst-ctx-syllabus/inst-ctx-syllabus.component';
+import { CourseCardComponent } from '@components/course-card/course-card.component';
+import { InstructorCourseComponent } from '@instructor-pages/instructor-course/instructor-course.component';
+import { StudentCoursesComponent } from '@pages/student-courses/student-courses.component';
+import { IconCardComponent } from '@components/icon-card/icon-card.component';
+import { ContextMenuComponent } from '@components/context-menu/context-menu.component';
+import { InstCtxHomeComponent } from '@context-menus/inst-ctx-home/inst-ctx-home.component';
+import { InstCtxAnnouncementsComponent } from '@context-menus/inst-ctx-announcements/inst-ctx-announcements.component';
+import { InstCtxStudentsComponent } from '@context-menus/inst-ctx-students/inst-ctx-students.component';
+import { InstCtxAssignmentsComponent } from '@context-menus/inst-ctx-assignments/inst-ctx-assignments.component';
+import { MarkdownHelpComponent } from '@pages/markdown-help/markdown-help.component';
+import { InstCtxSyllabusComponent } from '@context-menus/inst-ctx-syllabus/inst-ctx-syllabus.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { StudentCourseComponent } from './student-pages/student-course/student-course.component';
-import { ColorSelectComponent } from './components/color-select/color-select.component';
+import { StudentCourseComponent } from '@student-pages/student-course/student-course.component';
+import { ColorSelectComponent } from '@components/color-select/color-select.component';
+
+// Dialogs
+import { AnnouncementDialogComponent } from '@dialogs/announcement-dialog/announcement-dialog.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +94,8 @@ import { ColorSelectComponent } from './components/color-select/color-select.com
     MarkdownHelpComponent,
     InstCtxSyllabusComponent,
     StudentCourseComponent,
-    ColorSelectComponent
+    ColorSelectComponent,
+    AnnouncementDialogComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -100,7 +105,8 @@ import { ColorSelectComponent } from './components/color-select/color-select.com
     AuthenticationModule,
     RouterModule,
     MarkdownModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [
     RegisterService,
@@ -112,6 +118,7 @@ import { ColorSelectComponent } from './components/color-select/color-select.com
     CourseService,
     AnnouncementService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AnnouncementDialogComponent]
 })
 export class AppModule { }

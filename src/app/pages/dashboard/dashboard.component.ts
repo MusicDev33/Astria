@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig, DialogPosition } from '@angular/material/dialog';
 
 import { ICourse } from '@models/course.model';
 import { IPerson } from '@models/person.model';
@@ -11,6 +12,8 @@ import { PersonService } from '@services/person.service';
 import { JwtService } from '@services/jwt.service';
 import { CookieService } from 'ngx-cookie-service';
 import { AnnouncementService } from '@services/announcement.service';
+
+import { AnnouncementDialogComponent } from '@dialogs/announcement-dialog/announcement-dialog.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -30,7 +33,8 @@ export class DashboardComponent implements OnInit {
     private personService: PersonService,
     private jwtService: JwtService,
     private cookieService: CookieService,
-    private announcementService: AnnouncementService
+    private announcementService: AnnouncementService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -52,4 +56,14 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  openAnnouncementDialog(announcement: IAnnouncement) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = announcement;
+    dialogConfig.width = '600px';
+    dialogConfig.panelClass = 'mt-dialog';
+
+    const position: DialogPosition = {top: '200px'};
+    dialogConfig.position = position;
+    this.dialog.open(AnnouncementDialogComponent, dialogConfig);
+  }
 }

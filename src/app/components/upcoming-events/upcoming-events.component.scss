@@ -38,7 +38,16 @@
 .double-line-height {
   $line-height: 30px;
   height: $line-height * 2!important;
+}
+
+.header {
   white-space: nowrap;
-  overflow-y: hidden;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.desc {
+  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
 }
