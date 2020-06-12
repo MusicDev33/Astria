@@ -1,7 +1,13 @@
-<div class="container-fluid">
-  <div class="row justify-content-center">
+<div class="container-fluid px-0">
+  <div class="row no-gutters">
+    <div class="col-2 text-center px-2">
+      <div class="icon-container" [style.background]="data.iconBgColor">
+        <span><i class="{{ data.icon }} icon" [style.color]="data.iconColor"></i></span>
+      </div>
+    </div>
     <div class="col-10">
       <h3>{{ data.header }}</h3>
+      <p class="subtitle">{{ data.author }} on {{ timePosted }}<span></span></p>
       <p>
         {{ data.description }}
       </p>

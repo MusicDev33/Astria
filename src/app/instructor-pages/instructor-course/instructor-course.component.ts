@@ -94,9 +94,9 @@ export class InstructorCourseComponent implements OnInit {
          this.courseCode = params['courseCode'];
 
          this.courseService.getOneCourseForInstructor(this.schoolID, this.instructorID, this.courseCode)
-          .subscribe((res: any) => {
+          .subscribe((res: IResponse<ICourse>) => {
             if (res.success) {
-              this.course = res.course;
+              this.course = res.payload;
               this.topNavOptions[0] = this.course.name;
 
               this.enrollmentService.getCourseEnrollments(this.course._id).subscribe((enrollRes: IResponse<IEnrollment[]>) => {

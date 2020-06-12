@@ -13,10 +13,10 @@
   <section class="row justify-content-center mb-3" *ngFor="let announcement of announcements">
     <div class="col-11 mt-card hover select py-3" title="{{ announcement.header }}" (click)="onAnnouncementClicked(announcement)">
       <div class="row is-flex mx-0 pb-3">
-        <div class="col-3 card-icon-space double-line-height" [style.background]="announcement.iconBgColor">
+        <div class="col-2 card-icon-space double-line-height" [style.background]="announcement.iconBgColor">
           <i class="{{ announcement.icon }} card-icon" [style.color]="announcement.iconColor"></i>
         </div>
-        <div class="col-9 double-line-height">
+        <div class="col-10 double-line-height">
           <h3 class="my-auto header py-1">{{ announcement.header }}</h3>
         </div>
       </div>

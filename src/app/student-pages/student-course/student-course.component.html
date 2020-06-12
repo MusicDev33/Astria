@@ -1,1 +1,43 @@
-<p>student-course works!</p>
+<article *ngIf="course">
+  <section class="row pl-1 pr-4 mt-3 mb-4">
+
+    <div class="col px-2" *ngFor="let option of topNavOptions; let i = index;">
+      <div class="nav-option top text-center align-middle" (click)="selectedNavIndex=i"
+        [ngClass]="{'selected': selectedNavIndex === i}">{{ option }}</div>
+    </div>
+
+  </section>
+
+  <section class="row">
+    <div class="col-7 mt-break-word" *ngIf="topNavOptions[selectedNavIndex] === course.name">
+      <markdown [data]="course.introText" class="markdown"></markdown>
+    </div>
+
+    <div class="col-7 mt-break-word" *ngIf="topNavOptions[selectedNavIndex] === 'Syllabus'">
+      <markdown [data]="course.syllabus" class="markdown"></markdown>
+    </div>
+
+    <div class="col-7" *ngIf="topNavOptions[selectedNavIndex] === 'Announcements'">
+      <!-- Create Announcement -->
+      <!--
+      <section class="row px-3 mb-4" *ngIf="newAnnouncementDetails.length || newAnnouncementHeading.length">
+        <h4 class="col-12 px-3 mb-3">New Announcement</h4>
+        <div class="col-12 mt-card hover select px-4 py-2">
+          <h5 class="text-center">{{ newAnnouncementHeading }}</h5>
+          <markdown [data]="newAnnouncementDetails" class="markdown"></markdown>
+        </div>
+      </section>
+
+      <h3 class="text-center">Announcements</h3>
+
+      <section class="row px-3 mb-3" *ngFor="let announcement of announcements">
+        <div class="col-12 px-4 pt-3 mt-card select hover">
+          <h4>{{ announcement.header }}</h4>
+          <markdown [data]="announcement.description"></markdown>
+          <p class="announcement-date">{{ getAnnouncementDate(announcement.time) }}</p>
+        </div>
+      </section>
+      -->
+    </div>
+  </section>
+</article>

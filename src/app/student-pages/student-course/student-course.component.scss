@@ -1,0 +1,27 @@
+@import '~scss/colors';
+@import '~scss/variables';
+
+.nav-option.top {
+  border-bottom: 2px solid $transparent;
+  color: $palette-4-light;
+  transition: $time-mid;
+  cursor: pointer;
+
+  padding: 5px 20px;
+
+  font-weight: $font-weight-medium;
+  font-size: 110%;
+
+  &.selected {
+    border-color: $palette-4;
+    color: $palette-4;
+  }
+
+  &:hover:not(.selected) {
+    border-color: $palette-4-light;
+  }
+}
+
+.announcement-date {
+  color: #c9c9c9;
+}

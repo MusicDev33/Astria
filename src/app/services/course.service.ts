@@ -29,6 +29,13 @@ export class CourseService {
       .pipe(map(res => res));
   }
 
+  getOneCourseForStudent(schoolID: string, instructorID: string, courseCode: string) {
+    const headers = BaseHeaders;
+    const url = `${environment.apiURL}courses/course/${schoolID}/${instructorID}/${courseCode}`;
+    return this.http.get(url, {headers, withCredentials: true})
+      .pipe(map(res => res));
+  }
+
   saveCourseParam(schoolID: string, instructorID: string, courseCode: string, param: string, paramValue: any) {
     const headers = BaseHeaders;
     const url = `${environment.apiURL}courses/course/${schoolID}/${instructorID}/${courseCode}/${param}`;
