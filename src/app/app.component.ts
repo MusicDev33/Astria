@@ -40,7 +40,9 @@ export class AppComponent implements OnInit, AfterViewChecked {
   ngAfterViewChecked() {
     // This is to load tooltips for Bootstrap, instead of installing more 3rd-party libraries
     // https://getbootstrap.com/docs/4.5/components/tooltips/
+    // This is also for activating all of the Bootstrap stuff
     $('[data-toggle="tooltip"]').tooltip();
+    $('.dropdown-toggle').dropdown();
   }
 
   onUrlChange(ev: any) {

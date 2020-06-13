@@ -15,7 +15,7 @@ export class StudentCourseComponent implements OnInit {
   sub: any;
 
   selectedNavIndex = 0;
-  topNavOptions = ['Home', 'Announcements', 'Syllabus', 'Assignments', 'Students'];
+  topNavOptions = ['Home', 'Announcements', 'Syllabus', 'Assignments'];
 
   course: ICourse;
 
