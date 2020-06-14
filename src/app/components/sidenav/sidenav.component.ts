@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-sidenav',
@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidenavComponent implements OnInit {
 
+  @Input()
+  onDashboard: boolean;
+
+  @Input()
+  currentDashParam = '';
+
+  @Output()
+  sendParamChange = new EventEmitter<string>();
+
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
+  iconClicked(param: string) {
+    this.sendParamChange.emit(param);
+  }
 }

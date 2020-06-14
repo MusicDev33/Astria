@@ -4,7 +4,8 @@
 <div class="container-fluid main bg">
   <div class="row">
     <div class="col-auto sidenav" *ngIf="showSideNav">
-      <app-sidenav></app-sidenav>
+      <app-sidenav [onDashboard]="onDashboard" [currentDashParam]="currentDashParam" (sendParamChange)="changeDashParam($event)">
+      </app-sidenav>
     </div>
     <div class="col">
       <router-outlet></router-outlet>

@@ -61,6 +61,8 @@ import { ColorSelectComponent } from '@components/color-select/color-select.comp
 
 // Dialogs
 import { AnnouncementDialogComponent } from '@dialogs/announcement-dialog/announcement-dialog.component';
+import { PCAnnouncementsComponent } from './pg-components/p-c-announcements/p-c-announcements.component';
+import { PCCoursesComponent } from './pg-components/p-c-courses/p-c-courses.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +97,9 @@ import { AnnouncementDialogComponent } from '@dialogs/announcement-dialog/announ
     InstCtxSyllabusComponent,
     StudentCourseComponent,
     ColorSelectComponent,
-    AnnouncementDialogComponent
+    AnnouncementDialogComponent,
+    PCAnnouncementsComponent,
+    PCCoursesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

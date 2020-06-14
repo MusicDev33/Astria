@@ -26,6 +26,9 @@ export class AppComponent implements OnInit, AfterViewChecked {
 
   excludedAuthRoutes = ['login', 'register'];
 
+  onDashboard = false;
+  currentDashParam = 'courses';
+
   constructor(
     public activatedRoute: ActivatedRoute,
     public router: Router,
@@ -41,8 +44,14 @@ export class AppComponent implements OnInit, AfterViewChecked {
     // This is to load tooltips for Bootstrap, instead of installing more 3rd-party libraries
     // https://getbootstrap.com/docs/4.5/components/tooltips/
     // This is also for activating all of the Bootstrap stuff
-    $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="tooltip"]').tooltip({
+      trigger : 'hover'
+    });
     $('.dropdown-toggle').dropdown();
+  }
+
+  changeDashParam(param: string) {
+    this.currentDashParam = param;
   }
 
   onUrlChange(ev: any) {
@@ -54,6 +63,12 @@ export class AppComponent implements OnInit, AfterViewChecked {
       if (routeNavMap.hasOwnProperty(routeName)) {
         this.showTopNav = routeNavMap[routeName].topNav;
         this.showSideNav = routeNavMap[routeName].sideNav;
+      }
+
+      if (routeName.includes('dashboard')) {
+        this.onDashboard = true;
+      } else {
+        this.onDashboard = false;
       }
 
       if (routeName === 'login' && !this.cookieService.check('jwt')) {

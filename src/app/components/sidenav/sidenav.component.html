@@ -2,8 +2,12 @@
 <div class="row pl-3">
   <div class="col-12">
     <div class="sidenav mt-card text-center py-5">
-      <i class="fas fa-chalkboard sidenav-icon selected mt-4" data-toggle="tooltip" data-placement="right" title="Dashboard"></i>
-      <div><i class="fas fa-bullhorn sidenav-icon" data-toggle="tooltip" data-placement="right" title="Announcements"></i></div>
+      <i class="fas fa-chalkboard sidenav-icon mt-4" [ngClass]="{'selected': currentDashParam === 'courses'}"
+          (click)="iconClicked('courses')" [routerLink]="['/dashboard/courses']" data-toggle="tooltip" data-placement="right" title="Dashboard"></i>
+      <div>
+        <i class="fas fa-bullhorn sidenav-icon" [ngClass]="{'selected': currentDashParam === 'announcements'}"
+            (click)="iconClicked('announcements')" [routerLink]="['/dashboard/announcements']" data-toggle="tooltip" data-placement="right" title="Announcements"></i>
+      </div>
       <div><i class="fas fa-tasks sidenav-icon" data-toggle="tooltip" data-placement="right" title="Tasks"></i></div>
       <i class="far fa-calendar sidenav-icon" data-toggle="tooltip" data-placement="right" title="Calendar"></i>
       <i class="fas fa-user-friends sidenav-icon" data-toggle="tooltip" data-placement="right" title="Friends"></i>

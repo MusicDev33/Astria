@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig, DialogPosition } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 
 import { ICourse } from '@models/course.model';
 import { IPerson } from '@models/person.model';
@@ -28,19 +29,27 @@ export class DashboardComponent implements OnInit {
   enrolledCourses: ICourse[] = [];
   allAnnouncements: IAnnouncement[] = [];
 
+  pgComponent: string;
+  sub: any;
+
   constructor(
     private authService: AuthService,
     private personService: PersonService,
     private jwtService: JwtService,
     private cookieService: CookieService,
     private announcementService: AnnouncementService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     const jwt = this.cookieService.get('jwt');
     console.log(jwt);
     const person: IPerson = this.jwtService.decodeJwt(jwt);
+
+    this.sub = this.route.params.subscribe(params => {
+      this.pgComponent = params['mode'];
+    });
 
     this.personService.getEnrolledCourses(person._id).subscribe((res: IResponse<ICourse[]>) => {
       if (res.success) {

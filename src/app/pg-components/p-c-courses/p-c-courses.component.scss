@@ -1,0 +1,11 @@
+@import '~scss/colors';
+
+.toggle-view {
+  font-size: 150%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.toggle-view:hover {
+  color: $palette-4;
+}
