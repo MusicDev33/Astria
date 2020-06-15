@@ -13,6 +13,7 @@ import { PersonService } from '@services/person.service';
 import { JwtService } from '@services/jwt.service';
 import { CookieService } from 'ngx-cookie-service';
 import { AnnouncementService } from '@services/announcement.service';
+import { SharedRouteService } from '@services/shared-route.service';
 
 import { AnnouncementDialogComponent } from '@dialogs/announcement-dialog/announcement-dialog.component';
 
@@ -39,7 +40,8 @@ export class DashboardComponent implements OnInit {
     private cookieService: CookieService,
     private announcementService: AnnouncementService,
     private dialog: MatDialog,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private sharedRoute: SharedRouteService
   ) { }
 
   ngOnInit(): void {
@@ -48,6 +50,7 @@ export class DashboardComponent implements OnInit {
     const person: IPerson = this.jwtService.decodeJwt(jwt);
 
     this.sub = this.route.params.subscribe(params => {
+      this.sharedRoute.emitParamChange(params['mode']);
       this.pgComponent = params['mode'];
     });
 

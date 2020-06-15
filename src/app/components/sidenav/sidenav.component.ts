@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { SharedRouteService } from '@services/shared-route.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -10,17 +11,13 @@ export class SidenavComponent implements OnInit {
   @Input()
   onDashboard: boolean;
 
-  @Input()
   currentDashParam = '';
 
-  @Output()
-  sendParamChange = new EventEmitter<string>();
-
-  constructor() { }
+  constructor(private sharedRoute: SharedRouteService) {
+    this.sharedRoute.paramEmitted.subscribe((param: string) => {
+      this.currentDashParam = param;
+    });
+  }
 
   ngOnInit(): void { }
-
-  iconClicked(param: string) {
-    this.sendParamChange.emit(param);
-  }
 }

@@ -41,6 +41,7 @@ import { UserDataService } from '@services/user-data.service';
 import { SchoolService } from '@services/school.service';
 import { CourseService } from '@services/course.service';
 import { AnnouncementService } from '@services/announcement.service';
+import { SharedRouteService } from '@services/shared-route.service';
 
 // Modules
 import { AuthenticationModule } from '@modules/authentication/authentication.module';
@@ -61,8 +62,8 @@ import { ColorSelectComponent } from '@components/color-select/color-select.comp
 
 // Dialogs
 import { AnnouncementDialogComponent } from '@dialogs/announcement-dialog/announcement-dialog.component';
-import { PCAnnouncementsComponent } from './pg-components/p-c-announcements/p-c-announcements.component';
-import { PCCoursesComponent } from './pg-components/p-c-courses/p-c-courses.component';
+import { PCAnnouncementsComponent } from '@pg-components/p-c-announcements/p-c-announcements.component';
+import { PCCoursesComponent } from '@pg-components/p-c-courses/p-c-courses.component';
 
 @NgModule({
   declarations: [
@@ -120,7 +121,8 @@ import { PCCoursesComponent } from './pg-components/p-c-courses/p-c-courses.comp
     UserDataService,
     SchoolService,
     CourseService,
-    AnnouncementService
+    AnnouncementService,
+    SharedRouteService
   ],
   bootstrap: [AppComponent],
   entryComponents: [AnnouncementDialogComponent]

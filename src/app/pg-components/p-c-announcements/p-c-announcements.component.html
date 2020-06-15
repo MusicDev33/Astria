@@ -1,5 +1,49 @@
-<div class="row mb-3">
+<section class="row mb-3">
   <div class="col-12">
     <h2>Announcements</h2>
   </div>
+</section>
+
+<div *ngIf="announcements">
+  <section *ngFor="let announcement of announcements" class="row">
+    <div class="col-12 mt-card hover select py-3" title="{{ announcement.header }}">
+      <div class="row">
+        <section class="col-2" [style.background]="announcement.iconBgColor">
+          <i class="{{ announcement.icon }} card-icon" [style.color]="announcement.iconColor"></i>
+        </section>
+        <section class="col">
+          <div class="row">
+            <section class="col-12">
+              <h3 class="my-auto header py-1">{{ announcement.header }}</h3>
+            </section>
+            <section class="col-12">
+              <div class="desc">{{ announcement.description }}</div>
+            </section>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
 </div>
+
+<!--
+<div *ngIf="announcements">
+  <section class="row justify-content-center mb-3" *ngFor="let announcement of announcements">
+    <div class="col-11 mt-card hover select py-3" title="{{ announcement.header }}">
+      <div class="row is-flex mx-0 pb-3">
+        <div class="col-2 card-icon-space double-line-height" [style.background]="announcement.iconBgColor">
+          <i class="{{ announcement.icon }} card-icon" [style.color]="announcement.iconColor"></i>
+        </div>
+        <div class="col-10 double-line-height">
+          <h3 class="my-auto header py-1">{{ announcement.header }}</h3>
+        </div>
+      </div>
+      <div class="row is-flex mx-0">
+        <div class="col-12 px-0">
+          <span class="desc">{{ announcement.description }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+-->
