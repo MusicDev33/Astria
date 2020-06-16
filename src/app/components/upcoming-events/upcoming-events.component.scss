@@ -1,3 +1,4 @@
+@import '~scss/colors';
 @import '~scss/variables';
 
 .row.is-flex {
@@ -50,4 +51,8 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.no-ancmnt-text {
+  color: $text-soft;
 }

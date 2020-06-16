@@ -8,6 +8,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class InstCtxAnnouncementsComponent implements OnInit {
 
   @Input()
+  loading = false;
+
+  @Input()
   headerField = '';
 
   @Input()

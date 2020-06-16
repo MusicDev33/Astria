@@ -64,6 +64,7 @@ import { ColorSelectComponent } from '@components/color-select/color-select.comp
 import { AnnouncementDialogComponent } from '@dialogs/announcement-dialog/announcement-dialog.component';
 import { PCAnnouncementsComponent } from '@pg-components/p-c-announcements/p-c-announcements.component';
 import { PCCoursesComponent } from '@pg-components/p-c-courses/p-c-courses.component';
+import { PCSettingsComponent } from '@pg-components/p-c-settings/p-c-settings.component';
 
 @NgModule({
   declarations: [
@@ -100,7 +101,8 @@ import { PCCoursesComponent } from '@pg-components/p-c-courses/p-c-courses.compo
     ColorSelectComponent,
     AnnouncementDialogComponent,
     PCAnnouncementsComponent,
-    PCCoursesComponent
+    PCCoursesComponent,
+    PCSettingsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

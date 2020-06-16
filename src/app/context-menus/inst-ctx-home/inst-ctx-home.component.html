@@ -10,7 +10,13 @@
 
     <section class="row mt-3">
       <div class="col-12 text-center">
-        <button class="btn mt-btn-1-filled w-100" (click)="onSaveContentButton()">Save Changes</button>
+        <button *ngIf="!loading" class="btn mt-btn-1-filled w-100" (click)="onSaveContentButton()">
+          Save Changes
+        </button>
+
+        <button class="btn mt-btn-1-filled w-100" *ngIf="loading" [disabled]="loading">
+          <div class="mt-loader-1"></div>
+        </button>
       </div>
     </section>
   </div>

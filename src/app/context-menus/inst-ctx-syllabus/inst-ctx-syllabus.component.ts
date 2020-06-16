@@ -8,6 +8,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class InstCtxSyllabusComponent implements OnInit {
 
   @Input()
+  loading = false;
+
+  @Input()
   contentField = '';
 
   @Output()

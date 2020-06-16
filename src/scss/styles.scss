@@ -33,6 +33,7 @@ $astria-theme: mat-light-theme($astria-primary, $astria-accent, $astria-warn);
 @import './mixins/export';
 @import './_variables';
 @import './components/export';
+@import './loaders/export';
 
 *:focus {
   outline: none!important;

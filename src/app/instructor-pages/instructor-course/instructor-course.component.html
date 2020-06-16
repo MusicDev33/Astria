@@ -70,25 +70,32 @@
       -->
     </div>
 
+    <div class="col-7" *ngIf="topNavOptions[selectedNavIndex] === 'Assignments'">
+
+    </div>
+
     <!-- Context Menus -->
     <div class="col-5 pr-5">
       <app-inst-ctx-home [contentField]="course.introText" (sendContentFieldChange)="changeCourseIntroText($event)"
-        (sendSaveContent)="saveCourseIntroText($event)"
+        (sendSaveContent)="saveCourseIntroText($event)" [loading]="loadingComponent === course.name"
         *ngIf="topNavOptions[selectedNavIndex] === course.name"></app-inst-ctx-home>
 
       <app-inst-ctx-announcements *ngIf="topNavOptions[selectedNavIndex] === 'Announcements'"
         [headerField]="newAnnouncementHeading" [descField]="newAnnouncementDetails"
-        (headerFieldChange)="changeAnnouncementHeaderText($event)"
+        (headerFieldChange)="changeAnnouncementHeaderText($event)" [loading]="loadingComponent === 'Announcements'"
         (descFieldChange)="changeAnnouncementDescText($event)"
         (sendNewAnnouncement)="sendNewAnnouncement($event)">
       </app-inst-ctx-announcements>
 
       <app-inst-ctx-syllabus [contentField]="course.syllabus" (sendContentFieldChange)="changeCourseSyllabus($event)"
-        (sendSaveContent)="saveCourseSyllabus($event)"
+        (sendSaveContent)="saveCourseSyllabus($event)"[loading]="loadingComponent === 'Syllabus'"
         *ngIf="topNavOptions[selectedNavIndex] === 'Syllabus'"></app-inst-ctx-syllabus>
 
-        <app-inst-ctx-students (sendEnrollStudentPressed)="enrollStudent($event)"
-          *ngIf="topNavOptions[selectedNavIndex] === 'Students'"></app-inst-ctx-students>
+      <app-inst-ctx-students (sendEnrollStudentPressed)="enrollStudent($event)"
+        *ngIf="topNavOptions[selectedNavIndex] === 'Students'"></app-inst-ctx-students>
+
+      <app-inst-ctx-assignments *ngIf="topNavOptions[selectedNavIndex] === 'Assignments'">
+      </app-inst-ctx-assignments>
     </div>
   </section>
 </article>

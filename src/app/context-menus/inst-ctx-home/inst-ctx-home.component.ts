@@ -10,6 +10,9 @@ export class InstCtxHomeComponent implements OnInit {
   @Input()
   contentField = '';
 
+  @Input()
+  loading = false;
+
   @Output()
   sendContentFieldChange = new EventEmitter<string>();
 

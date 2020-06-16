@@ -5,6 +5,7 @@
   <div class="col-8 pr-5" *ngIf="pgComponent">
     <app-p-c-courses [courses]="enrolledCourses" *ngIf="pgComponent === 'courses'"></app-p-c-courses>
     <app-p-c-announcements *ngIf="pgComponent === 'announcements'"></app-p-c-announcements>
+    <app-p-c-settings *ngIf="pgComponent === 'settings'"></app-p-c-settings>
   </div>
   <div class="col-4 pr-3 float-right">
     <div class="calendar-view pb-1 mt-card">

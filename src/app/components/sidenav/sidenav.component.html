@@ -13,7 +13,8 @@
       <i class="fas fa-user-friends sidenav-icon" data-toggle="tooltip" data-placement="right" title="Friends"></i>
       <i class="far fa-comment-dots sidenav-icon mb-5" data-toggle="tooltip" data-placement="right" title="Messages"></i>
 
-      <i class="fas fa-cog sidenav-icon mt-5" data-toggle="tooltip" data-placement="right" title="Settings"></i>
+      <i class="fas fa-cog sidenav-icon mt-5" [ngClass]="{'selected': currentDashParam === 'settings'}"
+          [routerLink]="['/dashboard/settings']" data-toggle="tooltip" data-placement="right" title="Settings"></i>
       <i class="far fa-question-circle sidenav-icon mb-4" data-toggle="tooltip" data-placement="right" title="Help Mode"></i>
     </div>
   </div>

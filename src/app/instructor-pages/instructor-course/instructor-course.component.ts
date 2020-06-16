@@ -44,6 +44,8 @@ export class InstructorCourseComponent implements OnInit {
   selectedStudent: IPerson;
   enrollments: IEnrollment[] = [];
 
+  loadingComponent = '';
+
   constructor(
     private jwtService: JwtService,
     private courseService: CourseService,
@@ -97,6 +99,7 @@ export class InstructorCourseComponent implements OnInit {
           .subscribe((res: IResponse<ICourse>) => {
             if (res.success) {
               this.course = res.payload;
+              this.getAnnouncements();
               this.topNavOptions[0] = this.course.name;
 
               this.enrollmentService.getCourseEnrollments(this.course._id).subscribe((enrollRes: IResponse<IEnrollment[]>) => {
@@ -106,7 +109,6 @@ export class InstructorCourseComponent implements OnInit {
               });
             }
           });
-         this.getAnnouncements();
       });
     }
   }
@@ -136,9 +138,11 @@ export class InstructorCourseComponent implements OnInit {
   }
 
   saveCourseIntroText(text: string) {
+    this.loadingComponent = this.course.name;
     this.courseService.saveCourseParam(this.schoolID, this.instructorID, this.courseCode, 'introText', text)
       .subscribe((res: any) => {
         console.log(res);
+        this.loadingComponent = '';
       });
   }
 
@@ -147,8 +151,10 @@ export class InstructorCourseComponent implements OnInit {
   }
 
   saveCourseSyllabus(text: string) {
+    this.loadingComponent = 'Syllabus';
     this.courseService.saveCourseParam(this.schoolID, this.instructorID, this.courseCode, 'syllabus', text)
       .subscribe((res: any) => {
+        this.loadingComponent = '';
         console.log(res);
       });
   }
@@ -163,6 +169,7 @@ export class InstructorCourseComponent implements OnInit {
 
   sendNewAnnouncement(data: string[]) {
     const user = this.jwtService.decodeCookieByName('jwt');
+    this.loadingComponent = 'Announcements';
     const newAnnouncement: IAnnouncement = {
       header: data[0],
       description: data[1],
@@ -176,6 +183,7 @@ export class InstructorCourseComponent implements OnInit {
     };
 
     this.announcementService.createCourseAnnouncement(newAnnouncement).subscribe((res: any) => {
+      this.loadingComponent = '';
       if (res.success) {
         this.announcements.unshift(res.announcement);
         this.newAnnouncementDetails = '';
@@ -187,7 +195,7 @@ export class InstructorCourseComponent implements OnInit {
   }
 
   getAnnouncements() {
-    this.announcementService.getCourseAnnouncements(this.courseCode).subscribe((res: any) => {
+    this.announcementService.getCourseAnnouncements(this.course._id).subscribe((res: any) => {
       if (res.success) {
         this.announcements = res.announcements;
       }
