@@ -1,0 +1,19 @@
+@import '~scss/colors';
+@import '~scss/variables';
+
+.icon-background {
+  border-radius: $border-radius;
+}
+
+.card-icon {
+  font-size: 410%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.card-icon-space {
+  position: relative;
+  border-radius: $border-radius;
+}

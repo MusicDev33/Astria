@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
     this.authService.sendLogin(this.loginField, this.loginPassField).subscribe((res: any) => {
       if (res.success) {
         this.cookieService.set('jwt', res.jwt, 365, '/', 'localhost', false);
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/dashboard/courses']);
       }
     });
   }

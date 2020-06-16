@@ -5,19 +5,21 @@
 </section>
 
 <div *ngIf="announcements">
-  <section *ngFor="let announcement of announcements" class="row">
+  <section *ngFor="let announcement of announcements" class="row my-3">
     <div class="col-12 mt-card hover select py-3" title="{{ announcement.header }}">
-      <div class="row">
-        <section class="col-2" [style.background]="announcement.iconBgColor">
-          <i class="{{ announcement.icon }} card-icon" [style.color]="announcement.iconColor"></i>
-        </section>
+      <div class="row px-3">
+        <span class="col-2 icon-background d-inline" [style.background]="announcement.iconBgColor">
+          <span class="my-auto mx-auto">
+            <i class="{{ announcement.icon }} card-icon" [style.color]="announcement.iconColor"></i>
+          </span>
+        </span>
         <section class="col">
           <div class="row">
-            <section class="col-12">
-              <h3 class="my-auto header py-1">{{ announcement.header }}</h3>
+            <section class="col-12 mb-2">
+              <h3 class="my-auto header py-1 text-truncate">{{ announcement.header }}</h3>
             </section>
-            <section class="col-12">
-              <div class="desc">{{ announcement.description }}</div>
+            <section class="col-12 pb-2">
+              <div class="desc text-truncate">{{ announcement.description }}</div>
             </section>
           </div>
         </section>

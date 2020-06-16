@@ -19,6 +19,7 @@ import { InstructorGuard } from '@guards/instructor.guard';
 const routes: Routes = [
   { path: 'login', loadChildren: '@modules/authentication/authentication.module#AuthenticationModule'},
   { path: 'register', component: RegisterComponent },
+  { path: 'dashboard', pathMatch: 'full', redirectTo: 'dashboard/courses' },
   { path: 'dashboard/:mode', pathMatch: 'full', component: DashboardComponent },
   { path: 'admindash', pathMatch: 'full', component: AdminDashboardComponent, canActivate: [AdminGuard] },
   { path: 'instructor/:schoolID/:instructorID', component: InstructorCoursesComponent, canActivate: [InstructorGuard]},
