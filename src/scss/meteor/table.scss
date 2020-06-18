@@ -1,22 +1,51 @@
 @import '~scss/colors';
 @import '~scss/variables';
 
-.mt-table {
-  padding-top: 0!important;
+$table-padding: 15px 20px;
 
-  thead {
-    background: $palette-1;
+.mt-table-header {
+  background: $palette-1;
+  padding: $table-padding;
+  border-radius: $border-radius;
+  margin-bottom: 17px;
 
-    tr th {
-      color: #fff;
-    }
+  .header-item {
+    color: $main-bg-color;
+    font-weight: $font-weight-heavy;
   }
 }
 
-// Basically what allows the tables to be rounded
 .mt-table-wrapper {
+  border: 1px solid $palette-1-light;
   border-radius: $border-radius;
   overflow: hidden;
-  border: 1px solid $palette-1-light;
-  padding-top: 0!important;
+}
+
+$color-row-bg-alt: #e4e4e4;
+
+$color-row-highlight: #f9f9f9;
+$color-row-highlight-alt: #d5d5d5;
+
+.mt-table {
+
+  .row-container {
+    padding: $table-padding;
+    transition: $time-fast;
+
+    &:nth-child(even) {
+      background: $color-row-bg-alt;
+
+      &:hover {
+        background: $color-row-highlight-alt;
+      }
+    }
+
+    &:nth-child(odd):hover {
+      background: $color-row-highlight;
+    }
+  }
+
+  .mt-table-row {
+
+  }
 }
