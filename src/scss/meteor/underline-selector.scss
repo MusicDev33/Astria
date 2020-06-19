@@ -1,0 +1,33 @@
+@import '~scss/colors';
+@import '~scss/variables';
+
+@mixin underline-selector($color, $color-selected) {
+  // $color is unselected
+  transition: $time-mid;
+  border-bottom: 3px solid $transparent;
+  text-align: center;
+  cursor: pointer;
+  color: $color;
+
+  padding: 3px 15px;
+
+  font-weight: $font-weight-medium;
+  font-size: 110%;
+
+  &:hover:not(.selected) {
+    border-color: $color;
+  }
+
+  &.selected {
+    color: $color-selected;
+    border-color: $color-selected;
+  }
+}
+
+.mt-underline-selector-1 {
+  @include underline-selector($palette-1-light, $palette-1);
+}
+
+.mt-underline-selector-4 {
+  @include underline-selector($palette-4-light, $palette-4);
+}

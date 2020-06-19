@@ -17,7 +17,8 @@
       "@models/*": ["app/models/*"],
       "@instructor-pages/*": ["app/instructor-pages/*"],
       "@student-pages/*": ["app/student-pages/*"],
-      "@context-menus/*": ["app/context-menus/*"]
+      "@context-menus/*": ["app/context-menus/*"],
+      "@enums/*": ["app/interfaces/enums/*"]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,

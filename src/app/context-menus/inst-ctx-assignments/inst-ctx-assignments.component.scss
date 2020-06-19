@@ -2,7 +2,15 @@
 @import '~scss/variables';
 
 .content-textarea {
-  min-height: 471px;
+  min-height: 271px;
   resize: none;
   padding-left: 16px!important;
+}
+
+.assign-type {
+  color: $palette-1;
+}
+
+.underline-selector {
+  
 }

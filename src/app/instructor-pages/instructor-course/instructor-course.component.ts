@@ -31,7 +31,7 @@ export class InstructorCourseComponent implements OnInit {
   course: ICourse;
   compiledIntroText: string;
 
-  selectedNavIndex = 4;
+  selectedNavIndex = 3;
 
   topNavOptions = ['Home', 'Announcements', 'Syllabus', 'Assignments', 'Students'];
 
