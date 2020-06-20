@@ -11,6 +11,29 @@
   color: $palette-1;
 }
 
-.underline-selector {
-  
+.textual-form {
+  width: 90px!important;
+  color: $palette-1!important;
+  font-size: 24px;
+  font-weight: $font-weight-medium;
+  text-align: center;
+  padding: 8px 10px!important;
+  background: $transparent!important;
+  border-radius: 0!important;
+  border: none!important;
+  border-bottom: 2px solid $palette-1-light!important;
+
+  &::placeholder {
+    transition: $time-mid;
+    color: $palette-1-light!important;
+  }
+
+  &:hover:not(:focus) {
+    border-color: $palette-1!important;
+  }
+
+  &:focus {
+    border-radius: 12px!important;
+    background: $main-bg-color!important;
+  }
 }

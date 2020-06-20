@@ -20,6 +20,7 @@ export class InstCtxAssignmentsComponent implements OnInit {
 
   graded = false;
   assignmentType = 'Assignment';
+  points = '';
 
   assignmentTypes = [AssignmentType.ASSIGNMENT, AssignmentType.DISCUSSION, AssignmentType.QUIZ];
 

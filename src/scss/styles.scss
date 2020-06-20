@@ -59,3 +59,9 @@ body {
   border-radius: $border-radius;
   color: $text-main;
 }
+
+// Text Highlight
+::selection, ::-moz-selection {
+  background: $palette-4;
+  color: $main-bg-color;
+}

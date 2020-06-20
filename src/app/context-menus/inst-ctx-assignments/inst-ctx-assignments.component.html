@@ -2,7 +2,11 @@
   <div class="col-12 mt-card mt-ctx-menu py-3">
     <section class="row">
       <div class="col-12">
-        <h4 class="pl-2 mb-3">{{ headerGenerator() }} <b class="assign-type">{{ assignmentType }}</b></h4>
+        <h4 class="pl-2 mb-3">
+          {{ headerGenerator() }} <b class="assign-type">{{ assignmentType }}</b> worth
+          <input maxlength="4" class="form-control textual-form d-inline" placeholder="10" [(ngModel)]="points"/>
+          points
+        </h4>
       </div>
 
       <div class="col-12">

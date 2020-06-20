@@ -54,6 +54,7 @@ export class InstructorCourseComponent implements OnInit {
     private enrollmentService: EnrollmentService
   ) { }
 
+  /*
   @HostListener('document:keydown.arrowright', ['$event'])
   onArrowRightHandler(event: KeyboardEvent) {
     if (this.keyIsDown) {
@@ -85,6 +86,7 @@ export class InstructorCourseComponent implements OnInit {
   onKeyUp() {
     this.keyIsDown = false;
   }
+  */
 
   ngOnInit(): void {
     const person = this.jwtService.decodeCookieByName('jwt');
