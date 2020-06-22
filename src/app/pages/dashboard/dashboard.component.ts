@@ -28,6 +28,7 @@ export class DashboardComponent implements OnInit {
 
   selectedModule = 'calendar';
   enrolledCourses: ICourse[] = [];
+  taughtClasses: ICourse[] = [];
   allAnnouncements: IAnnouncement[] = [];
 
   pgComponent: string;
@@ -57,6 +58,14 @@ export class DashboardComponent implements OnInit {
     this.personService.getEnrolledCourses(person._id).subscribe((res: IResponse<ICourse[]>) => {
       if (res.success) {
         this.enrolledCourses = res.payload;
+      }
+    });
+
+    this.personService.getInstructorCourses(person.schoolID, person.profileURL).subscribe((res: any) => {
+      if (res.success) {
+        console.log('Taught');
+        console.log(res.courses);
+        this.taughtClasses = res.courses;
       }
     });
 

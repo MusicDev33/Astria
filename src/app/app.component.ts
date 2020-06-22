@@ -26,7 +26,7 @@ export class AppComponent implements OnInit, AfterViewChecked {
 
   excludedAuthRoutes = ['login', 'register'];
 
-  onDashboard = false;
+  onDashboard = true;
   currentDashParam = 'courses';
 
   constructor(
@@ -34,10 +34,12 @@ export class AppComponent implements OnInit, AfterViewChecked {
     public router: Router,
     public authService: AuthService,
     private cookieService: CookieService
-  ) { }
+  ) {
+    this.router.events.subscribe(this.onUrlChange.bind(this));
+  }
 
   ngOnInit() {
-    this.router.events.subscribe(this.onUrlChange.bind(this));
+
   }
 
   ngAfterViewChecked() {

@@ -2,15 +2,19 @@
   <div class="col-12 mt-card mt-ctx-menu py-3">
     <section class="row">
       <div class="col-12">
-        <h4 class="pl-2 mb-3">
+        <h4 class="pl-2 mb-3" *ngIf="graded">
           {{ headerGenerator() }} <b class="assign-type">{{ assignmentType }}</b> worth
           <input maxlength="4" class="form-control textual-form d-inline" placeholder="10" [(ngModel)]="points"/>
           points
         </h4>
+
+        <h4 class="pl-2 mb-3 pt-2" *ngIf="!graded">
+          {{ headerGenerator() }} <b class="assign-type">{{ assignmentType }}</b>
+        </h4>
       </div>
 
       <div class="col-12">
-        <div class="row mb-3">
+        <div class="row mb-3 px-3">
           <div class="col" *ngFor="let type of assignmentTypes">
             <div class="mt-underline-selector-1" (click)="assignmentType = type"
                 [ngClass]="{'selected': type === assignmentType}">
@@ -27,6 +31,17 @@
       <div class="col-12">
         <textarea placeholder="Assignment Description" [(ngModel)]="assignDescField"
           class="form-control content-textarea mt-ctx-field"></textarea>
+      </div>
+
+      <div class="col-12">
+        <div class="row mt-2 px-3">
+          <div class="col">
+            <div class="mt-underline-selector-1" [ngClass]="{'selected': graded}" (click)="graded=true">Graded</div>
+          </div>
+          <div class="col">
+            <div class="mt-underline-selector-1" [ngClass]="{'selected': !graded}" (click)="graded=false">Ungraded</div>
+          </div>
+        </div>
       </div>
     </section>
 

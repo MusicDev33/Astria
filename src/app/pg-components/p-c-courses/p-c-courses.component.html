@@ -7,14 +7,30 @@
   </div>
 </div>
 
-<div class="row" *ngIf="smallView">
-  <div class="col-3 pb-2" *ngFor="let course of courses">
-    <app-course-small [course]="course"></app-course-small>
-  </div>
-</div>
-
-<div *ngIf="!smallView">
+<section *ngIf="!smallView">
+  <h4 *ngIf="courses.length">Enrolled</h4>
   <div *ngFor="let course of courses">
     <app-course-large [course]="course"></app-course-large>
   </div>
-</div>
+
+  <h4 class="pb-3" *ngIf="taughtCourses.length">Taught by You</h4>
+  <div *ngFor="let course of taughtCourses">
+    <app-course-large [course]="course"></app-course-large>
+  </div>
+</section>
+
+<section *ngIf="smallView">
+  <h4 class="pb-3" *ngIf="taughtCourses.length">Taught by You</h4>
+  <div class="row" *ngIf="smallView">
+    <div class="col-3 pb-2" *ngFor="let course of taughtCourses">
+      <app-course-small [course]="course"></app-course-small>
+    </div>
+  </div>
+
+  <h4 class="pb-3" *ngIf="courses.length">Enrolled</h4>
+  <div class="row" *ngIf="smallView">
+    <div class="col-3 pb-2" *ngFor="let course of courses">
+      <app-course-small [course]="course"></app-course-small>
+    </div>
+  </div>
+</section>

@@ -10,7 +10,10 @@ import { ICourse } from '@models/course.model';
 export class PCCoursesComponent implements OnInit {
 
   @Input()
-  courses: ICourse;
+  courses: ICourse[];
+
+  @Input()
+  taughtCourses: ICourse[];
 
   smallView = false;
 

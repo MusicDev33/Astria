@@ -22,6 +22,7 @@
   border-radius: 0!important;
   border: none!important;
   border-bottom: 2px solid $palette-1-light!important;
+  transition: $time-fast!important;
 
   &::placeholder {
     transition: $time-mid;
@@ -33,7 +34,7 @@
   }
 
   &:focus {
-    border-radius: 12px!important;
+    border-radius: 13px!important;
     background: $main-bg-color!important;
   }
 }

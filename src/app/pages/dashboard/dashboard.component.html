@@ -1,9 +1,9 @@
 <div class="row no-gutters fill-container w-100">
   <div class="col-8 pr-5" *ngIf="!pgComponent">
-    <app-p-c-courses [courses]="enrolledCourses"></app-p-c-courses>
+    <app-p-c-courses [courses]="enrolledCourses" [taughtCourses]="taughtClasses"></app-p-c-courses>
   </div>
   <div class="col-8 pr-5" *ngIf="pgComponent">
-    <app-p-c-courses [courses]="enrolledCourses" *ngIf="pgComponent === 'courses'"></app-p-c-courses>
+    <app-p-c-courses [courses]="enrolledCourses" [taughtCourses]="taughtClasses" *ngIf="pgComponent === 'courses'"></app-p-c-courses>
     <app-p-c-announcements *ngIf="pgComponent === 'announcements'"></app-p-c-announcements>
     <app-p-c-settings *ngIf="pgComponent === 'settings'"></app-p-c-settings>
   </div>

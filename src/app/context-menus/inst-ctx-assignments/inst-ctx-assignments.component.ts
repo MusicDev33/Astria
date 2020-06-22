@@ -31,11 +31,15 @@ export class InstCtxAssignmentsComponent implements OnInit {
 
   headerGenerator(): string {
     const vowels = ['a', 'e', 'i', 'o', 'u'];
-    if (vowels.indexOf(this.assignmentType[0].toLowerCase()) !== -1) {
-      return `Create an `;
+    if (this.graded) {
+      if (vowels.indexOf(this.assignmentType[0].toLowerCase()) !== -1) {
+        return `Create an `;
+      }
+
+      return `Create a `;
     }
 
-    return `Create a `;
+    return `Create an ungraded `;
   }
 
 }
