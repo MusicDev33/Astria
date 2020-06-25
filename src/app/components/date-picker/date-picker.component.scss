@@ -1,0 +1,47 @@
+@import '~scss/colors.scss';
+@import '~scss/variables.scss';
+
+.date {
+  border-radius: 999px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.date:hover {
+  background: $palette-4;
+  color: #fff!important;
+}
+
+.day {
+  font-weight: 500;
+  font-size: 90%;
+}
+
+.date.current-day {
+  font-weight: $font-weight-heavy;
+  color: $palette-4;
+}
+
+.arrow {
+  font-size: 120%;
+  transition: 0.3s;
+  cursor: pointer;
+
+  &.double {
+    font-size: 140%;
+  }
+}
+
+.arrow:hover {
+  color: $palette-4;
+}
+
+.return-month {
+  font-weight: $font-weight-heavy;
+  transition: $time-mid;
+  cursor: pointer;
+
+  &:hover {
+    color: $palette-4;
+  }
+}

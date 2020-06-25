@@ -4,7 +4,7 @@
   </div>
 </section>
 
-<div *ngIf="announcements">
+<div *ngIf="announcements.length">
   <section *ngFor="let announcement of announcements" class="row my-3">
     <div class="col-12 mt-card hover select py-3" title="{{ announcement.header }}">
       <div class="row px-3">
@@ -26,6 +26,10 @@
       </div>
     </div>
   </section>
+</div>
+
+<div *ngIf="!announcements.length">
+  <h2>No Announcements! Maybe check later?</h2>
 </div>
 
 <!--

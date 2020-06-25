@@ -2,7 +2,7 @@
 import 'bootstrap';
 import * as $ from 'jquery';
 
-import { Component, OnInit, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 
 import { AuthService } from '@services/auth.service';
@@ -15,7 +15,7 @@ import { routeNavMap } from './app.component.config';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, AfterViewChecked {
+export class AppComponent implements OnInit, AfterViewChecked, AfterViewInit {
   title = 'Meteor';
   currentRoute: string;
 
@@ -26,7 +26,7 @@ export class AppComponent implements OnInit, AfterViewChecked {
 
   excludedAuthRoutes = ['login', 'register'];
 
-  onDashboard = true;
+  onDashboard = false;
   currentDashParam = 'courses';
 
   constructor(
@@ -34,9 +34,7 @@ export class AppComponent implements OnInit, AfterViewChecked {
     public router: Router,
     public authService: AuthService,
     private cookieService: CookieService
-  ) {
-    this.router.events.subscribe(this.onUrlChange.bind(this));
-  }
+  ) { }
 
   ngOnInit() {
 
@@ -52,16 +50,22 @@ export class AppComponent implements OnInit, AfterViewChecked {
     $('.dropdown-toggle').dropdown();
   }
 
+  ngAfterViewInit() {
+    this.router.events.subscribe(this.onUrlChange.bind(this));
+  }
+
   changeDashParam(param: string) {
     this.currentDashParam = param;
   }
 
   onUrlChange(ev: any) {
     if (ev instanceof NavigationEnd) {
+      console.log('testing');
       const url = ev.url;
       this.currentRoute = url;
 
       const routeName = this.currentRoute.replace(/[\/]/g, '');
+      console.log(routeName);
       if (routeNavMap.hasOwnProperty(routeName)) {
         this.showTopNav = routeNavMap[routeName].topNav;
         this.showSideNav = routeNavMap[routeName].sideNav;
@@ -69,8 +73,10 @@ export class AppComponent implements OnInit, AfterViewChecked {
 
       if (routeName.includes('dashboard')) {
         this.onDashboard = true;
+        console.log('on');
       } else {
         this.onDashboard = false;
+        console.log('off');
       }
 
       if (routeName === 'login' && !this.cookieService.check('jwt')) {

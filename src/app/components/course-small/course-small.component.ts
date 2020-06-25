@@ -8,7 +8,11 @@ import { ICourse } from '@interfaces/course.interface';
 })
 export class CourseSmallComponent implements OnInit {
 
-  @Input() course: ICourse;
+  @Input()
+  course: ICourse;
+
+  @Input()
+  instructorCourse = false;
 
   nameHovered = false;
   instructorHovered = false;
@@ -22,7 +26,11 @@ export class CourseSmallComponent implements OnInit {
 
   ngOnInit(): void {
     const course = this.course;
-    this.url = `/student/${course.schoolID}/${course.instructorIDs[0]}/${course.courseCode}`;
+    if (this.instructorCourse) {
+      this.url = `/instructor/${course.schoolID}/${course.instructorIDs[0]}/${course.courseCode}`;
+    } else {
+      this.url = `/student/${course.schoolID}/${course.instructorIDs[0]}/${course.courseCode}`;
+    }
   }
 
 }

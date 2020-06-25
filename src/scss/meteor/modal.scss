@@ -1,0 +1,8 @@
+@import '~scss/colors';
+@import '~scss/variables';
+
+// Put on Bootstrap's modal-content class
+.mt-modal {
+  border-radius: $border-radius;
+  background: $main-bg-color;
+}

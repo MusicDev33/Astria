@@ -1,0 +1,48 @@
+<div class="container-fluid px-4 py-2">
+  <div class="row justify-content-center pb-2">
+    <div class="col-4 text-center">
+      <button class="btn mt-btn-sm-1 filled" (click)="returnToCurrentMonth()"
+          [disabled]="month === currentMonth && year === currentYear">
+        Return
+      </button>
+    </div>
+  </div>
+  <div class="row py-3">
+    <div class="col-1 text-left my-auto">
+      <i class="fas fa-angle-double-left arrow double" (click)="doubleLeftArrowClicked()"></i>
+    </div>
+    <div class="col-1 text-left my-auto">
+      <i class="fas fa-chevron-left arrow" (click)="leftArrowClicked()"></i>
+    </div>
+
+    <div class="col-8 text-center">
+      <h3>
+        <span>
+          {{ months[month - 1] }} {{ year }}
+        </span>
+      </h3>
+    </div>
+
+    <div class="col-1 text-right my-auto">
+      <i class="fas fa-chevron-right arrow" (click)="rightArrowClicked()"></i>
+    </div>
+    <div class="col-1 text-right my-auto">
+      <i class="fas fa-angle-double-right arrow double" (click)="doubleRightArrowClicked()"></i>
+    </div>
+  </div>
+
+  <section class="row">
+    <div *ngFor="let day of days" class="col text-center">
+      <span class="day">{{ day }}</span>
+    </div>
+  </section>
+
+  <section *ngFor="let week of currentWeeks" class="row py-2">
+    <div *ngFor="let day of week" class="col text-center px-2">
+      <div class="date"
+          [ngClass]="{'current-day': this.month === this.currentMonth && this.year === this.currentYear && day === this.currentDay}">
+        <span *ngIf="day != 0">{{ day }}</span>
+      </div>
+    </div>
+  </section>
+</div>

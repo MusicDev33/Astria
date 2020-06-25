@@ -65,6 +65,8 @@ import { AnnouncementDialogComponent } from '@dialogs/announcement-dialog/announ
 import { PCAnnouncementsComponent } from '@pg-components/p-c-announcements/p-c-announcements.component';
 import { PCCoursesComponent } from '@pg-components/p-c-courses/p-c-courses.component';
 import { PCSettingsComponent } from '@pg-components/p-c-settings/p-c-settings.component';
+import { DatePickerComponent } from './components/date-picker/date-picker.component';
+import { TimePickerComponent } from './components/time-picker/time-picker.component';
 
 @NgModule({
   declarations: [
@@ -102,7 +104,9 @@ import { PCSettingsComponent } from '@pg-components/p-c-settings/p-c-settings.co
     AnnouncementDialogComponent,
     PCAnnouncementsComponent,
     PCCoursesComponent,
-    PCSettingsComponent
+    PCSettingsComponent,
+    DatePickerComponent,
+    TimePickerComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

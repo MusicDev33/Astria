@@ -35,6 +35,35 @@
   }
 }
 
+@mixin mt-btn-sm-1($btn-color, $btn-txt-color, $btn-hvr-color) {
+  border-radius: 999px;
+  color: $btn-color;
+  border-color: $btn-color;
+  font-size: 90%;
+  padding: 2px 15px!important;
+
+  &:hover {
+    background: $btn-color;
+    color: $btn-txt-color;
+  }
+
+  &.filled {
+    background: $btn-color;
+    color: $btn-txt-color;
+    transition: $time-mid;
+
+    &:hover {
+      background: $btn-hvr-color;
+      color: $btn-txt-color;
+      border-color: $btn-hvr-color;
+    }
+  }
+
+  &:disabled {
+    pointer-events: none;
+  }
+}
+
 .mt-btn-1 {
   @include mt-button($palette-1, #fff);
 }
@@ -49,4 +78,8 @@
 
 .mt-btn-cancel {
   @include mt-button($mt-red, #fff);
+}
+
+.mt-btn-sm-1 {
+  @include mt-btn-sm-1($palette-1, #fff, $palette-1-dark);
 }

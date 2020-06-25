@@ -16,7 +16,7 @@ import { IResponse } from '@interfaces/response.interface';
 })
 export class PCAnnouncementsComponent implements OnInit {
 
-  announcements: IAnnouncement[];
+  announcements: IAnnouncement[] = [];
 
   constructor(
     private cookieService: CookieService,

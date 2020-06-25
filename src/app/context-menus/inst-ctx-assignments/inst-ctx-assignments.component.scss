@@ -2,12 +2,16 @@
 @import '~scss/variables';
 
 .content-textarea {
-  min-height: 271px;
+  min-height: 220px;
   resize: none;
   padding-left: 16px!important;
 }
 
 .assign-type {
+  color: $palette-1;
+}
+
+.header-1 {
   color: $palette-1;
 }
 

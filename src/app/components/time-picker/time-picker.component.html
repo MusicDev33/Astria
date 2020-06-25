@@ -1,0 +1,17 @@
+<div class="row py-3 no-gutters w-100">
+  <div class="col-4 text-center selector-container">
+    <i class="fas fa-chevron-up d-block selector-arrow" (click)="incrementHour()"></i>
+    <div class="date-number">{{ getHourString() }}</div>
+    <i class="fas fa-chevron-down d-block selector-arrow" (click)="decrementHour()"></i>
+  </div>
+  <div class="col-4 text-center selector-container">
+    <i class="fas fa-chevron-up d-block selector-arrow"></i>
+    <div class="date-number">{{ getMinuteString() }}</div>
+    <i class="fas fa-chevron-down d-block selector-arrow"></i>
+  </div>
+  <div class="col-4 text-center selector-container">
+    <i class="fas fa-chevron-up d-block selector-arrow"></i>
+    <div class="date-number">{{ getMeridiem() }}</div>
+    <i class="fas fa-chevron-down d-block selector-arrow"></i>
+  </div>
+</div>

@@ -8,7 +8,12 @@ import { ICourse } from '@interfaces/course.interface';
 })
 export class CourseLargeComponent implements OnInit {
 
-  @Input() course: ICourse;
+  @Input()
+  course: ICourse;
+
+  @Input()
+  instructorCourse = false;
+
   titleHovered = false;
   instructorHovered = false;
   iconHovered = false;
@@ -19,7 +24,11 @@ export class CourseLargeComponent implements OnInit {
 
   ngOnInit(): void {
     const course = this.course;
-    this.url = `/student/${course.schoolID}/${course.instructorIDs[0]}/${course.courseCode}`;
+    if (this.instructorCourse) {
+      this.url = `/instructor/${course.schoolID}/${course.instructorIDs[0]}/${course.courseCode}`;
+    } else {
+      this.url = `/student/${course.schoolID}/${course.instructorIDs[0]}/${course.courseCode}`;
+    }
   }
 
   onClick() {

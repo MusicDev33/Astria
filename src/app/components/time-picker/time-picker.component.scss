@@ -1,0 +1,29 @@
+@import '~scss/colors';
+@import '~scss/variables';
+
+.date-number {
+  font-size: 140%;
+  font-weight: $font-weight-heavy;
+  padding: 7px 4px;
+  transition: $time-mid;
+}
+
+.selector-container {
+
+  &:hover .date-number {
+    color: $palette-1;
+  }
+}
+
+.selector-arrow {
+  cursor: pointer;
+  transition: $time-mid;
+  font-size: 140%;
+
+  padding: 5px 3px;
+  color: $palette-4-bg;
+
+  &:hover {
+    color: $palette-4;
+  }
+}
