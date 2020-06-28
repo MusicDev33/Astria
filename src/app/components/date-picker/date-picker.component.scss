@@ -5,11 +5,40 @@
   border-radius: 999px;
   transition: all 0.2s;
   cursor: pointer;
+
+  &.open {
+    background: $palette-1!important;
+    color: #fff!important;
+  }
+
+  &.due {
+    background: $palette-2!important;
+    color: #fff!important;
+  }
+
+  &.closed {
+    background: $palette-4!important;
+    color: #fff!important;
+  }
+
+  &.open.due {
+    background: linear-gradient(0.25turn, $palette-1, $palette-2)!important;
+    color: #fff!important;
+  }
+
+  &.due.closed {
+    background: linear-gradient(0.25turn, $palette-2, $palette-4)!important;
+    color: #fff!important;
+  }
+
+  &.due.closed.open {
+    background: linear-gradient(0.25turn, $palette-4, $palette-1, $palette-2)!important;
+    color: #fff!important;
+  }
 }
 
 .date:hover {
-  background: $palette-4;
-  color: #fff!important;
+  background: $color-soft-grey;
 }
 
 .day {

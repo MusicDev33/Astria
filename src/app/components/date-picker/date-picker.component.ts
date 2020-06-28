@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-date-picker',
   templateUrl: './date-picker.component.html',
   styleUrls: ['./date-picker.component.scss']
 })
-export class DatePickerComponent implements OnInit {
+export class DatePickerComponent implements OnInit, AfterViewInit {
 
   @Input()
   month: number = new Date().getMonth() + 1;
@@ -24,6 +24,17 @@ export class DatePickerComponent implements OnInit {
   months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
+  tooltipHTML: string;
+
+  @Input()
+  openDate: number[] = [6, 6, 2020];
+
+  @Input()
+  dueDate: number[] = [6, 6, 2020];
+
+  @Input()
+  closedDate: number[] = [7, 6, 2020];
+
   constructor() { }
 
   ngOnInit(): void {
@@ -32,6 +43,43 @@ export class DatePickerComponent implements OnInit {
     this.currentYear = this.currentDate.getFullYear();
 
     this.constructMonth(this.month, this.year);
+
+    this.tooltipHTML = `<h5 onclick="print()">${this.currentYear}</h5>`;
+  }
+
+  ngAfterViewInit() {
+    $('.date[data-toggle="tooltip"]').tooltip({
+      trigger: 'focus'
+    });
+  }
+
+  print() {
+    console.log('text');
+  }
+
+  getDateMatch(day: number, month: number, year: number, dateArray: number[]) {
+    if (dateArray.length !== 3) {
+      return false;
+    }
+
+    if (dateArray[0] === day && dateArray[1] === month && dateArray[2] === year) {
+      return true;
+    }
+
+    return false;
+  }
+
+  selectDate(day: number, month: number, year: number, type: string) {
+    if (type === 'open') {
+      this.openDate = [];
+      this.openDate.push(day, month, year);
+    } else if (type === 'due') {
+      this.dueDate = [];
+      this.dueDate.push(day, month, year);
+    } else if (type === 'closed') {
+      this.closedDate = [];
+      this.closedDate.push(day, month, year);
+    }
   }
 
   returnToCurrentMonth() {

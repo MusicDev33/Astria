@@ -84,9 +84,20 @@
     <div class="modal-content mt-modal">
       <div class="modal-body">
         <app-date-picker></app-date-picker>
-        <section class="container-fluid">
-          <div class="row">
+        <article class="container-fluid">
+          <section class="row">
+
+          </section>
+        </article>
+
+        <article class="container-fluid">
+          <section class="row">
             <div class="col-4">
+
+              <div class="text-center">
+                <i class="fas fa-arrow-down type-select type-1"></i>
+              </div>
+
               <h3 class="text-center">Open</h3>
               <div class="row justify-content-center">
                 <div class="col-8">
@@ -95,13 +106,34 @@
               </div>
             </div>
             <div class="col-4">
+
+              <div class="text-center">
+                <i class="fas fa-arrow-down type-select type-2"></i>
+              </div>
+
               <h3 class="text-center">Due</h3>
+              <div class="row justify-content-center">
+                <div class="col-8">
+                  <app-time-picker></app-time-picker>
+                </div>
+              </div>
             </div>
             <div class="col-4">
+
+              <div class="text-center">
+                <i class="fas fa-arrow-down type-select type-4"></i>
+              </div>
+
               <h3 class="text-center">Closed</h3>
+              <div class="row justify-content-center">
+                <div class="col-8">
+                  <app-time-picker></app-time-picker>
+                  <div class="mt-underline-selector-1">Same as Due Time</div>
+                </div>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </article>
       </div>
     </div>
   </div>

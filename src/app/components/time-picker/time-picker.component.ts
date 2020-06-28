@@ -16,6 +16,10 @@ export class TimePickerComponent implements OnInit {
   @Input()
   morning = true;
 
+  hourString = this.getHourString();
+  minuteString = this.getMinuteString();
+  meridiemString = this.getMeridiem();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -26,7 +30,7 @@ export class TimePickerComponent implements OnInit {
     tempHour += 1;
 
     if (tempHour === 12) {
-      this.morning = !this.morning;
+      this.changeMeridiem();
     }
 
     if (tempHour >= 13) {
@@ -34,6 +38,7 @@ export class TimePickerComponent implements OnInit {
     }
 
     this.hour = tempHour;
+    this.hourString = this.getHourString();
   }
 
   decrementHour() {
@@ -41,7 +46,7 @@ export class TimePickerComponent implements OnInit {
     tempHour -= 1;
 
     if (tempHour === 11) {
-      this.morning = !this.morning;
+      this.changeMeridiem();
     }
 
     if (tempHour <= 0) {
@@ -49,6 +54,33 @@ export class TimePickerComponent implements OnInit {
     }
 
     this.hour = tempHour;
+    this.hourString = this.getHourString();
+  }
+
+  incrementMinute() {
+    let tempMin = this.minute;
+    tempMin += 1;
+
+    if (tempMin >= 60) {
+      tempMin -= 60;
+      this.incrementHour();
+    }
+
+    this.minute = tempMin;
+    this.minuteString = this.getMinuteString();
+  }
+
+  decrementMinute() {
+    let tempMin = this.minute;
+    tempMin -= 1;
+
+    if (tempMin <= 0) {
+      tempMin += 59;
+      this.decrementHour();
+    }
+
+    this.minute = tempMin;
+    this.minuteString = this.getMinuteString();
   }
 
   getMeridiem() {
@@ -57,6 +89,12 @@ export class TimePickerComponent implements OnInit {
     }
 
     return 'PM';
+  }
+
+  changeMeridiem() {
+    this.morning = !this.morning;
+
+    this.meridiemString = this.getMeridiem();
   }
 
   getHourString() {
@@ -69,7 +107,88 @@ export class TimePickerComponent implements OnInit {
   }
 
   getMinuteString() {
-    return this.minute.toString();
+    let minuteString = this.minute.toString();
+    if (minuteString.length === 1) {
+      minuteString = '0' + minuteString;
+    }
+
+    return minuteString;
   }
 
+  limitNumberField(event: KeyboardEvent): boolean {
+    if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+      return true;
+    }
+
+    if (event.key === 'Backspace' || event.key === 'Delete') {
+      return true;
+    }
+
+    const numbers = '1234567890';
+
+    if (!numbers.includes(event.key)) {
+      event.preventDefault();
+      return true;
+    }
+
+    return false;
+  }
+
+  limitHourField(event: KeyboardEvent) {
+    if (this.limitNumberField(event)) {
+      return;
+    }
+    if (this.hourString.length >= 2) {
+      event.preventDefault();
+    }
+  }
+
+  limitMinuteField(event: KeyboardEvent) {
+    if (this.limitNumberField(event)) {
+      return;
+    }
+    if (this.minuteString.length >= 2) {
+      event.preventDefault();
+    }
+  }
+
+  hourFocusOut() {
+    if (this.hourString === '0' || this.hourString === '00' || this.hourString.length === 0) {
+      this.hour = 1;
+      this.hourString = '01';
+      return;
+    }
+
+    if (this.hourString.length === 1) {
+      this.hour = parseInt(this.hourString, 10);
+      this.hourString = this.getHourString();
+      return;
+    }
+
+    if (this.hourString.length === 2 && parseInt(this.hourString, 10) > 12) {
+      this.hour = 12;
+      this.hourString = this.getHourString();
+      return;
+    }
+  }
+
+  minuteFocusOut() {
+    if (this.minuteString === '0' || this.minuteString === '00' || this.minuteString.length === 0) {
+      this.minute = 30;
+      this.minuteString = this.getMinuteString();
+      return;
+    }
+
+    if (this.minuteString.length === 1) {
+      this.minute = parseInt(this.minuteString, 10);
+      this.minuteString = this.getMinuteString();
+      return;
+    }
+
+    if (this.minuteString.length === 2 && parseInt(this.minuteString, 10) > 59) {
+      this.minute = 59;
+      this.minuteString = this.getMinuteString();
+      return;
+    }
+  }
 }

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MatDialogModule } from '@angular/material/dialog';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 import { MarkdownModule } from 'ngx-markdown';
 import { CookieService } from 'ngx-cookie-service';
@@ -67,6 +68,7 @@ import { PCCoursesComponent } from '@pg-components/p-c-courses/p-c-courses.compo
 import { PCSettingsComponent } from '@pg-components/p-c-settings/p-c-settings.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
 import { TimePickerComponent } from './components/time-picker/time-picker.component';
+import { TooltipDirective } from './directives/tooltip.directive';
 
 @NgModule({
   declarations: [
@@ -106,7 +108,8 @@ import { TimePickerComponent } from './components/time-picker/time-picker.compon
     PCCoursesComponent,
     PCSettingsComponent,
     DatePickerComponent,
-    TimePickerComponent
+    TimePickerComponent,
+    TooltipDirective
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -117,7 +120,8 @@ import { TimePickerComponent } from './components/time-picker/time-picker.compon
     RouterModule,
     MarkdownModule.forRoot(),
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    OverlayModule
   ],
   providers: [
     RegisterService,

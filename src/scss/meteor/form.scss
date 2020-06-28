@@ -1,18 +1,33 @@
 @import '~scss/colors';
 @import '~scss/variables';
 
-.content-textarea {
-  min-height: 220px;
-  resize: none;
-  padding-left: 16px!important;
-}
+.mt-form-inline {
+  padding: 0!important;
+  text-align: center;
+  color: $text-main;
+  border-radius: 0!important;
+  border: none!important;
+  transition: $time-fast;
+  background: $transparent!important;
+  font-size: 24px;
+  font-weight: $font-weight-medium;
 
-.assign-type {
-  color: $palette-1;
-}
+  &::placeholder {
+    transition: $time-mid;
+    color: $palette-1-light!important;
+  }
 
-.header-1 {
-  color: $palette-1;
+  &:hover:not(:focus) {
+    border-color: $palette-1!important;
+    color: $palette-1;
+    background: $transparent!important;
+  }
+
+  &:focus {
+    color: $palette-1;
+    border-radius: 13px!important;
+    background: $main-bg-color!important;
+  }
 }
 
 .textual-form {
@@ -40,23 +55,5 @@
   &:focus {
     border-radius: 13px!important;
     background: $main-bg-color!important;
-  }
-}
-
-.type-select {
-  font-size: 160%;
-  margin-bottom: 10px;
-  cursor: pointer;
-
-  &.type-1 {
-    color: $palette-1;
-  }
-
-  &.type-2 {
-    color: $palette-2;
-  }
-
-  &.type-4 {
-    color: $palette-4;
   }
 }

@@ -1,17 +1,19 @@
 <div class="row py-3 no-gutters w-100">
   <div class="col-4 text-center selector-container">
     <i class="fas fa-chevron-up d-block selector-arrow" (click)="incrementHour()"></i>
-    <div class="date-number">{{ getHourString() }}</div>
+    <input (keydown)="limitHourField($event)" (focusout)="hourFocusOut()" (paste)="$event.preventDefault()"
+        class="form-control mt-form-inline" [(ngModel)]="hourString">
     <i class="fas fa-chevron-down d-block selector-arrow" (click)="decrementHour()"></i>
   </div>
   <div class="col-4 text-center selector-container">
-    <i class="fas fa-chevron-up d-block selector-arrow"></i>
-    <div class="date-number">{{ getMinuteString() }}</div>
-    <i class="fas fa-chevron-down d-block selector-arrow"></i>
+    <i class="fas fa-chevron-up d-block selector-arrow" (click)="incrementMinute()"></i>
+    <input (keydown)="limitMinuteField($event)" (focusout)="minuteFocusOut()" (paste)="$event.preventDefault()"
+        class="form-control mt-form-inline" [(ngModel)]="minuteString">
+    <i class="fas fa-chevron-down d-block selector-arrow" (click)="decrementMinute()"></i>
   </div>
   <div class="col-4 text-center selector-container">
-    <i class="fas fa-chevron-up d-block selector-arrow"></i>
-    <div class="date-number">{{ getMeridiem() }}</div>
-    <i class="fas fa-chevron-down d-block selector-arrow"></i>
+    <i class="fas fa-chevron-up d-block selector-arrow" (click)="changeMeridiem()"></i>
+    <input (keydown)="$event.preventDefault()" class="form-control mt-form-inline" [(ngModel)]="meridiemString">
+    <i class="fas fa-chevron-down d-block selector-arrow" (click)="changeMeridiem()"></i>
   </div>
 </div>

@@ -39,9 +39,15 @@
 
   <section *ngFor="let week of currentWeeks" class="row py-2">
     <div *ngFor="let day of week" class="col text-center px-2">
-      <div class="date"
-          [ngClass]="{'current-day': this.month === this.currentMonth && this.year === this.currentYear && day === this.currentDay}">
-        <span *ngIf="day != 0">{{ day }}</span>
+      <div class="date" data-toggle="tooltip" data-placement="top" data-html="true"
+          title="{{ tooltipHTML }}" data-trigger="focus" tabindex="0"
+          [ngClass]="{'current-day': this.month === this.currentMonth && this.year === this.currentYear && day === this.currentDay,
+                      'open': getDateMatch(day, month, year, openDate),
+                      'due': getDateMatch(day, month, year, dueDate),
+                      'closed': getDateMatch(day, month, year, closedDate)}">
+        <span *ngIf="day != 0">
+          {{ day }}
+        </span>
       </div>
     </div>
   </section>
