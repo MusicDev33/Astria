@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 import { map } from 'rxjs/operators';
 import { environment } from '@env/environment';
 
-import { BaseHeaders } from '@globals/network.headers';
+import { BaseHeaders, BaseHeaderFunc } from '@globals/network.headers';
 import { IPerson } from '@interfaces/person.interface';
 
 @Injectable({
@@ -11,7 +12,7 @@ import { IPerson } from '@interfaces/person.interface';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private cookie: CookieService) {
 
   }
 
@@ -23,7 +24,7 @@ export class AuthService {
   }
 
   authRequest(scopes: string[]) {
-    const headers = BaseHeaders;
+    const headers = BaseHeaderFunc(this.cookie.get('jwt'));
     const body = {scopes};
     return this.http.post(environment.apiURL + 'persons/auth/request/', body, {headers, withCredentials: true})
       .pipe(map(res => res));
