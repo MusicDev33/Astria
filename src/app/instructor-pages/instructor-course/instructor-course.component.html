@@ -51,7 +51,7 @@
           </div>
         </section>
 
-        <section class="col-12 mt-table-wrapper">
+        <section class="col-12 mt-table-wrapper" *ngIf="enrollments.length">
           <div class="mt-table">
             <div class="row row-container" *ngFor="let enrollment of enrollments; let i = index">
               <div class="col-12 mt-table-row px-0">

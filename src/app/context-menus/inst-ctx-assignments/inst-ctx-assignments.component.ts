@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { AssignmentType } from '@enums/assignment.enum';
+import { ITime, getJsHour } from '@interfaces/time.interface';
 
 @Component({
   selector: 'app-inst-ctx-assignments',
@@ -18,11 +19,23 @@ export class InstCtxAssignmentsComponent implements OnInit {
   @Input()
   assignDescField = '';
 
+  dateMode = 'open';
+
   graded = false;
   assignmentType = 'Assignment';
   points = '';
 
   assignmentTypes = [AssignmentType.ASSIGNMENT, AssignmentType.DISCUSSION, AssignmentType.QUIZ];
+
+  openDate: Date;
+  dueDate: Date;
+  closeDate: Date;
+
+  openTime: ITime = {hour: 11, minute: 59, meridiem: 'PM'};
+  dueTime: ITime = {hour: 11, minute: 59, meridiem: 'PM'};
+  closeTime: ITime = {hour: 11, minute: 59, meridiem: 'PM'};
+
+  sameAsDue = false;
 
   constructor() { }
 
@@ -42,4 +55,39 @@ export class InstCtxAssignmentsComponent implements OnInit {
     return `Create an ungraded `;
   }
 
+  // There are five million better ways to do this and I'm an idiot for allowing this to happen.
+  // #deadlines, yo.
+  getSelectedDate(day: number, month: number, year: number, mode: string): boolean {
+    if (mode === 'open' && this.openDate) {
+      if (this.openDate.getDate() === day && this.openDate.getMonth() + 1 === month && this.openDate.getFullYear() === year) {
+        return true;
+      }
+    } else if (mode === 'due' && this.dueDate) {
+      if (this.dueDate.getDate() === day && this.dueDate.getMonth() + 1 === month && this.dueDate.getFullYear() === year) {
+        return true;
+      }
+    } else if (mode === 'close' && this.closeDate) {
+      if (this.closeDate.getDate() === day && this.closeDate.getMonth() + 1 === month && this.closeDate.getFullYear() === year) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  selectDate(day: number, month: number, year: number) {
+    if (this.dateMode === 'open') {
+      this.openDate = new Date(year, month, day, getJsHour(this.openTime), this.openTime.minute, 0, 0);
+    } else if (this.dateMode === 'due') {
+      this.dueDate = new Date(year, month, day, getJsHour(this.dueTime), this.dueTime.minute, 0, 0);
+    } else if (this.dateMode === 'close') {
+      this.closeDate = new Date(year, month, day, getJsHour(this.closeTime), this.closeTime.minute, 0, 0);
+    }
+  }
+
+
+  // My naming is awful...
+  dateSelected(newDate: number[]) {
+    this.selectDate(newDate[0], newDate[1], newDate[2]);
+  }
 }

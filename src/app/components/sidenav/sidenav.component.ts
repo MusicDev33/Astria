@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { SharedRouteService } from '@services/shared-route.service';
 
 @Component({
@@ -13,9 +13,10 @@ export class SidenavComponent implements OnInit {
 
   currentDashParam = '';
 
-  constructor(private sharedRoute: SharedRouteService) {
+  constructor(private sharedRoute: SharedRouteService, private changeDet: ChangeDetectorRef) {
     this.sharedRoute.paramEmitted.subscribe((param: string) => {
       this.currentDashParam = param;
+      this.changeDet.detectChanges();
     });
   }
 

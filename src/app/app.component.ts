@@ -2,7 +2,7 @@
 import 'bootstrap';
 import * as $ from 'jquery';
 
-import { Component, OnInit, AfterViewChecked, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 
 import { AuthService } from '@services/auth.service';
@@ -15,7 +15,7 @@ import { routeNavMap } from './app.component.config';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, AfterViewChecked, AfterViewInit {
+export class AppComponent implements OnInit, AfterViewChecked {
   title = 'Meteor';
   currentRoute: string;
 
@@ -33,11 +33,12 @@ export class AppComponent implements OnInit, AfterViewChecked, AfterViewInit {
     public activatedRoute: ActivatedRoute,
     public router: Router,
     public authService: AuthService,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private changeDet: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
-
+    this.router.events.subscribe(this.onUrlChange.bind(this));
   }
 
   ngAfterViewChecked() {
@@ -50,22 +51,17 @@ export class AppComponent implements OnInit, AfterViewChecked, AfterViewInit {
     $('.dropdown-toggle').dropdown();
   }
 
-  ngAfterViewInit() {
-    this.router.events.subscribe(this.onUrlChange.bind(this));
-  }
-
   changeDashParam(param: string) {
     this.currentDashParam = param;
+    this.changeDet.detectChanges();
   }
 
   onUrlChange(ev: any) {
     if (ev instanceof NavigationEnd) {
-      console.log('testing');
       const url = ev.url;
       this.currentRoute = url;
 
       const routeName = this.currentRoute.replace(/[\/]/g, '');
-      console.log(routeName);
       if (routeNavMap.hasOwnProperty(routeName)) {
         this.showTopNav = routeNavMap[routeName].topNav;
         this.showSideNav = routeNavMap[routeName].sideNav;
@@ -73,10 +69,8 @@ export class AppComponent implements OnInit, AfterViewChecked, AfterViewInit {
 
       if (routeName.includes('dashboard')) {
         this.onDashboard = true;
-        console.log('on');
       } else {
         this.onDashboard = false;
-        console.log('off');
       }
 
       if (routeName === 'login' && !this.cookieService.check('jwt')) {
@@ -90,6 +84,8 @@ export class AppComponent implements OnInit, AfterViewChecked, AfterViewInit {
           }
         });
       }
+
+      this.changeDet.detectChanges();
     }
   }
 }

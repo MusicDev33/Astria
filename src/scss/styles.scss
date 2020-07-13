@@ -39,6 +39,10 @@ $astria-theme: mat-light-theme($astria-primary, $astria-accent, $astria-warn);
   outline: none!important;
 }
 
+button:focus {
+  box-shadow: none!important;
+}
+
 html {
   overflow-y: overlay!important;
 }
@@ -47,6 +51,7 @@ body {
   overflow-x: hidden;
   font-family: 'Noto Sans JP', sans-serif!important;
   color: $text-main;
+  background: $main-bg-color;
 }
 
 // Utils

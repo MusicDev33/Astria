@@ -47,7 +47,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     const jwt = this.cookieService.get('jwt');
-    console.log(jwt);
     const person: IPerson = this.jwtService.decodeJwt(jwt);
 
     this.sub = this.route.params.subscribe(params => {
@@ -55,24 +54,32 @@ export class DashboardComponent implements OnInit {
       this.pgComponent = params['mode'];
     });
 
-    this.personService.getEnrolledCourses(person._id).subscribe((res: IResponse<ICourse[]>) => {
-      if (res.success) {
-        this.enrolledCourses = res.payload;
-      }
-    });
+    this.personService.getEnrolledCourses(person._id).subscribe(
+      (res: IResponse<ICourse[]>) => {
+        if (res.success) {
+          this.enrolledCourses = res.payload;
+        }
+      },
 
-    this.personService.getInstructorCourses(person.schoolID, person.profileURL).subscribe((res: any) => {
-      if (res.success) {
-        console.log('Taught');
-        console.log(res.courses);
-        this.taughtClasses = res.courses;
+      (err: Error) => {
+        throw 'dashboard.component.ts: PersonService.getEnrolledCourses - 404 Error';
       }
-    });
+    );
+
+    this.personService.getInstructorCourses(person.schoolID, person.profileURL).subscribe(
+      (res: any) => {
+        if (res.success) {
+          this.taughtClasses = res.courses;
+        }
+      },
+      (err: Error) => {
+        throw 'dashboard.component.ts: PersonService.getInstructorCourses - 404 Error';
+      }
+    );
 
     this.announcementService.getStudentAnnouncements(person._id).subscribe((res: IResponse<IAnnouncement[]>) => {
       if (res.success) {
         this.allAnnouncements = res.payload;
-        console.log(res);
       }
     });
   }

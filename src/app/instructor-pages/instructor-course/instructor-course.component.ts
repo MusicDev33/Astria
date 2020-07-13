@@ -143,7 +143,6 @@ export class InstructorCourseComponent implements OnInit {
     this.loadingComponent = this.course.name;
     this.courseService.saveCourseParam(this.schoolID, this.instructorID, this.courseCode, 'introText', text)
       .subscribe((res: any) => {
-        console.log(res);
         this.loadingComponent = '';
       });
   }
@@ -157,7 +156,6 @@ export class InstructorCourseComponent implements OnInit {
     this.courseService.saveCourseParam(this.schoolID, this.instructorID, this.courseCode, 'syllabus', text)
       .subscribe((res: any) => {
         this.loadingComponent = '';
-        console.log(res);
       });
   }
 
@@ -192,7 +190,6 @@ export class InstructorCourseComponent implements OnInit {
         this.newAnnouncementHeading = '';
         return;
       }
-      console.log(res);
     });
   }
 

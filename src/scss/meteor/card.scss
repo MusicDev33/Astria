@@ -9,6 +9,7 @@
   @include set-transition($transition);
 
   border-radius: 20px;
+  border: 1px solid $color-soft-grey;
   background: #fff;
   word-break: break-word;
 

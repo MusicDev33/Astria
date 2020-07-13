@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-date-picker',
@@ -12,6 +12,9 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
 
   @Input()
   year: number = new Date().getFullYear();
+
+  @Output()
+  sendDatePicked = new EventEmitter<number[]>();
 
   currentDate = new Date();
 
@@ -27,13 +30,13 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
   tooltipHTML: string;
 
   @Input()
-  openDate: number[] = [6, 6, 2020];
+  openDate: number[] = [0, 0, 0];
 
   @Input()
-  dueDate: number[] = [6, 6, 2020];
+  dueDate: number[] = [0, 0, 0];
 
   @Input()
-  closedDate: number[] = [7, 6, 2020];
+  closedDate: number[] = [0, 0, 0];
 
   constructor() { }
 
@@ -51,6 +54,10 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
     $('.date[data-toggle="tooltip"]').tooltip({
       trigger: 'focus'
     });
+  }
+
+  dateClicked(day: number) {
+    this.sendDatePicked.emit([day, this.month - 1, this.year]);
   }
 
   print() {
