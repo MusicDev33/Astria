@@ -48,7 +48,12 @@
     <div class="row">
       <div class="col-12">
         <h4 class="header-1 pt-2">
-          <b>Open: </b> <button class="btn mt-btn-1" (click)="dateMode='open'" data-toggle="modal" data-target="#dateModal"><i class="fas fa-plus"></i> Add Date</button>
+          <b>Open: </b>
+          <button class="btn mt-btn-1" (click)="dateMode='open'" data-toggle="modal" data-target="#dateModal" *ngIf="!openDate">
+            <i class="fas fa-plus"></i> Add Date
+          </button>
+
+          <span>{{  }}</span>
         </h4>
       </div>
     </div>

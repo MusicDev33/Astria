@@ -3,6 +3,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AssignmentType } from '@enums/assignment.enum';
 import { ITime, getJsHour } from '@interfaces/time.interface';
 
+import { MONTHS_SHORT } from '@globals/date';
+
 @Component({
   selector: 'app-inst-ctx-assignments',
   templateUrl: './inst-ctx-assignments.component.html',
@@ -89,5 +91,9 @@ export class InstCtxAssignmentsComponent implements OnInit {
   // My naming is awful...
   dateSelected(newDate: number[]) {
     this.selectDate(newDate[0], newDate[1], newDate[2]);
+  }
+
+  getDateString(date: Date): string {
+    return `${MONTHS_SHORT[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()} at `;
   }
 }
