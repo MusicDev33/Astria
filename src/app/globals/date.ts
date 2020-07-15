@@ -17,5 +17,5 @@ export function getMeridiemTime(date: Date): string {
     hour = 12;
   }
 
-  return `${}`;
+  return `${hour}:${date.getMinutes()} ${meridiem}`;
 }

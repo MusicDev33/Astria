@@ -6,7 +6,6 @@ export interface ITime {
 
 export function getJsTime(time: ITime): ITime {
   if (time.meridiem === 'AM') {
-    time.hour -= 1;
     return time;
   }
 
@@ -22,7 +21,7 @@ export function getJsTime(time: ITime): ITime {
 
 export function getJsHour(time: ITime): number {
   if (time.meridiem === 'AM') {
-    return time.hour - 1;
+    return time.hour;
   }
 
   if (time.meridiem === 'PM') {

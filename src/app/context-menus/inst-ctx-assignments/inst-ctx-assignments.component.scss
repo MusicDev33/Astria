@@ -59,3 +59,14 @@
     color: $palette-4;
   }
 }
+
+.edit-pencil {
+  cursor: pointer;
+  color: $palette-1-light;
+
+  transition: $time-mid;
+
+  &:hover {
+    color: $palette-1;
+  }
+}

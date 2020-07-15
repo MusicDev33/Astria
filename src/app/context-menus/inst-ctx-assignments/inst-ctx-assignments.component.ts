@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AssignmentType } from '@enums/assignment.enum';
 import { ITime, getJsHour } from '@interfaces/time.interface';
 
-import { MONTHS_SHORT } from '@globals/date';
+import { MONTHS_SHORT, getMeridiemTime } from '@globals/date';
 
 @Component({
   selector: 'app-inst-ctx-assignments',
@@ -33,9 +33,9 @@ export class InstCtxAssignmentsComponent implements OnInit {
   dueDate: Date;
   closeDate: Date;
 
-  openTime: ITime = {hour: 11, minute: 59, meridiem: 'PM'};
-  dueTime: ITime = {hour: 11, minute: 59, meridiem: 'PM'};
-  closeTime: ITime = {hour: 11, minute: 59, meridiem: 'PM'};
+  openTime: ITime = {hour: 11, minute: 57, meridiem: 'PM'};
+  dueTime: ITime = {hour: 11, minute: 56, meridiem: 'PM'};
+  closeTime: ITime = {hour: 11, minute: 55, meridiem: 'PM'};
 
   sameAsDue = false;
 
@@ -87,13 +87,41 @@ export class InstCtxAssignmentsComponent implements OnInit {
     }
   }
 
-
   // My naming is awful...
   dateSelected(newDate: number[]) {
     this.selectDate(newDate[0], newDate[1], newDate[2]);
   }
 
   getDateString(date: Date): string {
-    return `${MONTHS_SHORT[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()} at `;
+    return `${MONTHS_SHORT[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()} at ${getMeridiemTime(date)}`;
+  }
+
+  getModeTime(): ITime {
+    if (this.dateMode === 'open') {
+      return this.openTime;
+    } else if (this.dateMode === 'due') {
+      return this.dueTime;
+    } else {
+      return this.closeTime;
+    }
+  }
+
+  changeTime(time: ITime) {
+    if (this.dateMode === 'open') {
+      this.openTime = time;
+      if (this.openDate) {
+        this.openDate.setHours(getJsHour(this.openTime), this.openTime.minute);
+      }
+    } else if (this.dateMode === 'due') {
+      this.dueTime = time;
+      if (this.dueDate) {
+        this.openDate.setHours(getJsHour(this.dueTime), this.dueTime.minute);
+      }
+    } else {
+      this.closeTime = time;
+      if (this.closeDate) {
+        this.openDate.setHours(getJsHour(this.closeTime), this.closeTime.minute);
+      }
+    }
   }
 }

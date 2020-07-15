@@ -47,36 +47,62 @@
 
     <div class="row">
       <div class="col-12">
-        <h4 class="header-1 pt-2">
+        <h5 class="header-1 pt-2">
           <b>Open: </b>
           <button class="btn mt-btn-1" (click)="dateMode='open'" data-toggle="modal" data-target="#dateModal" *ngIf="!openDate">
             <i class="fas fa-plus"></i> Add Date
           </button>
 
-          <span>{{  }}</span>
-        </h4>
+          <span *ngIf="openDate">
+            {{ getDateString(openDate) }}
+            <i class="fas fa-pencil-alt edit-pencil" (click)="dateMode='open'" data-toggle="modal" data-target="#dateModal"></i>
+          </span>
+        </h5>
       </div>
     </div>
 
     <div class="row">
       <div class="col-12">
-        <h4 class="header-1 pt-2">
-          <b>Due: </b> <button class="btn mt-btn-1" (click)="dateMode='due'" data-toggle="modal" data-target="#dateModal"><i class="fas fa-plus"></i> Add Date</button>
-        </h4>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12">
-        <h4 class="header-1 pt-2">
-          <b>Closed: </b>
-          <button class="btn mt-btn-1" (click)="dateMode='close'" data-toggle="modal" data-target="#dateModal" [disabled]="sameAsDue">
+        <h5 class="header-1 pt-2">
+          <b>Due: </b>
+          <button class="btn mt-btn-1" (click)="dateMode='due'" data-toggle="modal" data-target="#dateModal" *ngIf="!dueDate">
             <i class="fas fa-plus"></i> Add Date
           </button>
+
+          <span *ngIf="dueDate">
+            {{ getDateString(dueDate) }}
+            <i class="fas fa-pencil-alt edit-pencil" (click)="dateMode='due'" data-toggle="modal" data-target="#dateModal"></i>
+          </span>
+        </h5>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <h5 class="header-1 pt-2">
+          <b>Closed: </b>
+          <button class="btn mt-btn-1" (click)="dateMode='close'" *ngIf="!sameAsDue && !closeDate"
+              data-toggle="modal" data-target="#dateModal" [disabled]="sameAsDue">
+            <i class="fas fa-plus"></i> Add Date
+          </button>
+
+          <span *ngIf="sameAsDue && dueDate">
+            {{ getDateString(dueDate) }}
+          </span>
+
+          <span *ngIf="sameAsDue && !dueDate">
+            Enter a due date
+          </span>
+
+          <span *ngIf="closeDate && !sameAsDue">
+            {{ getDateString(closeDate) }}
+            <i class="fas fa-pencil-alt edit-pencil" (click)="dateMode='close'" data-toggle="modal" data-target="#dateModal"></i>
+          </span>
+
           <button class="btn ml-3" [ngClass]="{'mt-btn-1-filled': sameAsDue, 'mt-btn-1': !sameAsDue}" (click)="sameAsDue=!sameAsDue">
             Same as Due <i class="fas fa-check" [ngClass]="{'d-none': !sameAsDue}"></i>
           </button>
-        </h4>
+        </h5>
       </div>
     </div>
 
@@ -122,7 +148,9 @@
               <h3 class="text-center pt-2">{{ dateMode.charAt(0).toUpperCase() + dateMode.substring(1) }}</h3>
               <div class="row justify-content-center">
                 <div class="col-8">
-                  <app-time-picker></app-time-picker>
+                  <app-time-picker [hour]="getModeTime().hour" [minute]="getModeTime().minute"
+                    [morning]="getModeTime().meridiem === 'AM'" (sendTime)="changeTime($event)">
+                  </app-time-picker>
                 </div>
               </div>
             </div>
