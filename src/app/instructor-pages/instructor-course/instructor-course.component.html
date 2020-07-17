@@ -28,8 +28,6 @@
         </div>
       </section>
 
-      <h3 class="text-center">Announcements</h3>
-
       <section class="row px-3 mb-3" *ngFor="let announcement of announcements">
         <div class="col-12 px-4 pt-3 mt-card select hover">
           <h4>{{ announcement.header }}</h4>
@@ -68,7 +66,29 @@
     </div>
 
     <div class="col-7" *ngIf="topNavOptions[selectedNavIndex] === 'Assignments'">
+      <h5>Creating your first assignment in Meteor can seem daunting. We're here to help!</h5>
+      <h5>First, what are you looking for in this assignment/quiz?</h5>
+      <section class="row mt-3">
+        <div class="col-4">
+          <div class="mt-card p-3 h-100 hover select">
+            <p>I want to add a series of short and long answer questions</p>
+          </div>
+        </div>
 
+        <div class="col-4">
+          <div class="mt-card p-3 h-100 hover select">
+            <p>I want my students to have a discussion</p>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="mt-card p-3 h-100 hover select">
+            <p>I'd like to create a quiz or exam</p>
+          </div>
+        </div>
+      </section>
+
+      
     </div>
 
     <!-- Context Menus -->

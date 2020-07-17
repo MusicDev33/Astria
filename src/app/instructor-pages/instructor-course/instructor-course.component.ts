@@ -46,6 +46,8 @@ export class InstructorCourseComponent implements OnInit {
 
   loadingComponent = '';
 
+  assignmentInfoMode = 'Empty';
+
   constructor(
     private jwtService: JwtService,
     private courseService: CourseService,

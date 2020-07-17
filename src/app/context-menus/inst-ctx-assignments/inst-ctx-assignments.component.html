@@ -127,7 +127,9 @@
     <div class="modal-content mt-modal">
       <div class="modal-body">
         <app-date-picker (sendDatePicked)="dateSelected($event)"
-          [openDate]="openDate ? [openDate.getDate(), openDate.getMonth() + 1, openDate.getFullYear()] : [0, 0, 0]">
+          [openDate]="openDate ? [openDate.getDate(), openDate.getMonth() + 1, openDate.getFullYear()] : [0, 0, 0]"
+          [dueDate]="dueDate ? [dueDate.getDate(), dueDate.getMonth() + 1, dueDate.getFullYear()] : [0, 0, 0]"
+          [closedDate]="closeDate ? [closeDate.getDate(), closeDate.getMonth() + 1, closeDate.getFullYear()] : [0, 0, 0]">
         </app-date-picker>
         <article class="container-fluid">
           <section class="row">

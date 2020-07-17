@@ -87,6 +87,8 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
       this.closedDate = [];
       this.closedDate.push(day, month, year);
     }
+
+    console.log(this.dueDate);
   }
 
   returnToCurrentMonth() {
