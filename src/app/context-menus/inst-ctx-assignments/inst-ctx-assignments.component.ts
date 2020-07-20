@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { AssignmentType } from '@enums/assignment.enum';
 import { ITime, getJsHour } from '@interfaces/time.interface';
+import { IAssignment } from '@models/assignment.model';
 
 import { MONTHS_SHORT, getMeridiemTime } from '@globals/date';
 
@@ -12,19 +13,14 @@ import { MONTHS_SHORT, getMeridiemTime } from '@globals/date';
 })
 export class InstCtxAssignmentsComponent implements OnInit {
 
+  @Output()
+  emitAssignment = new EventEmitter<IAssignment>();
+
   @Input()
   loading = false;
 
-  @Input()
-  assignNameField = '';
-
-  @Input()
-  assignDescField = '';
-
   dateMode = 'open';
 
-  graded = false;
-  assignmentType = 'Assignment';
   points = '';
 
   assignmentTypes = [AssignmentType.ASSIGNMENT, AssignmentType.DISCUSSION, AssignmentType.QUIZ];
@@ -39,14 +35,30 @@ export class InstCtxAssignmentsComponent implements OnInit {
 
   sameAsDue = false;
 
+  assignment: IAssignment;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.assignment = {
+      name: '',
+      description: '',
+      openDate: new Date(),
+      dueDate: new Date(),
+      closeDate: new Date(),
+      type: AssignmentType.ASSIGNMENT,
+      allowedFileExtensions: [],
+      points: 10,
+      studentScore: 0,
+      courseID: '',
+      graded: false,
+      layoutID: ''
+    };
   }
 
   headerGenerator(): string {
     const vowels = ['a', 'e', 'i', 'o', 'u'];
-    if (this.graded) {
+    if (this.assignment.graded) {
       if (vowels.indexOf(this.assignmentType[0].toLowerCase()) !== -1) {
         return `Create an `;
       }
@@ -123,5 +135,44 @@ export class InstCtxAssignmentsComponent implements OnInit {
         this.openDate.setHours(getJsHour(this.closeTime), this.closeTime.minute);
       }
     }
+  }
+
+  limitNumberField(event: KeyboardEvent): boolean {
+    if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+      return true;
+    }
+
+    if (event.key === 'Backspace' || event.key === 'Delete') {
+      return true;
+    }
+
+    const numbers = '1234567890';
+
+    if (!numbers.includes(event.key)) {
+      event.preventDefault();
+      return true;
+    }
+
+    return true;
+  }
+
+  sendAssignment() {
+    let assignPoints = 0;
+    if (this.points !== '') {
+      assignPoints = parseInt(this.points, 10);
+    }
+
+    let closeDate = this.closeDate;
+
+    if (this.sameAsDue) {
+      closeDate = this.dueDate;
+    }
+
+    this.emitAssignment.emit(this.assignment);
+  }
+
+  // TODO: Make this not shitty
+  assignmentReady(): boolean {
+    return true;
   }
 }

@@ -2,22 +2,23 @@
   <div class="col-12 mt-card mt-ctx-menu py-3">
     <section class="row">
       <div class="col-12">
-        <h4 class="pl-2 mb-3" *ngIf="graded">
-          <b class="assign-type">{{ assignmentType }}</b> worth
-          <input maxlength="4" class="form-control textual-form d-inline" placeholder="10" [(ngModel)]="points"/>
+        <h4 class="pl-2 mb-3" *ngIf="assignment.graded">
+          <b class="assign-type">{{ assignment.type }}</b> worth
+          <input maxlength="4" (paste)="$event.preventDefault()" (keydown)="limitNumberField($event)"
+            class="form-control textual-form d-inline" placeholder="10" [(ngModel)]="points"/>
           points
         </h4>
 
-        <h4 class="pl-2 mb-3 pt-2" *ngIf="!graded">
-          {{ headerGenerator() }} <b class="assign-type">{{ assignmentType }}</b>
+        <h4 class="pl-2 mb-3 pt-2" *ngIf="!assignment.graded">
+          {{ headerGenerator() }} <b class="assign-type">{{ assignment.type }}</b>
         </h4>
       </div>
 
       <div class="col-12">
         <div class="row mb-3 px-3">
           <div class="col" *ngFor="let type of assignmentTypes">
-            <div class="mt-underline-selector-1" (click)="assignmentType = type"
-                [ngClass]="{'selected': type === assignmentType}">
+            <div class="mt-underline-selector-1" (click)="assignment.type = type"
+                [ngClass]="{'selected': type === assignment.type}">
               {{ type }}
             </div>
           </div>
@@ -25,21 +26,23 @@
       </div>
 
       <div class="col-12">
-        <input class="form-control mt-ctx-field mb-2" placeholder="Assignment Name" [(ngModel)]="assignNameField"/>
+        <input class="form-control mt-ctx-field mb-2" placeholder="Assignment Name" [(ngModel)]="assignment.name"/>
       </div>
 
       <div class="col-12">
-        <textarea placeholder="Assignment Description" [(ngModel)]="assignDescField"
+        <textarea placeholder="Assignment Description" [(ngModel)]="assignment.description"
           class="form-control content-textarea mt-ctx-field"></textarea>
       </div>
 
       <div class="col-12">
         <div class="row mt-2 px-3">
           <div class="col">
-            <div class="mt-underline-selector-1" [ngClass]="{'selected': graded}" (click)="graded=true">Graded</div>
+            <div class="mt-underline-selector-1" [ngClass]="{'selected': assignment.graded}" (click)="assignment.graded=true">
+              Graded
+            </div>
           </div>
           <div class="col">
-            <div class="mt-underline-selector-1" [ngClass]="{'selected': !graded}" (click)="graded=false">Ungraded</div>
+            <div class="mt-underline-selector-1" [ngClass]="{'selected': !assignment.graded}" (click)="assignment.graded=false">Ungraded</div>
           </div>
         </div>
       </div>
@@ -108,8 +111,8 @@
 
     <section class="row mt-3">
       <div class="col-12 text-center">
-        <button class="btn mt-btn-1-filled w-100"
-          [disabled]="!assignNameField || !assignDescField" *ngIf="!loading">
+        <button class="btn mt-btn-1-filled w-100" (click)="sendAssignment()"
+          [disabled]="!assignment.name || !assignment.description" *ngIf="!loading">
           Create Assignment
         </button>
 

@@ -8,6 +8,8 @@ export interface IAssignment {
   type: string; // What kind of assignment? A Quiz? Upload?
   allowedFileExtensions: string[];
   points: number;
+  studentScore: number;
   courseID: string;
   graded: boolean;
+  layoutID: string;
 }

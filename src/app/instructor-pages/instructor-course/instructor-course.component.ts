@@ -10,6 +10,7 @@ import { ICourse } from '@models/course.model';
 import { IAnnouncement } from '@models/announcement.model';
 import { IPerson } from '@models/person.model';
 import { IEnrollment } from '@models/enrollment.model';
+import { IAssignment } from '@models/assignment.model';
 
 import { IResponse } from '@interfaces/response.interface';
 
@@ -55,40 +56,6 @@ export class InstructorCourseComponent implements OnInit {
     private announcementService: AnnouncementService,
     private enrollmentService: EnrollmentService
   ) { }
-
-  /*
-  @HostListener('document:keydown.arrowright', ['$event'])
-  onArrowRightHandler(event: KeyboardEvent) {
-    if (this.keyIsDown) {
-      return;
-    }
-    if (this.selectedNavIndex === this.topNavOptions.length - 1) {
-      this.selectedNavIndex = 0;
-    } else {
-      this.selectedNavIndex += 1;
-    }
-    this.keyIsDown = true;
-  }
-
-  @HostListener('document:keydown.arrowleft', ['$event'])
-  onArrowLeftHandler(event: KeyboardEvent) {
-    if (this.keyIsDown) {
-      return;
-    }
-    if (this.selectedNavIndex === 0) {
-      this.selectedNavIndex = this.topNavOptions.length - 1;
-    } else {
-      this.selectedNavIndex -= 1;
-    }
-    this.keyIsDown = true;
-  }
-
-  @HostListener('document:keyup.arrowright', ['$event'])
-  @HostListener('document:keyup.arrowleft', ['$event'])
-  onKeyUp() {
-    this.keyIsDown = false;
-  }
-  */
 
   ngOnInit(): void {
     const person = this.jwtService.decodeCookieByName('jwt');
@@ -225,5 +192,9 @@ export class InstructorCourseComponent implements OnInit {
         this.enrollments.unshift(res.payload);
       }
     });
+  }
+
+  createAssignment() {
+    
   }
 }
