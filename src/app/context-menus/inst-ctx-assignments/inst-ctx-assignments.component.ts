@@ -59,7 +59,7 @@ export class InstCtxAssignmentsComponent implements OnInit {
   headerGenerator(): string {
     const vowels = ['a', 'e', 'i', 'o', 'u'];
     if (this.assignment.graded) {
-      if (vowels.indexOf(this.assignmentType[0].toLowerCase()) !== -1) {
+      if (vowels.indexOf(this.assignment.type[0].toLowerCase()) !== -1) {
         return `Create an `;
       }
 
