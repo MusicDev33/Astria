@@ -5,6 +5,7 @@ import { JwtService } from '@services/jwt.service';
 import { CourseService } from '@services/course.service';
 import { AnnouncementService } from '@services/announcement.service';
 import { EnrollmentService } from '@services/enrollment.service';
+import { AssignmentService } from '@services/assignment.service';
 
 import { ICourse } from '@models/course.model';
 import { IAnnouncement } from '@models/announcement.model';
@@ -54,7 +55,8 @@ export class InstructorCourseComponent implements OnInit {
     private courseService: CourseService,
     private route: ActivatedRoute,
     private announcementService: AnnouncementService,
-    private enrollmentService: EnrollmentService
+    private enrollmentService: EnrollmentService,
+    private assignmentService: AssignmentService
   ) { }
 
   ngOnInit(): void {
@@ -194,7 +196,13 @@ export class InstructorCourseComponent implements OnInit {
     });
   }
 
-  createAssignment() {
-    
+  createAssignment(assignment: IAssignment) {
+    assignment.courseID = this.course._id;
+
+    this.assignmentService.createCourseAssignment(assignment).subscribe((res: IResponse<IAssignment>) => {
+      if (res.success) {
+        console.log(res);
+      }
+    });
   }
 }

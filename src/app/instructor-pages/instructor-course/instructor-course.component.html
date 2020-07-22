@@ -118,7 +118,7 @@
       <app-inst-ctx-students (sendEnrollStudentPressed)="enrollStudent($event)"
         *ngIf="topNavOptions[selectedNavIndex] === 'Students'"></app-inst-ctx-students>
 
-      <app-inst-ctx-assignments *ngIf="topNavOptions[selectedNavIndex] === 'Assignments'">
+      <app-inst-ctx-assignments *ngIf="topNavOptions[selectedNavIndex] === 'Assignments'" (emitAssignment)="createAssignment($event)">
       </app-inst-ctx-assignments>
     </div>
   </section>

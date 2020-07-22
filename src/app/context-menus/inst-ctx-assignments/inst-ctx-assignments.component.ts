@@ -162,17 +162,41 @@ export class InstCtxAssignmentsComponent implements OnInit {
       assignPoints = parseInt(this.points, 10);
     }
 
+    this.assignment.points = assignPoints;
+
     let closeDate = this.closeDate;
 
     if (this.sameAsDue) {
       closeDate = this.dueDate;
     }
 
+    if (!this.assignment.graded) {
+      this.assignment.points = 0;
+    }
+
+    this.assignment.openDate = this.openDate;
+    this.assignment.dueDate = this.dueDate;
+    this.assignment.closeDate = closeDate;
+
     this.emitAssignment.emit(this.assignment);
   }
 
   // TODO: Make this not shitty
   assignmentReady(): boolean {
+    for (const key in this.assignment) {
+      if (key === 'layoutID' || key === 'courseID' || key === 'graded' || key === 'studentScore') {
+        continue;
+      }
+
+      if (!this.assignment[key]) {
+        return false;
+      }
+    }
+
+    if (!this.openDate || !this.dueDate || !(this.closeDate || this.sameAsDue)) {
+      return false;
+    }
+
     return true;
   }
 }

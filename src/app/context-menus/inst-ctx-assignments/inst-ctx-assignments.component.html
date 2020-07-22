@@ -112,7 +112,7 @@
     <section class="row mt-3">
       <div class="col-12 text-center">
         <button class="btn mt-btn-1-filled w-100" (click)="sendAssignment()"
-          [disabled]="!assignment.name || !assignment.description" *ngIf="!loading">
+          [disabled]="!assignmentReady()" *ngIf="!loading">
           Create Assignment
         </button>
 
