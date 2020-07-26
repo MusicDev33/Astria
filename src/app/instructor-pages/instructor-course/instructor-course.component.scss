@@ -30,3 +30,17 @@
   color: $text-soft;
   font-weight: $font-weight-medium;
 }
+
+.assign-points {
+  font-weight: $font-weight-medium;
+}
+
+.assign-settings {
+  font-size: 140%;
+  transition: $time-mid;
+
+  &:hover {
+    color: $palette-1;
+    cursor: pointer;
+  }
+}

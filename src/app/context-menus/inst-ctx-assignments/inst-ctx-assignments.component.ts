@@ -196,6 +196,8 @@ export class InstCtxAssignmentsComponent implements OnInit {
       layoutID: ''
     };
 
+    this.sameAsDue = false;
+
     this.openDate = null;
     this.dueDate = null;
     this.closeDate = null;
