@@ -27,4 +27,11 @@ export class AssignmentService {
 
     return this.http.post(url, layout, authObject).pipe(map(res => res));
   }
+
+  getAssignmentsForCourse(courseID: string) {
+    const authObject = {headers: BaseHeaderFunc(this.cookie.get('jwt')), withCredentials: true};
+    const url = `${environment.apiURL}courses/course/${courseID}/assignments`;
+
+    return this.http.get(url, authObject).pipe(map(res => res));
+  }
 }

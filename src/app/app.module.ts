@@ -69,6 +69,7 @@ import { PCSettingsComponent } from '@pg-components/p-c-settings/p-c-settings.co
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
 import { TimePickerComponent } from './components/time-picker/time-picker.component';
 import { TooltipDirective } from './directives/tooltip.directive';
+import { AssignmentCardComponent } from './components/assignment-card/assignment-card.component';
 
 @NgModule({
   declarations: [
@@ -109,7 +110,8 @@ import { TooltipDirective } from './directives/tooltip.directive';
     PCSettingsComponent,
     DatePickerComponent,
     TimePickerComponent,
-    TooltipDirective
+    TooltipDirective,
+    AssignmentCardComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

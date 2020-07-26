@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { JwtService } from '@services/jwt.service';
@@ -16,6 +16,7 @@ import { IAssignment } from '@models/assignment.model';
 import { IResponse } from '@interfaces/response.interface';
 
 import { shortMonths } from '@globals/time';
+import { MONTHS_SHORT, getMeridiemTime } from '@globals/date';
 
 @Component({
   selector: 'app-instructor-course',
@@ -50,6 +51,8 @@ export class InstructorCourseComponent implements OnInit {
 
   assignmentInfoMode = 'Empty';
 
+  assignments: IAssignment[] = [];
+
   constructor(
     private jwtService: JwtService,
     private courseService: CourseService,
@@ -78,6 +81,13 @@ export class InstructorCourseComponent implements OnInit {
               this.enrollmentService.getCourseEnrollments(this.course._id).subscribe((enrollRes: IResponse<IEnrollment[]>) => {
                 if (res.success) {
                   this.enrollments = enrollRes.payload;
+                }
+              });
+
+              this.assignmentService.getAssignmentsForCourse(this.course._id).subscribe((assignRes: IResponse<IAssignment[]>) => {
+                if (res.success) {
+                  this.assignments = assignRes.payload.reverse();
+                  console.log(assignRes);
                 }
               });
             }
@@ -198,11 +208,21 @@ export class InstructorCourseComponent implements OnInit {
 
   createAssignment(assignment: IAssignment) {
     assignment.courseID = this.course._id;
-
+    this.loadingComponent = 'Assignments';
     this.assignmentService.createCourseAssignment(assignment).subscribe((res: IResponse<IAssignment>) => {
       if (res.success) {
+        this.assignments.unshift(res.payload);
         console.log(res);
       }
+      this.loadingComponent = '';
     });
+  }
+
+  getAssignmentDueDate(date: Date) {
+    const jsDate = new Date(date);
+    let assignDueDate = `${MONTHS_SHORT[jsDate.getMonth()]} ${jsDate.getDate()}, ${jsDate.getFullYear()} `;
+
+    assignDueDate += `at ${getMeridiemTime(jsDate)}`;
+    return assignDueDate;
   }
 }

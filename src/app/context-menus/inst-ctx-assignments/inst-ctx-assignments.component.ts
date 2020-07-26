@@ -49,7 +49,6 @@ export class InstCtxAssignmentsComponent implements OnInit {
       type: AssignmentType.ASSIGNMENT,
       allowedFileExtensions: [],
       points: 10,
-      studentScore: 0,
       courseID: '',
       graded: false,
       layoutID: ''
@@ -113,26 +112,29 @@ export class InstCtxAssignmentsComponent implements OnInit {
       return this.openTime;
     } else if (this.dateMode === 'due') {
       return this.dueTime;
-    } else {
+    } else if (this.dateMode === 'close') {
       return this.closeTime;
     }
   }
 
   changeTime(time: ITime) {
     if (this.dateMode === 'open') {
+      console.log('Open Time');
       this.openTime = time;
       if (this.openDate) {
         this.openDate.setHours(getJsHour(this.openTime), this.openTime.minute);
       }
     } else if (this.dateMode === 'due') {
+      console.log('Due Time');
       this.dueTime = time;
       if (this.dueDate) {
-        this.openDate.setHours(getJsHour(this.dueTime), this.dueTime.minute);
+        this.dueDate.setHours(getJsHour(this.dueTime), this.dueTime.minute);
       }
-    } else {
+    } else if (this.dateMode === 'close') {
+      console.log('Close Time');
       this.closeTime = time;
       if (this.closeDate) {
-        this.openDate.setHours(getJsHour(this.closeTime), this.closeTime.minute);
+        this.closeDate.setHours(getJsHour(this.closeTime), this.closeTime.minute);
       }
     }
   }
@@ -179,6 +181,24 @@ export class InstCtxAssignmentsComponent implements OnInit {
     this.assignment.closeDate = closeDate;
 
     this.emitAssignment.emit(this.assignment);
+
+    this.assignment = {
+      name: '',
+      description: '',
+      openDate: new Date(),
+      dueDate: new Date(),
+      closeDate: new Date(),
+      type: AssignmentType.ASSIGNMENT,
+      allowedFileExtensions: [],
+      points: 10,
+      courseID: '',
+      graded: false,
+      layoutID: ''
+    };
+
+    this.openDate = null;
+    this.dueDate = null;
+    this.closeDate = null;
   }
 
   // TODO: Make this not shitty
