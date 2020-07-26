@@ -53,6 +53,9 @@ export class InstructorCourseComponent implements OnInit {
 
   assignments: IAssignment[] = [];
 
+  editAssignmentMode = '';
+  currentEditAssignment: IAssignment;
+
   constructor(
     private jwtService: JwtService,
     private courseService: CourseService,
@@ -224,5 +227,15 @@ export class InstructorCourseComponent implements OnInit {
 
     assignDueDate += `at ${getMeridiemTime(jsDate)}`;
     return assignDueDate;
+  }
+
+  setEditAssignment(assignment: IAssignment, mode: string) {
+    this.currentEditAssignment = assignment;
+    this.editAssignmentMode = mode;
+  }
+
+  resetEditAssignment() {
+    this.currentEditAssignment = null;
+    this.editAssignmentMode = '';
   }
 }

@@ -86,3 +86,14 @@ $assign-card-height: 137px;
 .assign-card {
   max-height: $assign-card-height;
 }
+
+.reset-edit-button {
+  cursor: pointer;
+  transition: $time-mid;
+  opacity: 0.3;
+  color: $mt-red;
+
+  &:hover {
+    opacity: 1;
+  }
+}
