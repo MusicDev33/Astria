@@ -44,3 +44,45 @@
     cursor: pointer;
   }
 }
+
+$assign-card-height: 137px;
+
+.assign-container {
+  background: $palette-2-bg;
+  border-radius: $border-radius;
+  transition: $time-mid;
+  height: $assign-card-height - 2px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+
+  .assign-options {
+    align-self: baseline;
+    opacity: 0;
+    transition: $time-fast;
+
+    .option {
+      font-weight: $font-weight-medium;
+      font-size: 115%;
+      color: $palette-1-light;
+      transition: $time-mid;
+      margin-right: 25px;
+
+      &:hover {
+        color: $palette-1;
+      }
+    }
+  }
+
+  &:hover {
+    height: $assign-card-height + 40px;
+
+    .assign-options {
+      opacity: 1;
+    }
+  }
+}
+
+.assign-card {
+  max-height: $assign-card-height;
+}
