@@ -108,7 +108,7 @@
         <div class="assign-container col-12 p-0">
           <div class="px-4 py-3 mt-card select hover assign-card">
             <h4>{{ assignment.name }}</h4>
-            <markdown [data]="assignment.description"></markdown>
+            <div class="text-truncate pb-3">{{ assignment.description }}</div>
             <div>
               <span class="due-date">Due {{ getAssignmentDueDate(assignment.dueDate) }}</span>
               <span class="float-right">
