@@ -137,6 +137,7 @@ import { AssignmentCardComponent } from './components/assignment-card/assignment
     SharedRouteService
   ],
   bootstrap: [AppComponent],
+  // Get rid of this
   entryComponents: [AnnouncementDialogComponent]
 })
 export class AppModule { }
