@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { JwtService } from '@services/jwt.service';
@@ -25,7 +25,9 @@ import { MONTHS_SHORT, getMeridiemTime } from '@globals/date';
   templateUrl: './instructor-course.component.html',
   styleUrls: ['./instructor-course.component.scss']
 })
-export class InstructorCourseComponent implements OnInit {
+export class InstructorCourseComponent implements OnInit, AfterViewChecked {
+
+  @ViewChild('addQuestionBar') QuestionBar: ElementRef;
 
   sub: any;
 
@@ -67,6 +69,8 @@ export class InstructorCourseComponent implements OnInit {
     checkbox: '<i class="far fa-check-square mr-2"></i> Checkbox'
   };
 
+  newLayoutItem = false;
+
   constructor(
     private jwtService: JwtService,
     private courseService: CourseService,
@@ -107,6 +111,13 @@ export class InstructorCourseComponent implements OnInit {
             }
           });
       });
+    }
+  }
+
+  ngAfterViewChecked(): void {
+    if (this.newLayoutItem) {
+      this.QuestionBar.nativeElement.scrollIntoView({behavior: 'smooth', block: 'center'});
+      this.newLayoutItem = false;
     }
   }
 
@@ -258,6 +269,7 @@ export class InstructorCourseComponent implements OnInit {
     };
 
     this.layoutItems.push(newItem);
+    this.newLayoutItem = true;
   }
 
   addAnswerToQuestion(index: number, assignmentID: string) {
@@ -276,12 +288,25 @@ export class InstructorCourseComponent implements OnInit {
     this.layoutItems[index].answers.push(newAnswer);
   }
 
+  multiChoiceClicked(layoutItem: ILayoutItem) {
+    layoutItem.type = 'multichoice';
+    if (layoutItem.answers.length) {
+      layoutItem.answers[0].isCorrect = true;
+    }
+  }
+
   setCorrectAnswer(layoutIndex: number, answerIndex: number, mode: string) {
     if (mode === 'multichoice') {
       for (const answer of this.layoutItems[layoutIndex].answers) {
         answer.isCorrect = false;
       }
       this.layoutItems[layoutIndex].answers[answerIndex].isCorrect = true;
+    } else if (mode === 'checkbox') {
+      this.layoutItems[layoutIndex].answers[answerIndex].isCorrect = true;
     }
+  }
+
+  unsetCorrectAnswer(layoutIndex: number, answerIndex: number) {
+    this.layoutItems[layoutIndex].answers[answerIndex].isCorrect = false;
   }
 }
