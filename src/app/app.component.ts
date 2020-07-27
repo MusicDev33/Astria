@@ -48,6 +48,9 @@ export class AppComponent implements OnInit, AfterViewChecked {
     $('.sidenav-icon[data-toggle="tooltip"]').tooltip({
       trigger: 'hover'
     });
+    $('.radio-button[data-toggle="tooltip"]').tooltip({
+      trigger: 'hover'
+    });
     $('.dropdown-toggle').dropdown();
   }
 

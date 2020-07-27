@@ -127,12 +127,88 @@
       </div>
 
       <div *ngIf="editAssignmentMode === 'layout' && currentEditAssignment">
-        <section class="row">
+        <section class="row mb-4">
           <div class="col-12">
             <h2 class="pl-2">
-              <i class="far fa-times-circle reset-edit-button" (click)="resetEditAssignment()"></i> 
+              <i class="far fa-times-circle reset-edit-button" (click)="resetEditAssignment()"></i>
               {{ currentEditAssignment.name }}
             </h2>
+          </div>
+        </section>
+
+        <section class="row mb-3" *ngFor="let item of layoutItems; let i = index;">
+          <div class="col-12">
+            <div class="mt-card py-3 px-4">
+
+              <div class="mt-2 mb-3 dropdown">
+                <span class="layout-type-selector dropdown-toggle" data-toggle="dropdown" id="itemDrop{{ i }}"
+                  [innerHTML]="layoutTypeMap[item.type]">
+                </span>
+                <div class="dropdown-menu mt-dropdown-menu">
+
+                  <div class="dropdown-item top palette-1" (click)="item.type='shortanswer'">
+                    <i class="fas fa-align-left mr-2"></i> Short Answer
+                  </div>
+
+                  <div class="dropdown-item palette-1" (click)="item.type='essay'">
+                    <i class="far fa-file-alt mr-2"></i> Essay
+                  </div>
+
+                  <div class="dropdown-item palette-1" (click)="item.type='multichoice'">
+                    <i class="far fa-dot-circle mr-2"></i> Multi-choice
+                  </div>
+
+                  <div class="dropdown-item bottom palette-1" (click)="item.type='checkbox'">
+                    <i class="far fa-check-square mr-2"></i> Check Box
+                  </div>
+
+                </div>
+              </div>
+              <input class="form-control layout-form" placeholder="Enter a question"/>
+
+              <section *ngIf="item.type === 'multichoice'">
+                <div class="row mt-2">
+                  <div class="col-12">
+                    <h5>Answers</h5>
+                  </div>
+                </div>
+
+                <div class="form-group row mt-1 no-gutters" *ngFor="let answer of item.answers; let j = index;">
+                  <label for="answer{{ j }}" class="col-1 col-form-label text-center">
+                    <i class="far fa-circle radio-button" *ngIf="!answer.isCorrect"
+                        (click)="setCorrectAnswer(i, j, 'multichoice')"></i>
+                    <i class="far fa-dot-circle radio-button selected" *ngIf="answer.isCorrect"></i>
+                  </label>
+                  <div class="col-4">
+                    <input class="form-control layout-form" id="answer{{ j }}" [(ngModel)]="answer.text">
+                  </div>
+                  <div class="col-3 my-auto">
+                    <span *ngIf="answer.isCorrect" class="answer-correct my-auto">Correct</span>
+                  </div>
+                </div>
+
+                <div class="row mt-1">
+                  <div class="col-3">
+                    <div class="add-answer px-3 py-2 text-center"
+                        (click)="addAnswerToQuestion(i, currentEditAssignment._id)">
+                      <i class="fas fa-plus"></i> Add Answer
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+            </div>
+          </div>
+        </section>
+
+        <section class="row">
+          <div class="col-12">
+            <div class="add-question-btn py-3 px-4" (click)="addLayoutItem()">
+              <h4 class="my-auto">
+                <i class="fas fa-plus"></i>
+                Add Question
+              </h4>
+            </div>
           </div>
         </section>
       </div>

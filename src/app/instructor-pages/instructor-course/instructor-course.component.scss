@@ -97,3 +97,81 @@ $assign-card-height: 137px;
     opacity: 1;
   }
 }
+
+.add-question-btn {
+  color: $palette-1-light;
+  cursor: pointer;
+  transition: $time-mid;
+  border-radius: $border-radius;
+  border: 1px solid $palette-1-light;
+
+  &:hover {
+    background: $palette-1-bg;
+    color: $palette-1;
+    border-color: $palette-1-bg;
+  }
+}
+
+.layout-form {
+  background: $transparent!important;
+  border: none!important;
+  border-radius: 0!important;
+  transition: $time-mid;
+  border-bottom: 2px solid $palette-1-bg!important;
+  padding-left: 3px!important;
+  caret-color: $palette-1;
+
+  &:hover:not(:focus) {
+    border-color: $palette-1!important;
+  }
+
+  &:focus {
+    border-color: $palette-1!important;
+    box-shadow: none!important;
+  }
+}
+
+.layout-type-selector {
+  border: 1px solid $color-soft-grey;
+  border-radius: $border-radius;
+  font-weight: $font-weight-medium;
+  padding: 6px 15px;
+  transition: $time-mid;
+  cursor: pointer;
+
+  &:hover {
+    background: $color-soft-grey;
+  }
+}
+
+.add-answer {
+  color: $palette-1-light;
+  cursor: pointer;
+  transition: $time-mid;
+  border-radius: $border-radius;
+  border: 1px solid $palette-1-light;
+
+  &:hover {
+    background: $palette-1-bg;
+    color: $palette-1;
+    border-color: $palette-1-bg;
+  }
+}
+
+.radio-button {
+  font-size: 110%;
+  cursor: pointer;
+  transition: $time-mid;
+
+  &.selected {
+    color: $palette-1;
+  }
+
+  &:hover {
+    color: $palette-1;
+  }
+}
+
+.answer-correct {
+  color: $mt-green;
+}

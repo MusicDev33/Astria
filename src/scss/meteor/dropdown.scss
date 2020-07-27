@@ -30,15 +30,21 @@
 }
 
 .dropdown-item {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 13px;
+  padding-bottom: 13px;
   padding-left: 20px;
   padding-right: 70px;
   transition: $time-fast;
   color: $text-main;
-}
+  cursor: pointer;
 
-.dropdown-item:hover {
-  background: $palette-4;
-  color: $palette-3!important;
+  &:hover {
+    background: $palette-4;
+    color: $palette-3!important;
+  }
+
+  &.palette-1:hover {
+    background: $palette-1;
+    color: $palette-3!important;
+  }
 }

@@ -12,6 +12,8 @@ import { IAnnouncement } from '@models/announcement.model';
 import { IPerson } from '@models/person.model';
 import { IEnrollment } from '@models/enrollment.model';
 import { IAssignment } from '@models/assignment.model';
+import { ILayoutItem } from '@interfaces/layout-item.interface';
+import { IQuizAnswer } from '@interfaces/quiz-answer.interface';
 
 import { IResponse } from '@interfaces/response.interface';
 
@@ -55,6 +57,15 @@ export class InstructorCourseComponent implements OnInit {
 
   editAssignmentMode = '';
   currentEditAssignment: IAssignment;
+
+  layoutItems: ILayoutItem[] = [];
+
+  layoutTypeMap = {
+    shortanswer: '<i class="fas fa-align-left mr-2"></i> Short Answer',
+    essay: '<i class="far fa-file-alt mr-2"></i> Essay',
+    multichoice: '<i class="far fa-dot-circle mr-2"></i> Multi Choice',
+    checkbox: '<i class="far fa-check-square mr-2"></i> Checkbox'
+  };
 
   constructor(
     private jwtService: JwtService,
@@ -237,5 +248,40 @@ export class InstructorCourseComponent implements OnInit {
   resetEditAssignment() {
     this.currentEditAssignment = null;
     this.editAssignmentMode = '';
+  }
+
+  addLayoutItem() {
+    const newItem: ILayoutItem = {
+      type: 'shortanswer',
+      question: '',
+      answers: []
+    };
+
+    this.layoutItems.push(newItem);
+  }
+
+  addAnswerToQuestion(index: number, assignmentID: string) {
+    const numAnswers = this.layoutItems[index].answers.length + 1;
+    const answerText = `Choice ${numAnswers}`;
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+
+    const newAnswer: IQuizAnswer = {
+      answerID: alphabet[numAnswers - 1],
+      text: answerText,
+      isCorrect: numAnswers === 1 ? true : false,
+      quizID: assignmentID,
+      quizQuestionNumber: index
+    };
+
+    this.layoutItems[index].answers.push(newAnswer);
+  }
+
+  setCorrectAnswer(layoutIndex: number, answerIndex: number, mode: string) {
+    if (mode === 'multichoice') {
+      for (const answer of this.layoutItems[layoutIndex].answers) {
+        answer.isCorrect = false;
+      }
+      this.layoutItems[layoutIndex].answers[answerIndex].isCorrect = true;
+    }
   }
 }
