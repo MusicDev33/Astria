@@ -1,0 +1,42 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@components/*": ["app/components/*"],
+      "@services/*": ["app/services/*"],
+      "@guards/*": ["app/guards/*"],
+      "@interfaces/*": ["app/interfaces/*"],
+      "@globals/*": ["app/globals/*"],
+      "@dialogs/*": ["app/dialogs/*"],
+      "@pages/*": ["app/pages/*"],
+      "@pg-components/*": ["app/pg-components/*"],
+      "@env/*": ["environments/*"],
+      "@admin-pages/*": ["app/admin-pages/*"],
+      "@modules/*": ["app/modules/*"],
+      "@models/*": ["app/models/*"],
+      "@instructor-pages/*": ["app/instructor-pages/*"],
+      "@student-pages/*": ["app/student-pages/*"],
+      "@context-menus/*": ["app/context-menus/*"],
+      "@enums/*": ["app/interfaces/enums/*"],
+      "@directives/*": ["app/directives/*"]
+    },
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "es2020",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "lib": [
+      "es2018",
+      "dom"
+    ]
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  }
+}
