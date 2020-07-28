@@ -173,21 +173,24 @@
                   </div>
                 </div>
 
-                <div class="form-group row mt-1 no-gutters" *ngFor="let answer of item.answers; let j = index;">
-                  <label for="answer-{{ i }}-{{ j }}" class="col-1 col-form-label text-center">
-                    <i class="far fa-circle radio-button" *ngIf="!answer.isCorrect"
+                <div class="form-group row mt-1 g-0" *ngFor="let answer of item.answers; let j = index;">
+                  <label for="answer-{{ i }}-{{ j }}" class="col-1 col-form-label text-center my-auto">
+                    <i class="far fa-circle radio-button my-auto" *ngIf="!answer.isCorrect"
                         (click)="setCorrectAnswer(i, j, 'multichoice')"></i>
-                    <i class="far fa-dot-circle radio-button selected" *ngIf="answer.isCorrect"></i>
+                    <i class="far fa-dot-circle radio-button selected my-auto" *ngIf="answer.isCorrect"></i>
                   </label>
                   <div class="col-4">
                     <input class="form-control layout-form" id="answer-{{ i }}-{{ j }}" [(ngModel)]="answer.text">
                   </div>
-                  <div class="col-3 my-auto">
+                  <div class="col-auto my-auto pl-2">
+                    <i class="far fa-trash-alt trash-icon" (click)="removeChoice(i, j, 'multichoice')"></i>
+                  </div>
+                  <div class="col-3 my-auto pl-3">
                     <span *ngIf="answer.isCorrect" class="answer-correct my-auto">Correct</span>
                   </div>
                 </div>
 
-                <div class="row mt-1">
+                <div class="row pt-3">
                   <div class="col-3">
                     <div class="add-answer px-3 py-2 text-center"
                         (click)="addAnswerToQuestion(i, currentEditAssignment._id)">
@@ -204,7 +207,7 @@
                   </div>
                 </div>
 
-                <div class="form-group row mt-1 no-gutters" *ngFor="let answer of item.answers; let j = index;">
+                <div class="form-group row mt-1 g-0" *ngFor="let answer of item.answers; let j = index;">
                   <label for="answer-{{ i }}-{{ j }}" class="col-1 col-form-label text-center">
                     <i class="far fa-check-square radio-button" *ngIf="!answer.isCorrect"
                         (click)="setCorrectAnswer(i, j, 'checkbox')"></i>
@@ -214,12 +217,15 @@
                   <div class="col-4">
                     <input class="form-control layout-form" id="answer-{{ i }}-{{ j }}" [(ngModel)]="answer.text">
                   </div>
-                  <div class="col-3 my-auto">
+                  <div class="col-auto">
+                    <i class="far fa-trash-alt" (click)="removeChoice(i, j, 'checkbox')"></i>
+                  </div>
+                  <div class="col-3 my-auto pl-3">
                     <span *ngIf="answer.isCorrect" class="answer-correct my-auto">Correct</span>
                   </div>
                 </div>
 
-                <div class="row mt-1">
+                <div class="row pt-3">
                   <div class="col-3">
                     <div class="add-answer px-3 py-2 text-center"
                         (click)="addAnswerToQuestion(i, currentEditAssignment._id)">

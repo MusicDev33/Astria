@@ -28,7 +28,7 @@
 }
 
 input.mt-ctx-field {
-  @include mt-ctx-field($pad-x: 17px, $pad-y: 20px)
+  @include mt-ctx-field($pad-x: 17px, $pad-y: 10px)
 }
 
 textarea.mt-ctx-field {

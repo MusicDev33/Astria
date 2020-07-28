@@ -118,7 +118,7 @@ $assign-card-height: 137px;
   border-radius: 0!important;
   transition: $time-mid;
   border-bottom: 2px solid $palette-1-bg!important;
-  padding-left: 3px!important;
+  padding: 7px 3px!important;
   caret-color: $palette-1;
 
   &:hover:not(:focus) {
@@ -169,6 +169,18 @@ $assign-card-height: 137px;
 
   &:hover {
     color: $palette-1;
+  }
+}
+
+.trash-icon {
+  font-size: 130%;
+  cursor: pointer;
+  transition: $time-mid;
+  opacity: 0.3;
+
+  &:hover {
+    color: $mt-red;
+    opacity: 0.9;
   }
 }
 
