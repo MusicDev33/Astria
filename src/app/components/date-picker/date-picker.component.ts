@@ -1,11 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-date-picker',
   templateUrl: './date-picker.component.html',
   styleUrls: ['./date-picker.component.scss']
 })
-export class DatePickerComponent implements OnInit, AfterViewInit {
+export class DatePickerComponent implements OnInit {
 
   @Input()
   month: number = new Date().getMonth() + 1;
@@ -48,12 +48,6 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
     this.constructMonth(this.month, this.year);
 
     this.tooltipHTML = `<h5 onclick="print()">${this.currentYear}</h5>`;
-  }
-
-  ngAfterViewInit() {
-    $('.date[data-toggle="tooltip"]').tooltip({
-      trigger: 'focus'
-    });
   }
 
   dateClicked(day: number) {

@@ -1,4 +1,5 @@
 @import '~scss/colors';
+@import '~scss/variables';
 
 .tooltip.bs-tooltip-auto[x-placement^=right] .arrow::before, .tooltip.bs-tooltip-right .arrow::before {
     border-right-color: $palette-1;
@@ -36,4 +37,11 @@
   .bottom >.tooltip-arrow {
     border-bottom-color: $palette-1;
   }
+}
+
+.mt-tooltip-1 {
+  background: $palette-1;
+  font-weight: $font-weight-medium;
+  color: #fff;
+  font-size: 80%;
 }

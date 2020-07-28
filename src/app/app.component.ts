@@ -1,8 +1,4 @@
-// This sucks
-import 'bootstrap';
-import * as $ from 'jquery';
-
-import { Component, OnInit, AfterViewChecked, ChangeDetectorRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 
 import { AuthService } from '@services/auth.service';
@@ -15,7 +11,7 @@ import { routeNavMap } from './app.component.config';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, AfterViewChecked {
+export class AppComponent implements OnInit {
   title = 'Meteor';
   currentRoute: string;
 
@@ -39,19 +35,6 @@ export class AppComponent implements OnInit, AfterViewChecked {
 
   ngOnInit() {
     this.router.events.subscribe(this.onUrlChange.bind(this));
-  }
-
-  ngAfterViewChecked() {
-    // This is to load tooltips for Bootstrap, instead of installing more 3rd-party libraries
-    // https://getbootstrap.com/docs/4.5/components/tooltips/
-    // This is also for activating all of the Bootstrap stuff
-    $('.sidenav-icon[data-toggle="tooltip"]').tooltip({
-      trigger: 'hover'
-    });
-    $('.radio-button[data-toggle="tooltip"]').tooltip({
-      trigger: 'hover'
-    });
-    $('.dropdown-toggle').dropdown();
   }
 
   changeDashParam(param: string) {

@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { MatDialogModule } from '@angular/material/dialog';
 import { OverlayModule } from '@angular/cdk/overlay';
 
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 import { MarkdownModule } from 'ngx-markdown';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -15,7 +17,7 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from '@pages/register/register.component';
 import { DashboardComponent } from '@pages/dashboard/dashboard.component';
 
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { NavbarComponent } from '@components/navbar/navbar.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { UpcomingEventsComponent } from './components/upcoming-events/upcoming-events.component';
@@ -123,7 +125,8 @@ import { AssignmentCardComponent } from './components/assignment-card/assignment
     MarkdownModule.forRoot(),
     BrowserAnimationsModule,
     MatDialogModule,
-    OverlayModule
+    OverlayModule,
+    MatTooltipModule
   ],
   providers: [
     RegisterService,
