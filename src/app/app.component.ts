@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 
 import { AuthService } from '@services/auth.service';

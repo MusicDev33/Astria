@@ -18,23 +18,23 @@ import { RegisterComponent } from '@pages/register/register.component';
 import { DashboardComponent } from '@pages/dashboard/dashboard.component';
 
 import { NavbarComponent } from '@components/navbar/navbar.component';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
-import { CalendarComponent } from './components/calendar/calendar.component';
-import { UpcomingEventsComponent } from './components/upcoming-events/upcoming-events.component';
-import { CourseLargeComponent } from './components/course-large/course-large.component';
-import { CourseSmallComponent } from './components/course-small/course-small.component';
-import { PricingComponent } from './pages/pricing/pricing.component';
-import { TasklistComponent } from './components/tasklist/tasklist.component';
-import { InstructorCoursesComponent } from './instructor-pages/instructor-courses/instructor-courses.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { SidenavComponent } from '@components/sidenav/sidenav.component';
+import { CalendarComponent } from '@components/calendar/calendar.component';
+import { UpcomingEventsComponent } from '@components/upcoming-events/upcoming-events.component';
+import { CourseLargeComponent } from '@components/course-large/course-large.component';
+import { CourseSmallComponent } from '@components/course-small/course-small.component';
+import { PricingComponent } from '@pages/pricing/pricing.component';
+import { TasklistComponent } from '@components/tasklist/tasklist.component';
+import { InstructorCoursesComponent } from '@instructor-pages/instructor-courses/instructor-courses.component';
+import { NotFoundComponent } from '@pages/not-found/not-found.component';
 
-import { PCCalendarComponent } from './pg-components/p-c-calendar/p-c-calendar.component';
-import { PCTasklistComponent } from './pg-components/p-c-tasklist/p-c-tasklist.component';
-import { PCInstructorComponent } from './pg-components/p-c-instructor/p-c-instructor.component';
-import { PCEventComponent } from './pg-components/p-c-event/p-c-event.component';
+import { PCCalendarComponent } from '@pg-components/p-c-calendar/p-c-calendar.component';
+import { PCTasklistComponent } from '@pg-components/p-c-tasklist/p-c-tasklist.component';
+import { PCInstructorComponent } from '@pg-components/p-c-instructor/p-c-instructor.component';
+import { PCEventComponent } from '@pg-components/p-c-event/p-c-event.component';
 
 // Admin
-import { AdminDashboardComponent } from './admin-pages/admin-dashboard/admin-dashboard.component';
+import { AdminDashboardComponent } from '@admin-pages/admin-dashboard/admin-dashboard.component';
 
 // Services
 import { RegisterService } from '@services/register.service';
@@ -68,10 +68,10 @@ import { AnnouncementDialogComponent } from '@dialogs/announcement-dialog/announ
 import { PCAnnouncementsComponent } from '@pg-components/p-c-announcements/p-c-announcements.component';
 import { PCCoursesComponent } from '@pg-components/p-c-courses/p-c-courses.component';
 import { PCSettingsComponent } from '@pg-components/p-c-settings/p-c-settings.component';
-import { DatePickerComponent } from './components/date-picker/date-picker.component';
-import { TimePickerComponent } from './components/time-picker/time-picker.component';
+import { DatePickerComponent } from '@components/date-picker/date-picker.component';
+import { TimePickerComponent } from '@components/time-picker/time-picker.component';
 import { TooltipDirective } from './directives/tooltip.directive';
-import { AssignmentCardComponent } from './components/assignment-card/assignment-card.component';
+import { AssignmentCardComponent } from '@components/assignment-card/assignment-card.component';
 
 @NgModule({
   declarations: [
