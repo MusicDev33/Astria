@@ -296,10 +296,15 @@ export class InstructorCourseComponent implements OnInit, AfterViewChecked {
   }
 
   removeChoice(layoutIndex: number, answerIndex: number, mode: string) {
+    let changeAnswer = false;
     if (this.layoutItems[layoutIndex].answers[answerIndex].isCorrect && mode === 'multichoice') {
-      this.layoutItems[layoutIndex].answers[0].isCorrect = true;
+      changeAnswer = true;
     }
     this.layoutItems[layoutIndex].answers.splice(answerIndex, 1);
+
+    if (changeAnswer && this.layoutItems[layoutIndex].answers.length) {
+      this.layoutItems[layoutIndex].answers[0].isCorrect = true;
+    }
   }
 
   setCorrectAnswer(layoutIndex: number, answerIndex: number, mode: string) {
