@@ -285,7 +285,7 @@ export class InstructorCourseComponent implements OnInit, AfterViewChecked {
     };
 
     this.layoutItems.push(newItem);
-    this.currentAssignmentLayout.objects.push(newItem);
+    this.currentAssignmentLayout.objects = this.layoutItems;
     this.newLayoutItem = true;
 
     const id = this.currentEditAssignment._id;
