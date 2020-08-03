@@ -6,6 +6,7 @@ import { CourseService } from '@services/course.service';
 import { AnnouncementService } from '@services/announcement.service';
 import { EnrollmentService } from '@services/enrollment.service';
 import { AssignmentService } from '@services/assignment.service';
+import { LayoutService } from '@services/layout.service';
 
 import { ICourse } from '@models/course.model';
 import { IAnnouncement } from '@models/announcement.model';
@@ -14,6 +15,7 @@ import { IEnrollment } from '@models/enrollment.model';
 import { IAssignment } from '@models/assignment.model';
 import { ILayoutItem } from '@interfaces/layout-item.interface';
 import { IQuizAnswer } from '@interfaces/quiz-answer.interface';
+import { ILayout } from '@models/layout.model';
 
 import { IResponse } from '@interfaces/response.interface';
 
@@ -61,6 +63,10 @@ export class InstructorCourseComponent implements OnInit, AfterViewChecked {
   currentEditAssignment: IAssignment;
 
   layoutItems: ILayoutItem[] = [];
+  currentAssignmentLayout: ILayout = {
+    objects: [],
+    assignmentID: ''
+  };
 
   layoutTypeMap = {
     shortanswer: '<i class="fas fa-align-left mr-2"></i> Short Answer',
@@ -77,7 +83,8 @@ export class InstructorCourseComponent implements OnInit, AfterViewChecked {
     private route: ActivatedRoute,
     private announcementService: AnnouncementService,
     private enrollmentService: EnrollmentService,
-    private assignmentService: AssignmentService
+    private assignmentService: AssignmentService,
+    private layoutService: LayoutService
   ) { }
 
   ngOnInit(): void {
@@ -254,6 +261,14 @@ export class InstructorCourseComponent implements OnInit, AfterViewChecked {
   setEditAssignment(assignment: IAssignment, mode: string) {
     this.currentEditAssignment = assignment;
     this.editAssignmentMode = mode;
+    this.currentAssignmentLayout.assignmentID = assignment._id;
+
+    this.layoutService.getAssignmentLayout(assignment._id).subscribe((res: IResponse<ILayout>) => {
+      if (res.success) {
+        this.currentAssignmentLayout = res.payload;
+        this.layoutItems = res.payload.objects;
+      }
+    });
   }
 
   resetEditAssignment() {
@@ -265,11 +280,23 @@ export class InstructorCourseComponent implements OnInit, AfterViewChecked {
     const newItem: ILayoutItem = {
       type: 'shortanswer',
       question: '',
-      answers: []
+      answers: [],
+      assignmentID: this.currentEditAssignment._id
     };
 
     this.layoutItems.push(newItem);
+    this.currentAssignmentLayout.objects.push(newItem);
     this.newLayoutItem = true;
+
+    const id = this.currentEditAssignment._id;
+    const currentLayout = this.currentAssignmentLayout;
+
+    this.layoutService.autosaveAssignmentLayout(currentLayout, id).subscribe((res: IResponse<ILayout>) => {
+      console.log(res);
+      if (res.success) {
+        this.currentAssignmentLayout._id = res.payload._id;
+      }
+    });
   }
 
   addAnswerToQuestion(index: number, assignmentID: string) {

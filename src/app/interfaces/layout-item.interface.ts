@@ -4,4 +4,5 @@ export interface ILayoutItem {
   question: string;
   type: string;
   answers?: IQuizAnswer[];
+  assignmentID: string;
 }

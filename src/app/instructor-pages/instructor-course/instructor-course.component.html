@@ -164,7 +164,9 @@
 
                 </div>
               </div>
-              <input class="form-control layout-form" placeholder="Enter a question"/>
+
+              <input class="form-control layout-form" placeholder="Enter a question"
+                  [(ngModel)]="item.question" />
 
               <section *ngIf="item.type === 'multichoice'">
                 <div class="row mt-2">
@@ -217,8 +219,8 @@
                   <div class="col-4">
                     <input class="form-control layout-form" id="answer-{{ i }}-{{ j }}" [(ngModel)]="answer.text">
                   </div>
-                  <div class="col-auto">
-                    <i class="far fa-trash-alt" (click)="removeChoice(i, j, 'checkbox')"></i>
+                  <div class="col-auto my-auto pl-2">
+                    <i class="far fa-trash-alt trash-icon" (click)="removeChoice(i, j, 'checkbox')"></i>
                   </div>
                   <div class="col-3 my-auto pl-3">
                     <span *ngIf="answer.isCorrect" class="answer-correct my-auto">Correct</span>
