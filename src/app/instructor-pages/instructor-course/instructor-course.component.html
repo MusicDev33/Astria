@@ -136,11 +136,12 @@
           </div>
         </section>
 
-        <section class="row mb-3" *ngFor="let item of layoutItems; let i = index;">
+        <section class="row mb-3" *ngFor="let item of currentAssignmentLayout.objects; let i = index;">
           <div class="col-12">
             <div class="mt-card py-3 px-4">
 
               <div class="mt-2 mb-3 dropdown">
+
                 <span class="layout-type-selector dropdown-toggle" data-toggle="dropdown" id="itemDrop{{ i }}"
                   [innerHTML]="layoutTypeMap[item.type]">
                 </span>
@@ -163,6 +164,7 @@
                   </div>
 
                 </div>
+                <i class="far fa-trash-alt trash-icon float-right" (click)="removeLayoutItem(i)"></i>
               </div>
 
               <input class="form-control layout-form" placeholder="Enter a question"

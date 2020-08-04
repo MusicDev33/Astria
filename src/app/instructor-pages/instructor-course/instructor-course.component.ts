@@ -266,12 +266,18 @@ export class InstructorCourseComponent implements OnInit, AfterViewChecked {
     this.layoutService.getAssignmentLayout(assignment._id).subscribe((res: IResponse<ILayout>) => {
       if (res.success) {
         this.currentAssignmentLayout = res.payload;
-        this.layoutItems = res.payload.objects;
       }
     });
   }
 
   resetEditAssignment() {
+    const id = this.currentEditAssignment._id;
+    const currentLayout = this.currentAssignmentLayout;
+
+    this.layoutService.autosaveAssignmentLayout(currentLayout, id).subscribe((res: IResponse<ILayout>) => {
+      console.log(res);
+    });
+
     this.currentEditAssignment = null;
     this.editAssignmentMode = '';
   }
@@ -284,8 +290,8 @@ export class InstructorCourseComponent implements OnInit, AfterViewChecked {
       assignmentID: this.currentEditAssignment._id
     };
 
-    this.layoutItems.push(newItem);
-    this.currentAssignmentLayout.objects = this.layoutItems;
+    this.currentAssignmentLayout.objects.push(newItem);
+    // This is for the animation that scrolls to the bottom
     this.newLayoutItem = true;
 
     const id = this.currentEditAssignment._id;
@@ -299,8 +305,21 @@ export class InstructorCourseComponent implements OnInit, AfterViewChecked {
     });
   }
 
+  removeLayoutItem(layoutIndex: number) {
+    if (layoutIndex > -1) {
+      this.currentAssignmentLayout.objects.splice(layoutIndex, 1);
+
+      const id = this.currentEditAssignment._id;
+      const currentLayout = this.currentAssignmentLayout;
+
+      this.layoutService.autosaveAssignmentLayout(currentLayout, id).subscribe((res: IResponse<ILayout>) => {
+        console.log(res);
+      });
+    }
+  }
+
   addAnswerToQuestion(index: number, assignmentID: string) {
-    const numAnswers = this.layoutItems[index].answers.length + 1;
+    const numAnswers = this.currentAssignmentLayout.objects[index].answers.length + 1;
     const answerText = `Choice ${numAnswers}`;
     const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
@@ -312,7 +331,7 @@ export class InstructorCourseComponent implements OnInit, AfterViewChecked {
       quizQuestionNumber: index
     };
 
-    this.layoutItems[index].answers.push(newAnswer);
+    this.currentAssignmentLayout.objects[index].answers.push(newAnswer);
   }
 
   multiChoiceClicked(layoutItem: ILayoutItem) {
@@ -324,28 +343,28 @@ export class InstructorCourseComponent implements OnInit, AfterViewChecked {
 
   removeChoice(layoutIndex: number, answerIndex: number, mode: string) {
     let changeAnswer = false;
-    if (this.layoutItems[layoutIndex].answers[answerIndex].isCorrect && mode === 'multichoice') {
+    if (this.currentAssignmentLayout.objects[layoutIndex].answers[answerIndex].isCorrect && mode === 'multichoice') {
       changeAnswer = true;
     }
-    this.layoutItems[layoutIndex].answers.splice(answerIndex, 1);
+    this.currentAssignmentLayout.objects[layoutIndex].answers.splice(answerIndex, 1);
 
-    if (changeAnswer && this.layoutItems[layoutIndex].answers.length) {
-      this.layoutItems[layoutIndex].answers[0].isCorrect = true;
+    if (changeAnswer && this.currentAssignmentLayout.objects[layoutIndex].answers.length) {
+      this.currentAssignmentLayout.objects[layoutIndex].answers[0].isCorrect = true;
     }
   }
 
   setCorrectAnswer(layoutIndex: number, answerIndex: number, mode: string) {
     if (mode === 'multichoice') {
-      for (const answer of this.layoutItems[layoutIndex].answers) {
+      for (const answer of this.currentAssignmentLayout.objects[layoutIndex].answers) {
         answer.isCorrect = false;
       }
-      this.layoutItems[layoutIndex].answers[answerIndex].isCorrect = true;
+      this.currentAssignmentLayout.objects[layoutIndex].answers[answerIndex].isCorrect = true;
     } else if (mode === 'checkbox') {
-      this.layoutItems[layoutIndex].answers[answerIndex].isCorrect = true;
+      this.currentAssignmentLayout.objects[layoutIndex].answers[answerIndex].isCorrect = true;
     }
   }
 
   unsetCorrectAnswer(layoutIndex: number, answerIndex: number) {
-    this.layoutItems[layoutIndex].answers[answerIndex].isCorrect = false;
+    this.currentAssignmentLayout.objects[layoutIndex].answers[answerIndex].isCorrect = false;
   }
 }
