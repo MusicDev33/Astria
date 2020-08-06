@@ -170,6 +170,23 @@
               <input class="form-control layout-form" placeholder="Enter a question"
                   [(ngModel)]="item.question" />
 
+              <section *ngIf="item.type === 'essay' || item.type === 'shortanswer'">
+                <div class="row mt-3">
+                  <div class="col my-auto text-right">
+                    Points:
+                    <span class="fa-stack">
+                      <i class="fas fa-circle fa-stack-2x pt-bg"></i>
+                      <i class="fas fa-minus fa-stack-1x fa-inverse pt-adjust"></i>
+                    </span>
+                    <span class="pt-amount align-middle"> 1 </span>
+                    <span class="fa-stack">
+                      <i class="fas fa-circle fa-stack-2x pt-bg"></i>
+                      <i class="fas fa-plus fa-stack-1x fa-inverse pt-adjust"></i>
+                    </span>
+                  </div>
+                </div>
+              </section>
+
               <section *ngIf="item.type === 'multichoice'">
                 <div class="row mt-2">
                   <div class="col-12">
@@ -202,6 +219,7 @@
                     </div>
                   </div>
                   <div class="col my-auto text-right">
+                    Points:
                     <span class="fa-stack">
                       <i class="fas fa-circle fa-stack-2x pt-bg"></i>
                       <i class="fas fa-minus fa-stack-1x fa-inverse pt-adjust"></i>
@@ -246,6 +264,18 @@
                         (click)="addAnswerToQuestion(i, currentEditAssignment._id)">
                       <i class="fas fa-plus"></i> Add Answer
                     </div>
+                  </div>
+                  <div class="col my-auto text-right">
+                    Points: 
+                    <span class="fa-stack">
+                      <i class="fas fa-circle fa-stack-2x pt-bg"></i>
+                      <i class="fas fa-minus fa-stack-1x fa-inverse pt-adjust"></i>
+                    </span>
+                    <span class="pt-amount align-middle"> 1 </span>
+                    <span class="fa-stack">
+                      <i class="fas fa-circle fa-stack-2x pt-bg"></i>
+                      <i class="fas fa-plus fa-stack-1x fa-inverse pt-adjust"></i>
+                    </span>
                   </div>
                 </div>
               </section>
