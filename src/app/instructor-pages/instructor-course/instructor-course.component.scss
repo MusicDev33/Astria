@@ -187,3 +187,24 @@ $assign-card-height: 137px;
 .answer-correct {
   color: $mt-green;
 }
+
+.pt-adjust {
+  cursor: pointer;
+  transition: $time-mid;
+  color: $palette-1;
+}
+
+.pt-bg {
+  opacity: 0;
+  transition: $time-mid;
+  color: $palette-1-bg;
+}
+
+.fa-stack:hover .pt-bg {
+  opacity: 1;
+}
+
+.pt-amount {
+  font-size: 130%;
+  cursor: default;
+}
