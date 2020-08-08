@@ -8,7 +8,7 @@
   </div>
 </article>
 
-<article class="row pr-4">
+<article class="row">
   <section [ngClass]="{'col-6': createCourseMode, 'col-12': !createCourseMode}" *ngIf="courses.length">
     <div class="row">
       <app-course-card [course]="course" [courseLink]="getCourseLink(course.courseCode)"

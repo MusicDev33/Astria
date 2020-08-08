@@ -65,3 +65,8 @@
   transition: 0.3s;
   cursor: pointer;
 }
+
+// Bootstrap 5 no longer makes column position relative by default
+.col-rel {
+  position: relative;
+}
