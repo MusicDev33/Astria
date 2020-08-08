@@ -1,7 +1,7 @@
 @import '~scss/variables';
 @import '~scss/colors';
 
-@mixin as-input($border-radius: 999px, $pad-x: 23px, $pad-y: 20px) {
+@mixin as-input($border-radius: 999px, $pad-x: 23px, $pad-y: 10px) {
   background: #f0f0f0!important;
   border-color: #f0f0f0!important;
   border-radius: $border-radius!important;

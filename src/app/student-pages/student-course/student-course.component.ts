@@ -1,9 +1,13 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { ICourse } from '@models/course.model';
 import { IResponse } from '@interfaces/response.interface';
 import { CourseService } from '@services/course.service';
+import { AssignmentService } from '@services/assignment.service';
+import { IAssignment } from '@models/assignment.model';
+
+import { MONTHS_SHORT, getMeridiemTime } from '@globals/date';
 
 @Component({
   selector: 'app-student-course',
@@ -23,43 +27,12 @@ export class StudentCourseComponent implements OnInit {
   instructorID: string;
   courseID: string;
 
-  keyIsDown = false;
-
-  @HostListener('document:keydown.arrowright', ['$event'])
-  onArrowRightHandler(event: KeyboardEvent) {
-    if (this.keyIsDown) {
-      return;
-    }
-    if (this.selectedNavIndex === this.topNavOptions.length - 1) {
-      this.selectedNavIndex = 0;
-    } else {
-      this.selectedNavIndex += 1;
-    }
-    this.keyIsDown = true;
-  }
-
-  @HostListener('document:keydown.arrowleft', ['$event'])
-  onArrowLeftHandler(event: KeyboardEvent) {
-    if (this.keyIsDown) {
-      return;
-    }
-    if (this.selectedNavIndex === 0) {
-      this.selectedNavIndex = this.topNavOptions.length - 1;
-    } else {
-      this.selectedNavIndex -= 1;
-    }
-    this.keyIsDown = true;
-  }
-
-  @HostListener('document:keyup.arrowright', ['$event'])
-  @HostListener('document:keyup.arrowleft', ['$event'])
-  onKeyUp() {
-    this.keyIsDown = false;
-  }
+  assignments: IAssignment[] = [];
 
   constructor(
     private courseService: CourseService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private assignmentService: AssignmentService
   ) { }
 
   ngOnInit(): void {
@@ -73,9 +46,25 @@ export class StudentCourseComponent implements OnInit {
           if (res.success) {
             this.course = res.payload;
             this.topNavOptions[0] = this.course.name;
+            this.getAssignments(this.course._id);
           }
         });
     });
   }
 
+  getAssignments(courseID: string) {
+    this.assignmentService.getAssignmentsForCourse(courseID).subscribe((res: IResponse<IAssignment[]>) => {
+      if (res.success) {
+        this.assignments = res.payload;
+      }
+    });
+  }
+
+  getAssignmentDueDate(date: Date) {
+    const jsDate = new Date(date);
+    let assignDueDate = `${MONTHS_SHORT[jsDate.getMonth()]} ${jsDate.getDate()}, ${jsDate.getFullYear()} `;
+
+    assignDueDate += `at ${getMeridiemTime(jsDate)}`;
+    return assignDueDate;
+  }
 }

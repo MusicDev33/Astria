@@ -39,5 +39,34 @@
       </section>
       -->
     </div>
+
+    <div class="col-7" *ngIf="topNavOptions[selectedNavIndex] === 'Assignments'">
+      <div>
+        <section class="row">
+          <div class="col-12">
+            <h2 class="pl-2">Current</h2>
+          </div>
+        </section>
+        <section class="row px-3 mb-3" *ngFor="let assignment of assignments" >
+          <div class="assign-container col-12 p-0">
+            <div class="px-4 py-3 mt-card select hover assign-card">
+              <h4>{{ assignment.name }}</h4>
+              <div class="text-truncate pb-3">{{ assignment.description }}</div>
+              <div>
+                <span class="due-date">Due {{ getAssignmentDueDate(assignment.dueDate) }}</span>
+                <span class="float-right">
+                  <span *ngIf="assignment.graded" class="assign-points mr-2">{{ assignment.points }} points</span>
+                </span>
+              </div>
+            </div>
+
+            <div class="px-4 pb-2 assign-options mt-auto">
+              <span class="option">Edit</span>
+              <span class="option">Add Questions</span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
   </section>
 </article>

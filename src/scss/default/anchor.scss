@@ -46,6 +46,7 @@
 a {
   @include as-anchor();
   @include as-anchor-colors();
+  text-decoration: none;
 }
 
 a {
