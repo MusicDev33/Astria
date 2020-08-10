@@ -10,6 +10,10 @@
   display: block;
   border-radius: $border-radius;
   overflow: hidden;
+  // padding: 15px 14px;
+}
+
+:host-context(.module) {
   padding: 15px 14px;
 }
 
