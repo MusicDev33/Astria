@@ -1,131 +1,128 @@
-<div class="row">
-  <div class="col-12 mt-card mt-ctx-menu py-3">
-    <section class="row">
-      <div class="col-12">
-        <h4 class="pl-2 mb-3" *ngIf="assignment.graded">
-          <b class="assign-type">{{ assignment.type }}</b> worth
-          <input maxlength="4" (paste)="$event.preventDefault()" (keydown)="limitNumberField($event)"
-            class="form-control textual-form d-inline" placeholder="10" [(ngModel)]="points"/>
-          points
-        </h4>
+<app-ctx-menu-general>
+  <section class="row">
+    <div class="col-12">
+      <h4 class="pl-2 mb-3" *ngIf="assignment.graded">
+        <b class="assign-type">{{ assignment.type }}</b> worth
+        <input maxlength="4" (paste)="$event.preventDefault()" (keydown)="limitNumberField($event)"
+          class="form-control textual-form d-inline" placeholder="10" [(ngModel)]="points"/>
+        points
+      </h4>
 
-        <h4 class="pl-2 mb-3 pt-2" *ngIf="!assignment.graded">
-          {{ headerGenerator() }} <b class="assign-type">{{ assignment.type }}</b>
-        </h4>
-      </div>
+      <h4 class="pl-2 mb-3 pt-2" *ngIf="!assignment.graded">
+        {{ headerGenerator() }} <b class="assign-type">{{ assignment.type }}</b>
+      </h4>
+    </div>
 
-      <div class="col-12">
-        <div class="row mb-3 px-3">
-          <div class="col" *ngFor="let type of assignmentTypes">
-            <div class="mt-underline-selector-1" (click)="assignment.type = type"
-                [ngClass]="{'selected': type === assignment.type}">
-              {{ type }}
-            </div>
+    <div class="col-12">
+      <div class="row mb-3 px-3">
+        <div class="col" *ngFor="let type of assignmentTypes">
+          <div class="mt-underline-selector-1" (click)="assignment.type = type"
+              [ngClass]="{'selected': type === assignment.type}">
+            {{ type }}
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="col-12">
-        <input class="form-control mt-ctx-field mb-2" placeholder="Assignment Name" [(ngModel)]="assignment.name"/>
-      </div>
+    <div class="col-12">
+      <input class="form-control mt-ctx-field mb-2" placeholder="Assignment Name" [(ngModel)]="assignment.name"/>
+    </div>
 
-      <div class="col-12">
-        <textarea placeholder="Assignment Description" [(ngModel)]="assignment.description"
-          class="form-control content-textarea mt-ctx-field"></textarea>
-      </div>
+    <div class="col-12">
+      <textarea placeholder="Assignment Description" [(ngModel)]="assignment.description"
+        class="form-control content-textarea mt-ctx-field"></textarea>
+    </div>
 
-      <div class="col-12">
-        <div class="row mt-2 px-3">
-          <div class="col">
-            <div class="mt-underline-selector-1" [ngClass]="{'selected': assignment.graded}" (click)="assignment.graded=true">
-              Graded
-            </div>
+    <div class="col-12">
+      <div class="row mt-2 px-3">
+        <div class="col">
+          <div class="mt-underline-selector-1" [ngClass]="{'selected': assignment.graded}" (click)="assignment.graded=true">
+            Graded
           </div>
-          <div class="col">
-            <div class="mt-underline-selector-1" [ngClass]="{'selected': !assignment.graded}" (click)="assignment.graded=false">
-              Ungraded
-            </div>
+        </div>
+        <div class="col">
+          <div class="mt-underline-selector-1" [ngClass]="{'selected': !assignment.graded}" (click)="assignment.graded=false">
+            Ungraded
           </div>
         </div>
       </div>
-    </section>
-
-    <div class="row">
-      <div class="col-12">
-        <h5 class="header-1 pt-2">
-          <b>Open: </b>
-          <button class="btn mt-btn-1" (click)="dateMode='open'" data-toggle="modal" data-target="#dateModal" *ngIf="!openDate">
-            <i class="fas fa-plus"></i> Add Date
-          </button>
-
-          <span *ngIf="openDate">
-            {{ getDateString(openDate) }}
-            <i class="fas fa-pencil-alt edit-pencil" (click)="dateMode='open'" data-toggle="modal" data-target="#dateModal"></i>
-          </span>
-        </h5>
-      </div>
     </div>
+  </section>
 
-    <div class="row">
-      <div class="col-12">
-        <h5 class="header-1 pt-2">
-          <b>Due: </b>
-          <button class="btn mt-btn-1" (click)="dateMode='due'" data-toggle="modal" data-target="#dateModal" *ngIf="!dueDate">
-            <i class="fas fa-plus"></i> Add Date
-          </button>
-
-          <span *ngIf="dueDate">
-            {{ getDateString(dueDate) }}
-            <i class="fas fa-pencil-alt edit-pencil" (click)="dateMode='due'" data-toggle="modal" data-target="#dateModal"></i>
-          </span>
-        </h5>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12">
-        <h5 class="header-1 pt-2">
-          <b>Closed: </b>
-          <button class="btn mt-btn-1" (click)="dateMode='close'" *ngIf="!sameAsDue && !closeDate"
-              data-toggle="modal" data-target="#dateModal" [disabled]="sameAsDue">
-            <i class="fas fa-plus"></i> Add Date
-          </button>
-
-          <span *ngIf="sameAsDue && dueDate">
-            {{ getDateString(dueDate) }}
-          </span>
-
-          <span *ngIf="sameAsDue && !dueDate">
-            Enter a due date
-          </span>
-
-          <span *ngIf="closeDate && !sameAsDue">
-            {{ getDateString(closeDate) }}
-            <i class="fas fa-pencil-alt edit-pencil" (click)="dateMode='close'" data-toggle="modal" data-target="#dateModal"></i>
-          </span>
-
-          <button class="btn ml-3" [ngClass]="{'mt-btn-1-filled': sameAsDue, 'mt-btn-1': !sameAsDue}" (click)="sameAsDue=!sameAsDue">
-            Same as Due <i class="fas fa-check" [ngClass]="{'d-none': !sameAsDue}"></i>
-          </button>
-        </h5>
-      </div>
-    </div>
-
-    <section class="row mt-3">
-      <div class="col-12 text-center">
-        <button class="btn mt-btn-1-filled w-100" (click)="sendAssignment()"
-          [disabled]="!assignmentReady()" *ngIf="!loading">
-          Create Assignment
+  <div class="row">
+    <div class="col-12">
+      <h5 class="header-1 pt-2">
+        <b>Open: </b>
+        <button class="btn mt-btn-1" (click)="dateMode='open'" data-toggle="modal" data-target="#dateModal" *ngIf="!openDate">
+          <i class="fas fa-plus"></i> Add Date
         </button>
 
-        <button class="btn mt-btn-1-filled w-100" *ngIf="loading" [disabled]="loading">
-          <div class="mt-loader-1"></div>
-        </button>
-      </div>
-    </section>
+        <span *ngIf="openDate">
+          {{ getDateString(openDate) }}
+          <i class="fas fa-pencil-alt edit-pencil" (click)="dateMode='open'" data-toggle="modal" data-target="#dateModal"></i>
+        </span>
+      </h5>
+    </div>
   </div>
-</div>
 
+  <div class="row">
+    <div class="col-12">
+      <h5 class="header-1 pt-2">
+        <b>Due: </b>
+        <button class="btn mt-btn-1" (click)="dateMode='due'" data-toggle="modal" data-target="#dateModal" *ngIf="!dueDate">
+          <i class="fas fa-plus"></i> Add Date
+        </button>
+
+        <span *ngIf="dueDate">
+          {{ getDateString(dueDate) }}
+          <i class="fas fa-pencil-alt edit-pencil" (click)="dateMode='due'" data-toggle="modal" data-target="#dateModal"></i>
+        </span>
+      </h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <h5 class="header-1 pt-2">
+        <b>Closed: </b>
+        <button class="btn mt-btn-1" (click)="dateMode='close'" *ngIf="!sameAsDue && !closeDate"
+            data-toggle="modal" data-target="#dateModal" [disabled]="sameAsDue">
+          <i class="fas fa-plus"></i> Add Date
+        </button>
+
+        <span *ngIf="sameAsDue && dueDate">
+          {{ getDateString(dueDate) }}
+        </span>
+
+        <span *ngIf="sameAsDue && !dueDate">
+          Enter a due date
+        </span>
+
+        <span *ngIf="closeDate && !sameAsDue">
+          {{ getDateString(closeDate) }}
+          <i class="fas fa-pencil-alt edit-pencil" (click)="dateMode='close'" data-toggle="modal" data-target="#dateModal"></i>
+        </span>
+
+        <button class="btn ml-3" [ngClass]="{'mt-btn-1-filled': sameAsDue, 'mt-btn-1': !sameAsDue}" (click)="sameAsDue=!sameAsDue">
+          Same as Due <i class="fas fa-check" [ngClass]="{'d-none': !sameAsDue}"></i>
+        </button>
+      </h5>
+    </div>
+  </div>
+
+  <section class="row mt-3">
+    <div class="col-12 text-center">
+      <button class="btn mt-btn-1-filled w-100" (click)="sendAssignment()"
+        [disabled]="!assignmentReady()" *ngIf="!loading">
+        Create Assignment
+      </button>
+
+      <button class="btn mt-btn-1-filled w-100" *ngIf="loading" [disabled]="loading">
+        <div class="mt-loader-1"></div>
+      </button>
+    </div>
+  </section>
+</app-ctx-menu-general>
 
 <div class="modal fade" id="dateModal" tabindex="-1">
   <div class="modal-dialog modal-lg">
@@ -167,66 +164,3 @@
     </div>
   </div>
 </div>
-
-<!-- Modal -->
-<!--
-<div class="modal fade" id="dateModal" tabindex="-1">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content mt-modal">
-      <div class="modal-body">
-        <app-date-picker></app-date-picker>
-        <article class="container-fluid">
-          <section class="row">
-
-          </section>
-        </article>
-
-        <article class="container-fluid">
-          <section class="row">
-            <div class="col-4">
-
-              <div class="text-center">
-                <i class="fas fa-arrow-down type-select type-1"></i>
-              </div>
-
-              <h3 class="text-center">Open</h3>
-              <div class="row justify-content-center">
-                <div class="col-8">
-                  <app-time-picker></app-time-picker>
-                </div>
-              </div>
-            </div>
-            <div class="col-4">
-
-              <div class="text-center">
-                <i class="fas fa-arrow-down type-select type-2"></i>
-              </div>
-
-              <h3 class="text-center">Due</h3>
-              <div class="row justify-content-center">
-                <div class="col-8">
-                  <app-time-picker></app-time-picker>
-                </div>
-              </div>
-            </div>
-            <div class="col-4">
-
-              <div class="text-center">
-                <i class="fas fa-arrow-down type-select type-4"></i>
-              </div>
-
-              <h3 class="text-center">Closed</h3>
-              <div class="row justify-content-center">
-                <div class="col-8">
-                  <app-time-picker></app-time-picker>
-                  <div class="mt-underline-selector-1">Same as Due Time</div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </article>
-      </div>
-    </div>
-  </div>
-</div>
--->
