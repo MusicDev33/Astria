@@ -1,49 +1,27 @@
-@import '~scss/colors.scss';
+@import '~scss/colors';
 @import '~scss/variables';
-
-.teach-text {
-  color: #3a3a3a;
-}
-
-.calendar-view {
-  background: $palette-2-bg;
-  border-radius: 20px;
-}
-
-.fill-container {
-  width: 100%!important;
-}
 
 .module-icon-panel {
   cursor: pointer;
-  transition: all 0.3s;
+  transition: $time-mid;
 }
 
 .module-icon-panel:hover {
   background: $palette-4;
+  color: #fff;
 }
 
 .module-icon-panel:hover:not(.selected) {
   background: $palette-4-bg;
+  color: inherit;
 }
 
 .module-icon-panel.selected {
   background: $palette-4;
-}
-
-.left {
-  border-top-left-radius: $border-radius;
-}
-
-.right {
-  border-top-right-radius: $border-radius;
+  color: #fff;
 }
 
 .module-icon {
   font-size: 180%;
-  transition: all 0.3s;
-}
-
-.module-icon.selected {
-  color: #fff;
+  transition: $time-mid;
 }

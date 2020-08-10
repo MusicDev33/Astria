@@ -20,7 +20,7 @@
   </section>
 
   <section *ngFor="let week of currentWeeks" class="row py-2">
-    <div *ngFor="let day of week" class="col text-center px-2">
+    <div *ngFor="let day of week" class="col text-center px-1">
       <div class="date"
           [ngClass]="{'current-day': this.month === this.currentMonth && this.year === this.currentYear && day === this.currentDay}">
         <span *ngIf="day != 0">{{ day }}</span>

@@ -72,6 +72,7 @@ import { DatePickerComponent } from '@components/date-picker/date-picker.compone
 import { TimePickerComponent } from '@components/time-picker/time-picker.component';
 import { TooltipDirective } from './directives/tooltip.directive';
 import { AssignmentCardComponent } from '@components/assignment-card/assignment-card.component';
+import { CtxMenuGeneralComponent } from './context-menus/ctx-menu-general/ctx-menu-general.component';
 
 @NgModule({
   declarations: [
@@ -113,7 +114,8 @@ import { AssignmentCardComponent } from '@components/assignment-card/assignment-
     DatePickerComponent,
     TimePickerComponent,
     TooltipDirective,
-    AssignmentCardComponent
+    AssignmentCardComponent,
+    CtxMenuGeneralComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

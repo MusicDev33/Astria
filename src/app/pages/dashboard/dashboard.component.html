@@ -1,4 +1,4 @@
-<div class="row no-gutters fill-container w-100">
+<div class="row g-0 w-100 pr-3">
   <div class="col-8 pr-5" *ngIf="!pgComponent">
     <app-p-c-courses [courses]="enrolledCourses" [taughtCourses]="taughtClasses"></app-p-c-courses>
   </div>
@@ -7,20 +7,20 @@
     <app-p-c-announcements *ngIf="pgComponent === 'announcements'"></app-p-c-announcements>
     <app-p-c-settings *ngIf="pgComponent === 'settings'"></app-p-c-settings>
   </div>
-  <div class="col-4 pr-3 float-right">
-    <div class="calendar-view pb-1 mt-card">
+  <div class="col-4 px-0">
+    <app-ctx-menu-general>
       <div class="row g-0">
-        <div class="col text-center py-3 module-icon-panel left" [ngClass]="{'selected': selectedModule === 'calendar'}" (click)="selectedModule='calendar'">
-          <i class="far fa-calendar module-icon" [ngClass]="{'selected': selectedModule === 'calendar'}"></i>
+        <div class="col text-center py-3 module-icon-panel" [ngClass]="{'selected': selectedModule === 'calendar'}" (click)="selectedModule='calendar'">
+          <i class="far fa-calendar module-icon"></i>
         </div>
-        <div class="col text-center py-3 module-icon-panel right" [ngClass]="{'selected': selectedModule === 'tasklist'}" (click)="selectedModule='tasklist'">
-          <i class="fas fa-list-ul module-icon" [ngClass]="{'selected': selectedModule === 'tasklist'}"></i>
+        <div class="col text-center py-3 module-icon-panel" [ngClass]="{'selected': selectedModule === 'tasklist'}" (click)="selectedModule='tasklist'">
+          <i class="fas fa-list-ul module-icon"></i>
         </div>
       </div>
       <app-calendar></app-calendar>
       <app-upcoming-events [announcements]="allAnnouncements"
           (outAnnouncementClicked)="openAnnouncementDialog($event)">
       </app-upcoming-events>
-    </div>
+    </app-ctx-menu-general>
   </div>
 </div>
