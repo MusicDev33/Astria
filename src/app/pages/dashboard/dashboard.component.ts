@@ -8,7 +8,6 @@ import { IAnnouncement } from '@models/announcement.model';
 
 import { IResponse } from '@interfaces/response.interface';
 
-import { AuthService } from '@services/auth.service';
 import { PersonService } from '@services/person.service';
 import { JwtService } from '@services/jwt.service';
 import { CookieService } from 'ngx-cookie-service';
@@ -35,7 +34,6 @@ export class DashboardComponent implements OnInit {
   sub: any;
 
   constructor(
-    private authService: AuthService,
     private personService: PersonService,
     private jwtService: JwtService,
     private cookieService: CookieService,
@@ -62,7 +60,7 @@ export class DashboardComponent implements OnInit {
       },
 
       (err: Error) => {
-        throw 'dashboard.component.ts: PersonService.getEnrolledCourses - 404 Error';
+        throw Error('dashboard.component.ts: PersonService.getEnrolledCourses - 404 Error');
       }
     );
 
@@ -73,7 +71,7 @@ export class DashboardComponent implements OnInit {
         }
       },
       (err: Error) => {
-        throw 'dashboard.component.ts: PersonService.getInstructorCourses - 404 Error';
+        throw Error('dashboard.component.ts: PersonService.getInstructorCourses - 404 Error');
       }
     );
 

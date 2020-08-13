@@ -6,24 +6,20 @@
 
 <div *ngIf="announcements.length">
   <section *ngFor="let announcement of announcements" class="row my-3">
-    <div class="col-12 mt-card hover select py-3" title="{{ announcement.header }}">
-      <div class="row px-3">
-        <span class="col-2 icon-background d-inline" [style.background]="announcement.iconBgColor">
-          <span class="my-auto mx-auto">
-            <i class="{{ announcement.icon }} card-icon" [style.color]="announcement.iconColor"></i>
-          </span>
-        </span>
-        <section class="col">
-          <div class="row">
-            <section class="col-12 mb-2">
-              <h3 class="my-auto header py-1 text-truncate">{{ announcement.header }}</h3>
-            </section>
-            <section class="col-12 pb-2">
-              <div class="desc text-truncate">{{ announcement.description }}</div>
-            </section>
+    <div class="col-12">
+      <article class="mt-card hover select py-2" (click)="openAnnouncementDialog(announcement)">
+        <section class="row px-2">
+          <div class="col-2">
+            <div class="icon-background p-3 text-center" [style.background]="announcement.iconBgColor">
+              <i class="{{ announcement.icon }} card-icon" [style.color]="announcement.iconColor"></i>
+            </div>
+          </div>
+          <div class="col flex-child">
+            <h3>{{ announcement.header }}</h3>
+            <div class="trunc">{{ announcement.description }}</div>
           </div>
         </section>
-      </div>
+      </article>
     </div>
   </section>
 </div>
@@ -31,25 +27,3 @@
 <div *ngIf="!announcements.length">
   <h5 class="text-soft">No Announcements! Maybe check later?</h5>
 </div>
-
-<!--
-<div *ngIf="announcements">
-  <section class="row justify-content-center mb-3" *ngFor="let announcement of announcements">
-    <div class="col-11 mt-card hover select py-3" title="{{ announcement.header }}">
-      <div class="row is-flex mx-0 pb-3">
-        <div class="col-2 card-icon-space double-line-height" [style.background]="announcement.iconBgColor">
-          <i class="{{ announcement.icon }} card-icon" [style.color]="announcement.iconColor"></i>
-        </div>
-        <div class="col-10 double-line-height">
-          <h3 class="my-auto header py-1">{{ announcement.header }}</h3>
-        </div>
-      </div>
-      <div class="row is-flex mx-0">
-        <div class="col-12 px-0">
-          <span class="desc">{{ announcement.description }}</span>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
--->
