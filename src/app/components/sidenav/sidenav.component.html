@@ -9,10 +9,12 @@
             [routerLink]="['/dashboard/announcements']" matTooltip="Announcements" [matTooltipPosition]="'right'" matTooltipClass="mt-tooltip-1"></i>
       </div>
       <div>
-        <i class="fas fa-tasks sidenav-icon" matTooltip="Tasks" [matTooltipPosition]="'right'" matTooltipClass="mt-tooltip-1"></i>
+        <i class="fas fa-tasks sidenav-icon" [ngClass]="{'selected': currentDashParam === 'tasks'}"
+          [routerLink]="['/dashboard/tasks']"  matTooltip="Tasks" [matTooltipPosition]="'right'" matTooltipClass="mt-tooltip-1"></i>
       </div>
       <div>
-        <i class="far fa-calendar sidenav-icon" matTooltip="Calendar" [matTooltipPosition]="'right'" matTooltipClass="mt-tooltip-1"></i>
+        <i class="far fa-calendar sidenav-icon" [ngClass]="{'selected': currentDashParam === 'calendar'}"
+          [routerLink]="['/dashboard/calendar']"  matTooltip="Calendar" [matTooltipPosition]="'right'" matTooltipClass="mt-tooltip-1"></i>
       </div>
       <div>
         <i class="fas fa-user-friends sidenav-icon" matTooltip="Friends" [matTooltipPosition]="'right'" matTooltipClass="mt-tooltip-1"></i>

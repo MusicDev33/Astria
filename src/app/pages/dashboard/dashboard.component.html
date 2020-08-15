@@ -2,10 +2,12 @@
   <div class="col-8 pr-5" *ngIf="!pgComponent">
     <app-p-c-courses [courses]="enrolledCourses" [taughtCourses]="taughtClasses"></app-p-c-courses>
   </div>
-  <div class="col-8 pr-5" *ngIf="pgComponent">
-    <app-p-c-courses [courses]="enrolledCourses" [taughtCourses]="taughtClasses" *ngIf="pgComponent === 'courses'"></app-p-c-courses>
-    <app-p-c-announcements *ngIf="pgComponent === 'announcements'"></app-p-c-announcements>
-    <app-p-c-settings *ngIf="pgComponent === 'settings'"></app-p-c-settings>
+  <div class="col-8 pr-5" [ngSwitch]="pgComponent">
+    <app-p-c-announcements *ngSwitchCase="'announcements'"></app-p-c-announcements>
+    <app-p-c-tasklist *ngSwitchCase="'tasks'"></app-p-c-tasklist>
+    <app-p-c-calendar *ngSwitchCase="'calendar'"></app-p-c-calendar>
+    <app-p-c-settings *ngSwitchCase="'settings'"></app-p-c-settings>
+    <app-p-c-courses [courses]="enrolledCourses" [taughtCourses]="taughtClasses" *ngSwitchDefault></app-p-c-courses>
   </div>
   <div class="col-4 px-0">
     <app-ctx-menu-general>

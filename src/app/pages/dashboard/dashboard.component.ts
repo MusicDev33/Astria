@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
   taughtClasses: ICourse[] = [];
   allAnnouncements: IAnnouncement[] = [];
 
-  pgComponent: string;
+  pgComponent = '';
   sub: any;
 
   constructor(
