@@ -22,7 +22,7 @@
 
       <section *ngFor="let announcement of announcements" class="row my-3">
         <div class="col-12">
-          <article class="mt-card hover select py-2">
+          <article class="mt-card hover select py-2" (click)="openAnnouncement(announcement)">
             <section class="row px-2">
               <div class="col-2">
                 <div class="icon-background p-3 text-center" [style.background]="announcement.iconBgColor">

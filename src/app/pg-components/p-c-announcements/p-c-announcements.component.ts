@@ -52,9 +52,4 @@ export class PCAnnouncementsComponent implements OnInit {
     dialogConfig.position = position;
     this.dialog.open(AnnouncementDialogComponent, dialogConfig);
   }
-
-  setModalData(announcement: IAnnouncement) {
-    this.modalTitle = announcement.header;
-    this.modalDesc = announcement.description;
-  }
 }

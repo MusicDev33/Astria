@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MatDialog, MatDialogConfig, DialogPosition } from '@angular/material/dialog';
 
 import { ICourse } from '@models/course.model';
 import { IResponse } from '@interfaces/response.interface';
@@ -10,6 +11,8 @@ import { IAssignment } from '@models/assignment.model';
 import { IAnnouncement } from '@models/announcement.model';
 
 import { MONTHS_SHORT, getMeridiemTime } from '@globals/date';
+
+import { AnnouncementDialogComponent } from '@dialogs/announcement-dialog/announcement-dialog.component';
 
 @Component({
   selector: 'app-student-course',
@@ -36,7 +39,8 @@ export class StudentCourseComponent implements OnInit {
     private courseService: CourseService,
     private route: ActivatedRoute,
     private assignmentService: AssignmentService,
-    private announcementService: AnnouncementService
+    private announcementService: AnnouncementService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -80,5 +84,16 @@ export class StudentCourseComponent implements OnInit {
 
     assignDueDate += `at ${getMeridiemTime(jsDate)}`;
     return assignDueDate;
+  }
+
+  openAnnouncement(announcement: IAnnouncement) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = announcement;
+    dialogConfig.width = '600px';
+    dialogConfig.panelClass = 'mt-dialog';
+
+    const position: DialogPosition = {top: '200px'};
+    dialogConfig.position = position;
+    this.dialog.open(AnnouncementDialogComponent, dialogConfig);
   }
 }
