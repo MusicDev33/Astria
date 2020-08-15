@@ -63,3 +63,34 @@ $assign-card-height: 137px;
     }
   }
 }
+
+.icon-background {
+  border-radius: $border-radius;
+}
+
+.card-icon {
+  font-size: 360%;
+}
+
+.card-icon-space {
+  position: relative;
+  border-radius: $border-radius;
+}
+
+// Makes columns relative, Bootstrap 5 doesn't come with this default anymore
+.col-rel {
+  position: relative;
+}
+
+.trunc {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+// This is needed to make text truncation work.
+// More info here: https://css-tricks.com/snippets/css/truncate-string-with-ellipsis/
+.flex-child {
+  min-width: 0;
+}

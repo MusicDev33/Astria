@@ -19,6 +19,24 @@
 
     <div class="col-7" *ngIf="topNavOptions[selectedNavIndex] === 'Announcements'">
       <!-- Create Announcement -->
+
+      <section *ngFor="let announcement of announcements" class="row my-3">
+        <div class="col-12">
+          <article class="mt-card hover select py-2">
+            <section class="row px-2">
+              <div class="col-2">
+                <div class="icon-background p-3 text-center" [style.background]="announcement.iconBgColor">
+                  <i class="{{ announcement.icon }} card-icon" [style.color]="announcement.iconColor"></i>
+                </div>
+              </div>
+              <div class="col flex-child">
+                <h3>{{ announcement.header }}</h3>
+                <div class="trunc">{{ announcement.description }}</div>
+              </div>
+            </section>
+          </article>
+        </div>
+      </section>
       <!--
       <section class="row px-3 mb-4" *ngIf="newAnnouncementDetails.length || newAnnouncementHeading.length">
         <h4 class="col-12 px-3 mb-3">New Announcement</h4>
