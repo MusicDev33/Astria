@@ -1,1 +1,9 @@
-<p>p-c-tasklist works!</p>
+<section class="row mb-3">
+  <div class="col-12">
+    <h2>What's Coming Up?</h2>
+  </div>
+</section>
+
+<div *ngIf="!tasks.length">
+  <h5 class="text-soft">No tasks coming up. You're really on top of things!</h5>
+</div>

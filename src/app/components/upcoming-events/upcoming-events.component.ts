@@ -8,6 +8,8 @@ import { IAnnouncement } from '@models/announcement.model';
 })
 export class UpcomingEventsComponent implements OnInit {
 
+  @Input() height = 300;
+
   @Input() announcements: IAnnouncement[];
 
   @Output() outAnnouncementClicked = new EventEmitter<IAnnouncement>();
@@ -19,6 +21,10 @@ export class UpcomingEventsComponent implements OnInit {
 
   onAnnouncementClicked(announcement: IAnnouncement) {
     this.outAnnouncementClicked.emit(announcement);
+  }
+
+  getHeight() {
+    return `${this.height}px`;
   }
 
 }

@@ -9,7 +9,8 @@
   </div>
 </section>
 
-<article class="container-fluid" *ngIf="announcements && announcements.length">
+<article class="container-fluid annct-container" [style.height]="getHeight()"
+    *ngIf="announcements && announcements.length">
   <section class="row justify-content-center mb-3" *ngFor="let announcement of announcements">
     <div class="col-11 mt-card hover select py-3" title="{{ announcement.header }}" (click)="onAnnouncementClicked(announcement)">
       <div class="row is-flex mx-0 pb-3">
