@@ -9,6 +9,7 @@ import { AssignmentService } from '@services/assignment.service';
 import { AnnouncementService } from '@services/announcement.service';
 import { IAssignment } from '@models/assignment.model';
 import { IAnnouncement } from '@models/announcement.model';
+import { ILayout } from '@models/layout.model';
 
 import { MONTHS_SHORT, getMeridiemTime } from '@globals/date';
 
@@ -37,6 +38,11 @@ export class StudentCourseComponent implements OnInit {
 
   openAssignmentID = '';
   openedAssignment: IAssignment;
+  openedLayout: ILayout;
+  assignmentStarted = false;
+
+  layoutLoading = true;
+  startButtonText = 'Loading';
 
   constructor(
     private courseService: CourseService,
@@ -98,5 +104,19 @@ export class StudentCourseComponent implements OnInit {
     const position: DialogPosition = {top: '200px'};
     dialogConfig.position = position;
     this.dialog.open(AnnouncementDialogComponent, dialogConfig);
+  }
+
+  selectAssignment(assignment: IAssignment) {
+    this.openedAssignment = assignment;
+    this.assignmentService.getAssignmentLayout(assignment._id).subscribe((res: IResponse<ILayout>) => {
+      this.layoutLoading = false;
+      if (res.success) {
+        this.startButtonText = 'Start Assignment';
+        console.log(res);
+        this.openedLayout = res.payload;
+      } else {
+        this.startButtonText = 'Error';
+      }
+    });
   }
 }

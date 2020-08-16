@@ -34,4 +34,11 @@ export class AssignmentService {
 
     return this.http.get(url, authObject).pipe(map(res => res));
   }
+
+  getAssignmentLayout(assignmentID: string) {
+    const authObject = {headers: BaseHeaderFunc(this.cookie.get('jwt')), withCredentials: true};
+    const url = `${environment.apiURL}assignments/${assignmentID}/layout`;
+
+    return this.http.get(url, authObject).pipe(map(res => res));
+  }
 }

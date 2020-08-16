@@ -67,7 +67,7 @@
         </section>
         <section class="row px-3 mb-3" *ngFor="let assignment of assignments">
           <div class="assign-container col-12 p-0">
-            <div class="px-4 py-3 mt-card select hover assign-card" (click)="openedAssignment = assignment">
+            <div class="px-4 py-3 mt-card select hover assign-card" (click)="selectAssignment(assignment)">
               <h4>{{ assignment.name }}</h4>
               <div class="text-truncate pb-3">{{ assignment.description }}</div>
               <div>
@@ -96,14 +96,18 @@
           </div>
         </section>
         <section class="row pl-2">
-          <div class="col-12">
+          <div [ngClass]="{'col-12': !assignmentStarted}">
             <h2>{{ openedAssignment.name }}</h2>
-          </div>
-
-          <div class="col-12">
             <p>
               {{ openedAssignment.description }}
             </p>
+            <button class="btn mt-btn-1" [disabled]="layoutLoading || !openedLayout">
+              {{ startButtonText }}
+            </button>
+          </div>
+
+          <div class="col-6" *ngIf="assignmentStarted">
+
           </div>
         </section>
       </article>
