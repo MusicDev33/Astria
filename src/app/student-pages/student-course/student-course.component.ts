@@ -35,6 +35,9 @@ export class StudentCourseComponent implements OnInit {
   assignments: IAssignment[] = [];
   announcements: IAnnouncement[] = [];
 
+  openAssignmentID = '';
+  openedAssignment: IAssignment;
+
   constructor(
     private courseService: CourseService,
     private route: ActivatedRoute,

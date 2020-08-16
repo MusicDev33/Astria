@@ -94,3 +94,15 @@ $assign-card-height: 137px;
 .flex-child {
   min-width: 0;
 }
+
+.assign-back {
+  font-size: 110%;
+  font-weight: $font-weight-medium;
+  color: $palette-1-light;
+  transition: $time-mid;
+  cursor: pointer;
+
+  &:hover {
+    color: $palette-1;
+  }
+}
