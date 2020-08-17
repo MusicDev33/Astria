@@ -73,6 +73,11 @@ import { TimePickerComponent } from '@components/time-picker/time-picker.compone
 import { TooltipDirective } from './directives/tooltip.directive';
 import { AssignmentCardComponent } from '@components/assignment-card/assignment-card.component';
 import { CtxMenuGeneralComponent } from './context-menus/ctx-menu-general/ctx-menu-general.component';
+import { AssignmentLayoutComponent } from './components/assignment-layout/assignment-layout.component';
+import { AnsMultichoiceComponent } from './components/answer-types/ans-multichoice/ans-multichoice.component';
+import { AnsCheckboxComponent } from './components/answer-types/ans-checkbox/ans-checkbox.component';
+import { AnsShortansComponent } from './components/answer-types/ans-shortans/ans-shortans.component';
+import { AnsEssayComponent } from './components/answer-types/ans-essay/ans-essay.component';
 
 @NgModule({
   declarations: [
@@ -115,7 +120,12 @@ import { CtxMenuGeneralComponent } from './context-menus/ctx-menu-general/ctx-me
     TimePickerComponent,
     TooltipDirective,
     AssignmentCardComponent,
-    CtxMenuGeneralComponent
+    CtxMenuGeneralComponent,
+    AssignmentLayoutComponent,
+    AnsMultichoiceComponent,
+    AnsCheckboxComponent,
+    AnsShortansComponent,
+    AnsEssayComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

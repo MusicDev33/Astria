@@ -96,18 +96,22 @@
           </div>
         </section>
         <section class="row pl-2">
-          <div [ngClass]="{'col-12': !assignmentStarted}">
+          <div [ngClass]="{'col-12': !assignmentStarted, 'd-none': assignmentStarted}">
             <h2>{{ openedAssignment.name }}</h2>
             <p>
               {{ openedAssignment.description }}
             </p>
-            <button class="btn mt-btn-1" [disabled]="layoutLoading || !openedLayout">
+            <button class="btn mt-btn-1" [disabled]="layoutLoading || !openedLayout"
+                (click)="assignmentStarted=true">
               {{ startButtonText }}
             </button>
           </div>
 
-          <div class="col-6" *ngIf="assignmentStarted">
-
+          <div class="col-12" *ngIf="assignmentStarted && openedLayout">
+            <div class="row">
+              <app-assignment-layout [layout]="openedLayout">
+              </app-assignment-layout>
+            </div>
           </div>
         </section>
       </article>

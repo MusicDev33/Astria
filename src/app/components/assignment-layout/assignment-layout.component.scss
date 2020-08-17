@@ -1,0 +1,8 @@
+@import '~scss/colors';
+@import '~scss/variables';
+
+.item-title {
+  font-weight: $font-weight-medium;
+  font-size: 130%;
+  color: $text-main;
+}

@@ -4,7 +4,7 @@ let BaseHeaders = new HttpHeaders();
 BaseHeaders = BaseHeaders.set('Content-Type', 'application/json');
 BaseHeaders = BaseHeaders.set('AS-User-Agent', 'ASAPIv1');
 
-const BaseHeaderFunc = (jwt: string) => {
+export const BaseHeaderFunc = (jwt: string) => {
   let headers = new HttpHeaders();
   headers = headers.set('Content-Type', 'application/json');
   headers = headers.set('AS-User-Agent', 'ASAPIv1');
@@ -12,4 +12,4 @@ const BaseHeaderFunc = (jwt: string) => {
   return headers;
 };
 
-export { BaseHeaders, BaseHeaderFunc };
+export { BaseHeaders };
