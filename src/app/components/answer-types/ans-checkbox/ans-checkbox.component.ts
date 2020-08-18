@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ILayout } from '@models/layout.model';
 
 @Component({
   selector: 'app-ans-checkbox',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ans-checkbox.component.scss']
 })
 export class AnsCheckboxComponent implements OnInit {
+
+  @Input()
+  layout: ILayout;
 
   constructor() { }
 

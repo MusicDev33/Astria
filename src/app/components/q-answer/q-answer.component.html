@@ -1,0 +1,37 @@
+<div [ngSwitch]="layout.type">
+  <article *ngSwitchCase="'multichoice'">
+    <section class="row" *ngFor="let answer of layout.answers">
+      <div class="col-12">
+        <div class="answer-container">
+          <span class="answer-multi"><i class="far fa-circle icon"></i> {{ answer.text }}</span>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <article *ngSwitchCase="'checkbox'">
+    <section class="row" *ngFor="let answer of layout.answers">
+      <div class="col-12">
+        <div class="answer-container">
+          <span class="answer-multi"><i class="far fa-check-square icon"></i> {{ answer.text }}</span>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <article *ngSwitchCase="'shortanswer'">
+    <section class="row">
+      <div class="col-12">
+        <input class="form-control mt-form" placeholder="Your answer"/>
+      </div>
+    </section>
+  </article>
+
+  <article *ngSwitchCase="'essay'">
+    <section class="row">
+      <div class="col-12">
+        <textarea class="form-control mt-form" placeholder="Your answer"></textarea>
+      </div>
+    </section>
+  </article>
+</div>

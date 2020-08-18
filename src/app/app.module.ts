@@ -78,6 +78,7 @@ import { AnsMultichoiceComponent } from './components/answer-types/ans-multichoi
 import { AnsCheckboxComponent } from './components/answer-types/ans-checkbox/ans-checkbox.component';
 import { AnsShortansComponent } from './components/answer-types/ans-shortans/ans-shortans.component';
 import { AnsEssayComponent } from './components/answer-types/ans-essay/ans-essay.component';
+import { QAnswerComponent } from './components/q-answer/q-answer.component';
 
 @NgModule({
   declarations: [
@@ -125,7 +126,8 @@ import { AnsEssayComponent } from './components/answer-types/ans-essay/ans-essay
     AnsMultichoiceComponent,
     AnsCheckboxComponent,
     AnsShortansComponent,
-    AnsEssayComponent
+    AnsEssayComponent,
+    QAnswerComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

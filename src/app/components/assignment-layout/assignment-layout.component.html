@@ -1,5 +1,13 @@
-<article class="col-12" *ngFor="let layoutItem of layout.objects">
-  <div class="mt-card p-3">
-    <div class="item-title">{{ layoutItem.question }}</div>
+<article class="col-12" *ngFor="let layoutItem of layout.objects; let i = index;">
+  <div class="mt-card p-3 my-4">
+    <section class="row">
+      <div class="col-12">
+        <div class="item-title mb-2">{{ i + 1 }}. {{ layoutItem.question }}</div>
+      </div>
+    </section>
+
+    <section class="row">
+      <app-q-answer [layout]="layoutItem"></app-q-answer>
+    </section>
   </div>
 </article>

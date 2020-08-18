@@ -1,0 +1,23 @@
+@import '~scss/colors';
+@import '~scss/variables';
+
+.answer-container {
+  padding: 5px 4px;
+}
+
+.answer-multi {
+  font-size: 110%;
+  cursor: pointer;
+  transition: $time-mid;
+  border-radius: $border-radius;
+  padding: 3px 12px;
+
+  &:hover:not(.selected) {
+    background: $palette-1-bg;
+  }
+
+  &.selected {
+    background: $palette-1;
+    color: #fff;
+  }
+}
