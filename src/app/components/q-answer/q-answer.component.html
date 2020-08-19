@@ -3,7 +3,10 @@
     <section class="row" *ngFor="let answer of layout.answers">
       <div class="col-12">
         <div class="answer-container">
-          <span class="answer-multi"><i class="far fa-circle icon"></i> {{ answer.text }}</span>
+          <span class="answer-multi" [ngClass]="{'selected': answer['selected']}"
+                (click)="setAnswer(answer)">
+            <i class="far fa-circle icon"></i> {{ answer.text }}
+          </span>
         </div>
       </div>
     </section>
@@ -13,7 +16,9 @@
     <section class="row" *ngFor="let answer of layout.answers">
       <div class="col-12">
         <div class="answer-container">
-          <span class="answer-multi"><i class="far fa-check-square icon"></i> {{ answer.text }}</span>
+          <span class="answer-multi" [ngClass]="{'selected': answer['selected']}" (click)="setAnswer(answer)">
+            <i class="far fa-check-square icon"></i> {{ answer.text }}
+          </span>
         </div>
       </div>
     </section>
@@ -22,7 +27,7 @@
   <article *ngSwitchCase="'shortanswer'">
     <section class="row">
       <div class="col-12">
-        <input class="form-control mt-form" placeholder="Your answer"/>
+        <input class="form-control mt-form" placeholder="Your answer" [(ngModel)]="layout.userAnswer"/>
       </div>
     </section>
   </article>
@@ -30,7 +35,7 @@
   <article *ngSwitchCase="'essay'">
     <section class="row">
       <div class="col-12">
-        <textarea class="form-control mt-form" placeholder="Your answer"></textarea>
+        <textarea class="form-control mt-form" placeholder="Your answer" [(ngModel)]="layout.userAnswer"></textarea>
       </div>
     </section>
   </article>
