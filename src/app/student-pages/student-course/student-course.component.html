@@ -79,7 +79,7 @@
             </div>
 
             <div class="px-4 pb-2 assign-options mt-auto">
-              <span class="option">Start Assignment</span>
+              <span class="option" (click)="startAssignment(assignment)">Start Assignment</span>
               <span class="option">Continue Assignment</span>
             </div>
           </div>
@@ -89,7 +89,7 @@
       <article *ngIf="openedAssignment">
         <section class="row mb-4">
           <div class="col-12">
-            <span class="assign-back pl-2" (click)="openedAssignment = null">
+            <span class="assign-back pl-2" (click)="closeAssignment()">
               <i class="fas fa-arrow-left"></i>
               Back to Assignments
             </span>
@@ -116,5 +116,11 @@
         </section>
       </article>
     </div>
+
+    <section class="col sticky-pos">
+      <app-st-ctx-assignments [percentCompleted]="getAnswersCompleted"
+          *ngIf="topNavOptions[selectedNavIndex] === 'Assignments' && assignmentStarted && openedLayout">
+      </app-st-ctx-assignments>
+    </section>
   </section>
 </article>

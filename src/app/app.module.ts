@@ -79,6 +79,7 @@ import { AnsCheckboxComponent } from './components/answer-types/ans-checkbox/ans
 import { AnsShortansComponent } from './components/answer-types/ans-shortans/ans-shortans.component';
 import { AnsEssayComponent } from './components/answer-types/ans-essay/ans-essay.component';
 import { QAnswerComponent } from './components/q-answer/q-answer.component';
+import { StCtxAssignmentsComponent } from './context-menus/st-ctx-assignments/st-ctx-assignments.component';
 
 @NgModule({
   declarations: [
@@ -127,7 +128,8 @@ import { QAnswerComponent } from './components/q-answer/q-answer.component';
     AnsCheckboxComponent,
     AnsShortansComponent,
     AnsEssayComponent,
-    QAnswerComponent
+    QAnswerComponent,
+    StCtxAssignmentsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

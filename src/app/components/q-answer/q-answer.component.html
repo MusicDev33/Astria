@@ -5,7 +5,9 @@
         <div class="answer-container">
           <span class="answer-multi" [ngClass]="{'selected': answer['selected']}"
                 (click)="setAnswer(answer)">
-            <i class="far fa-circle icon"></i> {{ answer.text }}
+            <i class="far fa-dot-circle" *ngIf="answer['selected']"></i>
+            <i class="far fa-circle icon" *ngIf="!answer['selected']"></i>
+            {{ answer.text }}
           </span>
         </div>
       </div>
@@ -17,7 +19,9 @@
       <div class="col-12">
         <div class="answer-container">
           <span class="answer-multi" [ngClass]="{'selected': answer['selected']}" (click)="setAnswer(answer)">
-            <i class="far fa-check-square icon"></i> {{ answer.text }}
+            <i class="far fa-square" *ngIf="!answer['selected']"></i>
+            <i class="far fa-check-square icon" *ngIf="answer['selected']"></i>
+            {{ answer.text }}
           </span>
         </div>
       </div>
@@ -27,7 +31,8 @@
   <article *ngSwitchCase="'shortanswer'">
     <section class="row">
       <div class="col-12">
-        <input class="form-control mt-form" placeholder="Your answer" [(ngModel)]="layout.userAnswer"/>
+        <input class="form-control mt-form" placeholder="Your answer" [(ngModel)]="layout.userAnswer"
+            (input)="textFieldInput($event.target.value)"/>
       </div>
     </section>
   </article>
@@ -35,7 +40,8 @@
   <article *ngSwitchCase="'essay'">
     <section class="row">
       <div class="col-12">
-        <textarea class="form-control mt-form" placeholder="Your answer" [(ngModel)]="layout.userAnswer"></textarea>
+        <textarea class="form-control mt-form" placeholder="Your answer" [(ngModel)]="layout.userAnswer"
+            (input)="textFieldInput($event.target.value)"></textarea>
       </div>
     </section>
   </article>

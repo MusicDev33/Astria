@@ -119,4 +119,27 @@ export class StudentCourseComponent implements OnInit {
       }
     });
   }
+
+  closeAssignment() {
+    this.openedAssignment = null;
+    this.openedLayout = null;
+    this.assignmentStarted = false;
+  }
+
+  startAssignment(assignment: IAssignment) {
+    this.selectAssignment(assignment);
+    this.assignmentStarted = true;
+  }
+
+  get getAnswersCompleted(): number {
+    if (!this.openedLayout) {
+      return 0;
+    }
+
+    const answeredQuestions = this.openedLayout.objects.filter((question: any) => {
+      return question.answered;
+    });
+
+    return (answeredQuestions.length / this.openedLayout.objects.length) * 100;
+  }
 }

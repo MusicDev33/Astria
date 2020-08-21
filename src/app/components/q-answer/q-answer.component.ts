@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-q-answer',
@@ -12,6 +12,9 @@ export class QAnswerComponent implements OnInit {
   @Input()
   layout: any;
 
+  @Output()
+  emitLayoutChange = new EventEmitter<any>();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -22,6 +25,7 @@ export class QAnswerComponent implements OnInit {
     } else if (this.layout.type === 'essay' || this.layout.type === 'shortanswer') {
       this.layout['userAnswer'] = '';
     }
+    this.layout['answered'] = false;
   }
 
   setAnswer(answer: any) {
@@ -30,13 +34,28 @@ export class QAnswerComponent implements OnInit {
         qAnswer['selected'] = false;
       });
       answer['selected'] = true;
+      this.layout.answered = true;
     } else if (this.layout.type === 'checkbox') {
       if (answer.hasOwnProperty('selected')) {
         answer.selected = !answer.selected;
       } else {
         answer['selected'] = true;
       }
+      this.layout.answered = false;
+
+      this.layout.answers.forEach((layoutAnswer: any) => {
+        if (layoutAnswer.selected) {
+          this.layout.answered = true;
+        }
+      });
     }
   }
 
+  textFieldInput(text: string) {
+    if (text) {
+      this.layout.answered = true;
+    } else {
+      this.layout.answered = false;
+    }
+  }
 }

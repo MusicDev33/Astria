@@ -63,6 +63,13 @@ body {
   word-break: break-word;
 }
 
+.no-overflow {
+  &.round {
+    border-radius: $border-radius;
+  }
+  overflow: hidden;
+}
+
 // Material Overrides
 .mt-dialog .mat-dialog-container {
   border-radius: $border-radius;
