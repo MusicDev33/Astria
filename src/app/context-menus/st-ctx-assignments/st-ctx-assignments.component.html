@@ -1,7 +1,8 @@
 <article class="sticky-pos pr-3">
   <section class="mt-card p-4">
     <div class="mt-progress">
-      <div class="mt-progress-bar" [style.width]="percentCompleted + '%'" *ngIf="percentCompleted < 100">
+      <div class="mt-progress-bar" [style.width]="percentCompleted + '%'"
+          *ngIf="percentCompleted < 100 && percentCompleted > 0">
         {{ percentCompleted }}%
       </div>
       <div class="mt-progress-bar" [style.width]="percentCompleted + '%'" *ngIf="percentCompleted === 100">
