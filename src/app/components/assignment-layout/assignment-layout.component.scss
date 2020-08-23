@@ -6,3 +6,23 @@
   font-size: 130%;
   color: $text-main;
 }
+
+.flag {
+  font-size: 130%;
+  transition: $time-mid;
+  cursor: pointer;
+  opacity: 0;
+
+  &:hover:not(.selected) {
+    color: $palette-1;
+  }
+
+  &.selected {
+    color: $palette-1;
+    opacity: 1;
+  }
+}
+
+.layout-item:hover .flag {
+  opacity: 1;
+}

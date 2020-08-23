@@ -9,5 +9,19 @@
         All Done!
       </div>
     </div>
+
+    <div class="questions-container mt-3 px-4 py-2 d-inline-block">
+      <div *ngFor="let question of questions; let i = index;" class="question my-2">
+        <i class="far fa-flag flag mr-2" (click)="question.flagged = true" *ngIf="!question.flagged"></i>
+        <i class="fas fa-flag flag selected mr-2" (click)="question.flagged = false" *ngIf="question.flagged"></i>
+
+        <i class="fas fa-check-circle check-answered mr-2" *ngIf="question.answered"></i>
+        <i class="far fa-check-circle check-unanswered mr-2" *ngIf="!question.answered"></i>
+        <a (click)="questionClicked(i + 1)" class="primary" matTooltip="{{ question.question }}"
+            [matTooltipPosition]="'right'" matTooltipClass="mt-tooltip-1">
+          Question {{ i + 1 }}
+        </a>
+      </div>
+    </div>
   </section>
 </article>

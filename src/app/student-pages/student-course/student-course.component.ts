@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog, MatDialogConfig, DialogPosition } from '@angular/material/dialog';
+import { ViewportScroller } from '@angular/common';
 
 import { ICourse } from '@models/course.model';
 import { IResponse } from '@interfaces/response.interface';
@@ -49,7 +50,8 @@ export class StudentCourseComponent implements OnInit {
     private route: ActivatedRoute,
     private assignmentService: AssignmentService,
     private announcementService: AnnouncementService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private viewScroller: ViewportScroller
   ) { }
 
   ngOnInit(): void {
@@ -129,6 +131,10 @@ export class StudentCourseComponent implements OnInit {
   startAssignment(assignment: IAssignment) {
     this.selectAssignment(assignment);
     this.assignmentStarted = true;
+  }
+
+  scrollToID(elementID: string): void {
+      this.viewScroller.scrollToAnchor(elementID);
   }
 
   get getAnswersCompleted(): number {

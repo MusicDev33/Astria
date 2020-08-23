@@ -1,4 +1,52 @@
+@import '~scss/variables';
+@import '~scss/colors';
+
 .sticky-pos {
   position: sticky;
   top: 20px;
+}
+
+.questions-container {
+  max-height: 300px;
+  overflow-y: scroll;
+  border-radius: $border-radius;
+  background: $color-soft-grey;
+}
+
+.question {
+  font-weight: $font-weight-medium;
+  font-size: 110%;
+}
+
+.check-answered {
+  color: $mt-green;
+}
+
+.check-unanswered {
+  color: $mt-red;
+}
+
+.flag {
+  font-size: 110%;
+  transition: $time-mid;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  margin-left: -30px;
+
+  &:hover:not(.selected) {
+    color: $palette-1;
+  }
+
+  &.selected {
+    color: $palette-1;
+    opacity: 1;
+    margin-left: 0px;
+  }
+}
+
+.questions-container:hover .flag {
+  opacity: 1;
+  pointer-events: auto;
+  margin-left: 0;
 }

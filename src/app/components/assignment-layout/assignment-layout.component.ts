@@ -14,6 +14,13 @@ export class AssignmentLayoutComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.layout.objects.forEach((object: any) => {
+      object['flagged'] = false;
+    });
+  }
+
+  flagClicked(object: any) {
+    object.flagged = !object.flagged;
   }
 
 }
