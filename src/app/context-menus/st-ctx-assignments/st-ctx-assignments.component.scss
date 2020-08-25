@@ -50,3 +50,23 @@
   pointer-events: auto;
   margin-left: 0;
 }
+
+.img-container {
+  background: $palette-1-bg;
+  transition: $time-mid;
+  border-radius: $border-radius;
+  overflow: hidden;
+  cursor: pointer;
+
+  border: 1px transparent solid;
+
+  &:hover {
+    background: $palette-1-light;
+    border-color: $palette-1-light;
+  }
+}
+
+.relief-text {
+  font-weight: $font-weight-medium;
+  font-size: 105%;
+}
