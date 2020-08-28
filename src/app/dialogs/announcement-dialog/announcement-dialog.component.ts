@@ -28,5 +28,4 @@ export class AnnouncementDialogComponent implements OnInit {
   close() {
     this.dialogRef.close();
   }
-
 }

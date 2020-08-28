@@ -17,6 +17,9 @@ export class StCtxAssignmentsComponent implements OnInit {
   @Output()
   emitIDClicked = new EventEmitter<string>();
 
+  @Output()
+  emitSubmitButton = new EventEmitter<boolean>();
+
   cutePugs = [
     'https://media1.popsugar-assets.com/files/thumbor/26OimuxpHckL_AatP7_bCOpjimM/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2019/07/29/044/n/44498184/e1a4c790b526f7d3_GettyImages-107599388/i/Cute-Pictures-Pugs.jpg',
     'https://wallpaperhd.wiki/wp-content/uploads/free-adorable-backgrounds-cute-pug-backgrounds-free-download.jpg',
@@ -37,8 +40,11 @@ export class StCtxAssignmentsComponent implements OnInit {
     this.emitIDClicked.emit(id);
   }
 
+  submitButtonPressed() {
+    this.emitSubmitButton.emit(true);
+  }
+
   incrementPugIndex() {
-    console.log('inc');
     this.pugIndex += 1;
     if (this.pugIndex > this.cutePugs.length - 1) {
       this.pugIndex = 0;

@@ -80,6 +80,7 @@ import { AnsShortansComponent } from './components/answer-types/ans-shortans/ans
 import { AnsEssayComponent } from './components/answer-types/ans-essay/ans-essay.component';
 import { QAnswerComponent } from './components/q-answer/q-answer.component';
 import { StCtxAssignmentsComponent } from './context-menus/st-ctx-assignments/st-ctx-assignments.component';
+import { ConfirmationDialogComponent } from './dialogs/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -129,7 +130,8 @@ import { StCtxAssignmentsComponent } from './context-menus/st-ctx-assignments/st
     AnsShortansComponent,
     AnsEssayComponent,
     QAnswerComponent,
-    StCtxAssignmentsComponent
+    StCtxAssignmentsComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

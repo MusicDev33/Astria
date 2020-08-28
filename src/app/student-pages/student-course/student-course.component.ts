@@ -15,6 +15,7 @@ import { ILayout } from '@models/layout.model';
 import { MONTHS_SHORT, getMeridiemTime } from '@globals/date';
 
 import { AnnouncementDialogComponent } from '@dialogs/announcement-dialog/announcement-dialog.component';
+import { ConfirmationDialogComponent } from '@dialogs/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-student-course',
@@ -114,7 +115,6 @@ export class StudentCourseComponent implements OnInit {
       this.layoutLoading = false;
       if (res.success) {
         this.startButtonText = 'Start Assignment';
-        console.log(res);
         this.openedLayout = res.payload;
       } else {
         this.startButtonText = 'Error';
@@ -147,5 +147,32 @@ export class StudentCourseComponent implements OnInit {
     });
 
     return (answeredQuestions.length / this.openedLayout.objects.length) * 100;
+  }
+
+  submitAssignment() {
+    const answeredQuestions = this.openedLayout.objects.filter((question: any) => {
+      return question.answered;
+    });
+
+    if (answeredQuestions.length === this.openedLayout.objects.length) {
+      console.log(this.openedLayout);
+    } else {
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.data = {
+        title: 'Submit Assignment?',
+        description: 'You haven\'t answered all the questions, are you sure you want to submit the assignment?'
+      };
+      dialogConfig.width = '600px';
+      dialogConfig.panelClass = 'mt-dialog';
+
+      const position: DialogPosition = {top: '200px'};
+      dialogConfig.position = position;
+
+      const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+
+      dialogRef.afterClosed().subscribe((submitted: boolean) => {
+        console.log(submitted);
+      });
+    }
   }
 }

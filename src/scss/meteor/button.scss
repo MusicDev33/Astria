@@ -80,6 +80,10 @@
   @include mt-button($mt-red, #fff);
 }
 
+.mt-btn-cancel-filled {
+  @include mt-btn-filled($mt-red, #fff, $mt-red-dark);
+}
+
 .mt-btn-sm-1 {
   @include mt-btn-sm-1($palette-1, #fff, $palette-1-dark);
 }
