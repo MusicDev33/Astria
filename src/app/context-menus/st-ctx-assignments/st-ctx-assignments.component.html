@@ -39,7 +39,7 @@
         <div class="img-container" (click)="imgContainerClicked()" [ngClass]="{'h-100': !stressRelief}">
           <img src="{{ cutePugs[pugIndex] }}" class="img-fluid" *ngIf="stressRelief"/>
           <div *ngIf="!stressRelief" class="p-4 relief-text">
-            Click here to activate stress relief. Click again to change the picture.
+            Click here to activate stress relief mode (it's worth it). Click again to change the picture.
           </div>
         </div>
       </div>

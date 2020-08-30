@@ -8,6 +8,8 @@ import { BaseHeaders } from '@globals/network.headers';
 import { CookieService } from 'ngx-cookie-service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
+import { IIdentification } from '@interfaces/identification.interface';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -36,8 +38,12 @@ export class JwtService {
     return this.jwtHelper.decodeToken(jwt);
   }
 
-  decodeCookieByName(name: string) {
+  decodeCookieByName(name: string): any {
     return this.jwtHelper.decodeToken(this.cookieService.get(name));
+  }
+
+  getIDToken(): IIdentification {
+    return this.jwtHelper.decodeToken(this.cookieService.get('jwt'));
   }
 
   tokenExpired() {

@@ -41,4 +41,11 @@ export class AssignmentService {
 
     return this.http.get(url, authObject).pipe(map(res => res));
   }
+
+  sendAssignmentSubmission(assignmentID: string, userID: string, body: any) {
+    const authObject = {headers: BaseHeaderFunc(this.cookie.get('jwt')), withCredentials: true};
+    const url = `${environment.apiURL}assignments/${assignmentID}/new/submission/${userID}`;
+
+    return this.http.post(url, body, authObject).pipe(map(res => res));
+  }
 }

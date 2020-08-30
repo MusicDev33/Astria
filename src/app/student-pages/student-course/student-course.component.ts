@@ -8,9 +8,11 @@ import { IResponse } from '@interfaces/response.interface';
 import { CourseService } from '@services/course.service';
 import { AssignmentService } from '@services/assignment.service';
 import { AnnouncementService } from '@services/announcement.service';
+import { JwtService } from '@services/jwt.service';
 import { IAssignment } from '@models/assignment.model';
 import { IAnnouncement } from '@models/announcement.model';
 import { ILayout } from '@models/layout.model';
+import { IAssignSubmission } from '@models/assign-submission.model';
 
 import { MONTHS_SHORT, getMeridiemTime } from '@globals/date';
 
@@ -52,7 +54,8 @@ export class StudentCourseComponent implements OnInit {
     private assignmentService: AssignmentService,
     private announcementService: AnnouncementService,
     private dialog: MatDialog,
-    private viewScroller: ViewportScroller
+    private viewScroller: ViewportScroller,
+    private jwtService: JwtService
   ) { }
 
   ngOnInit(): void {
@@ -154,25 +157,46 @@ export class StudentCourseComponent implements OnInit {
       return question.answered;
     });
 
+    const dialogConfig = new MatDialogConfig();
+
     if (answeredQuestions.length === this.openedLayout.objects.length) {
-      console.log(this.openedLayout);
+      dialogConfig.data = {
+        title: 'Hey!',
+        description: `
+          Don't worry, nothing bad happened. It looks like you answered every question! Are you ready to submit?
+        `,
+        submitText: `Oh yeah. Submit it.`,
+        cancelText: `Not quite yet!`
+      };
     } else {
-      const dialogConfig = new MatDialogConfig();
       dialogConfig.data = {
         title: 'Submit Assignment?',
-        description: 'You haven\'t answered all the questions, are you sure you want to submit the assignment?'
+        description: 'You haven\'t answered all the questions, are you sure you want to submit the assignment?',
+        submitText: `Oh yeah. Submit it.`,
+        cancelText: `Nah`
       };
-      dialogConfig.width = '600px';
-      dialogConfig.panelClass = 'mt-dialog';
-
-      const position: DialogPosition = {top: '200px'};
-      dialogConfig.position = position;
-
-      const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
-
-      dialogRef.afterClosed().subscribe((submitted: boolean) => {
-        console.log(submitted);
-      });
     }
+
+    dialogConfig.width = '600px';
+    dialogConfig.panelClass = 'mt-dialog';
+
+    const position: DialogPosition = {top: '200px'};
+    dialogConfig.position = position;
+
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe((submitted: boolean) => {
+      const reqBody: any = this.openedLayout;
+      const idData = this.jwtService.getIDToken();
+
+      reqBody['userID'] = idData._id;
+      reqBody['timeSubmitted'] = new Date();
+
+      const assignmentID = reqBody['assignmentID'];
+
+      this.assignmentService.sendAssignmentSubmission(assignmentID, idData._id, reqBody).subscribe((res: IResponse<IAssignSubmission>) => {
+        console.log(res);
+      });
+    });
   }
 }
