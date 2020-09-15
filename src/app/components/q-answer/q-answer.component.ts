@@ -56,6 +56,8 @@ export class QAnswerComponent implements OnInit {
   }
 
   textFieldInput(text: string) {
+    // Maybe should've named this better
+    this.emitAnswerClicked.emit(true);
     if (text) {
       this.layout.answered = true;
     } else {

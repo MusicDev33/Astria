@@ -12,7 +12,7 @@ import { timer, Subscription } from 'rxjs';
 })
 export class AssignmentLayoutComponent implements OnInit {
 
-  obsDictionary: Record<string, Subscription> = {};
+  obsDictionary: Map<string, Subscription> = new Map();
 
   @Input()
   layout: ILayout;
@@ -31,8 +31,11 @@ export class AssignmentLayoutComponent implements OnInit {
 
   autosaveTrigger(questionID: string) {
     const key = `${this.layout._id}:${questionID}`;
-    this.obsDictionary[key] = timer(2000).subscribe(() => {
+    if (this.obsDictionary.has(key)) {
+      this.obsDictionary.get(key).unsubscribe();
+    }
+    this.obsDictionary.set(key, timer(2000).subscribe(() => {
       console.log(`Timer ${key} is up!`);
-    });
+    }));
   }
 }
