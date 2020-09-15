@@ -5,7 +5,6 @@ import { map } from 'rxjs/operators';
 import { environment } from '@env/environment';
 
 import { BaseHeaders, BaseHeaderFunc } from '@globals/network.headers';
-import { IPerson } from '@interfaces/person.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +25,7 @@ export class AuthService {
   authRequest(scopes: string[]) {
     const headers = BaseHeaderFunc(this.cookie.get('jwt'));
     const body = {scopes};
-    return this.http.post(environment.apiURL + 'persons/auth/request/', body, {headers, withCredentials: true})
+    return this.http.post(environment.apiURL + 'persons/auth/request', body, {headers, withCredentials: true})
       .pipe(map(res => res));
   }
 }

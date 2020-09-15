@@ -13,7 +13,7 @@
     </section>
 
     <section class="row">
-      <app-q-answer [layout]="layoutItem"></app-q-answer>
+      <app-q-answer (emitAnswerClicked)="autosaveTrigger('q' + i)" [layout]="layoutItem"></app-q-answer>
     </section>
   </div>
 </article>

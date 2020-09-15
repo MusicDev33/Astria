@@ -15,6 +15,9 @@ export class QAnswerComponent implements OnInit {
   @Output()
   emitLayoutChange = new EventEmitter<any>();
 
+  @Output()
+  emitAnswerClicked = new EventEmitter<boolean>();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -29,6 +32,7 @@ export class QAnswerComponent implements OnInit {
   }
 
   setAnswer(answer: any) {
+    this.emitAnswerClicked.emit(true);
     if (this.layout.type === 'multichoice') {
       this.layout.answers.forEach((qAnswer: any) => {
         qAnswer['selected'] = false;

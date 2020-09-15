@@ -191,6 +191,7 @@ export class StudentCourseComponent implements OnInit {
 
       reqBody['userID'] = idData._id;
       reqBody['timeSubmitted'] = new Date();
+      reqBody['autosave'] = false;
 
       const assignmentID = reqBody['assignmentID'];
 
