@@ -51,7 +51,7 @@ export class AssignmentService {
 
   autosaveAssignmentSubmission(assignmentID: string, userID: string, body: any) {
     const authObject = {headers: BaseHeaderFunc(this.cookie.get('jwt')), withCredentials: true};
-    const url = `${environment.apiURL}assignments/${assignmentID}/autosave/layout/${userID}`;
+    const url = `${environment.apiURL}assignments/${assignmentID}/autosave/submission/${userID}`;
 
     return this.http.post(url, body, authObject).pipe(map(res => res));
   }
