@@ -43,6 +43,7 @@ export class StudentCourseComponent implements OnInit {
   openAssignmentID = '';
   openedAssignment: IAssignment;
   openedLayout: ILayout;
+  openedAssignSubmission: IAssignSubmission;
   assignmentStarted = false;
 
   layoutLoading = true;
@@ -93,6 +94,16 @@ export class StudentCourseComponent implements OnInit {
     });
   }
 
+  getCurrentAssignmentSubmission(assignmentID: string) {
+    const userID = this.jwtService.decodeCookieByName('jwt')._id;
+    this.assignmentService.getSubmission(assignmentID, userID).subscribe((res: IResponse<IAssignSubmission>) => {
+      console.log(res);
+      if (res.success) {
+        this.openedAssignSubmission = res.payload;
+      }
+    });
+  }
+
   getAssignmentDueDate(date: Date) {
     const jsDate = new Date(date);
     let assignDueDate = `${MONTHS_SHORT[jsDate.getMonth()]} ${jsDate.getDate()}, ${jsDate.getFullYear()} `;
@@ -119,6 +130,7 @@ export class StudentCourseComponent implements OnInit {
       if (res.success) {
         this.startButtonText = 'Start Assignment';
         this.openedLayout = res.payload;
+        this.getCurrentAssignmentSubmission(res.payload.assignmentID);
       } else {
         this.startButtonText = 'Error';
       }
