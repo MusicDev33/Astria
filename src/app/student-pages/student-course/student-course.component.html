@@ -108,8 +108,13 @@
           </div>
 
           <div class="col-12" *ngIf="assignmentStarted && openedLayout">
-            <div class="row">
+            <div class="row" *ngIf="assignmentLoaded && !openedAssignSubmission">
               <app-assignment-layout [layout]="openedLayout">
+              </app-assignment-layout>
+            </div>
+
+            <div class="row" *ngIf="assignmentLoaded && openedAssignSubmission">
+              <app-assignment-layout [layout]="openedAssignSubmission">
               </app-assignment-layout>
             </div>
           </div>

@@ -44,6 +44,7 @@ export class StudentCourseComponent implements OnInit {
   openedAssignment: IAssignment;
   openedLayout: ILayout;
   openedAssignSubmission: IAssignSubmission;
+  assignmentLoaded = false;
   assignmentStarted = false;
 
   layoutLoading = true;
@@ -88,7 +89,6 @@ export class StudentCourseComponent implements OnInit {
   getAnnouncements(courseID: string) {
     this.announcementService.getCourseAnnouncements(courseID).subscribe((res: IResponse<IAnnouncement[]>) => {
       if (res.success) {
-        console.log(res);
         this.announcements = res.payload;
       }
     });
@@ -101,6 +101,7 @@ export class StudentCourseComponent implements OnInit {
       if (res.success) {
         this.openedAssignSubmission = res.payload;
       }
+      this.assignmentLoaded = true;
     });
   }
 
@@ -140,6 +141,8 @@ export class StudentCourseComponent implements OnInit {
   closeAssignment() {
     this.openedAssignment = null;
     this.openedLayout = null;
+    this.openedAssignSubmission = null;
+    this.assignmentLoaded = false;
     this.assignmentStarted = false;
   }
 
@@ -149,7 +152,7 @@ export class StudentCourseComponent implements OnInit {
   }
 
   scrollToID(elementID: string): void {
-      this.viewScroller.scrollToAnchor(elementID);
+    this.viewScroller.scrollToAnchor(elementID);
   }
 
   get getAnswersCompleted(): number {
