@@ -118,7 +118,7 @@
     </div>
 
     <section class="col sticky-pos" *ngIf="openedLayout">
-      <app-st-ctx-assignments [percentCompleted]="getAnswersCompleted" [questions]="openedLayout.objects"
+      <app-st-ctx-assignments [percentCompleted]="getAnswersCompleted" [questions]="getActiveLayout.objects"
           (emitIDClicked)="scrollToID($event)" (emitSubmitButton)="submitAssignment()"
           *ngIf="topNavOptions[selectedNavIndex] === 'Assignments' && assignmentStarted && openedLayout">
       </app-st-ctx-assignments>
