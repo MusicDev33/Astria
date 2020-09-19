@@ -86,6 +86,10 @@ export class StudentCourseComponent implements OnInit {
     });
   }
 
+  getAutosave(submission: IAssignSubmission) {
+    this.openedAssignSubmission = JSON.parse(JSON.stringify(submission));
+  }
+
   getAnnouncements(courseID: string) {
     this.announcementService.getCourseAnnouncements(courseID).subscribe((res: IResponse<IAnnouncement[]>) => {
       if (res.success) {
@@ -99,8 +103,12 @@ export class StudentCourseComponent implements OnInit {
     this.assignmentService.getSubmission(assignmentID, userID).subscribe((res: IResponse<IAssignSubmission>) => {
       console.log(res);
       if (res.success) {
-        this.openedAssignSubmission = res.payload;
+        this.openedAssignSubmission = JSON.parse(JSON.stringify(res.payload));
       }
+      this.assignmentLoaded = true;
+      console.log(this.openedAssignSubmission);
+    }, (err: any) => {
+      console.log(this.openedAssignSubmission);
       this.assignmentLoaded = true;
     });
   }
@@ -214,5 +222,13 @@ export class StudentCourseComponent implements OnInit {
         console.log(res);
       });
     });
+  }
+
+  get getActiveLayout() {
+    if (this.openedAssignSubmission) {
+      return this.openedAssignSubmission;
+    }
+
+    return this.openedLayout;
   }
 }

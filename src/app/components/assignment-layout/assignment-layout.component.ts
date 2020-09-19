@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ILayout } from '@models/layout.model';
 import { IAssignSubmission } from '@models/assign-submission.model';
 
@@ -24,15 +24,20 @@ export class AssignmentLayoutComponent implements OnInit {
   @Input()
   submission: IAssignSubmission;
 
+  @Output()
+  emitAutosave = new EventEmitter<IAssignSubmission>();
+
   constructor(
     private assignmentService: AssignmentService,
     private jwtService: JwtService
   ) { }
 
   ngOnInit(): void {
-    this.layout.objects.forEach((object: any) => {
-      object['flagged'] = false;
-    });
+    if (!this.layout.hasOwnProperty('autosaved')) {
+      this.layout.objects.forEach((object: any) => {
+        object['flagged'] = false;
+      });
+    }
   }
 
   flagClicked(object: any) {
@@ -55,8 +60,19 @@ export class AssignmentLayoutComponent implements OnInit {
         objects: this.layout.objects,
         assignmentID: this.layout.assignmentID
       };
-      this.assignmentService.autosaveAssignmentSubmission(this.layout.assignmentID, user._id, sub).subscribe((res: IResponse<ILayout>) => {
+
+      if (this.layout.hasOwnProperty('autosaved')) {
+        sub['_id'] = this.layout._id;
+      }
+
+      const assignmentID = this.layout.assignmentID;
+      console.log(sub);
+
+      this.assignmentService.autosaveAssignmentSubmission(assignmentID, user._id, sub).subscribe((res: IResponse<IAssignSubmission>) => {
         console.log(res);
+        if (res.success) {
+          this.emitAutosave.emit(res.payload);
+        }
       });
     }));
   }

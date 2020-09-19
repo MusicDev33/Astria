@@ -21,6 +21,13 @@ export class QAnswerComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    if (this.layout.hasOwnProperty('selectedAnswer') || this.layout.hasOwnProperty('userAnswer')) {
+      return;
+    }
+
+    if (this.layout.hasOwnProperty('selectedAnswers')) {
+      return;
+    }
     if (this.layout.type === 'multichoice') {
       this.layout['selectedAnswer'] = '';
     } else if (this.layout.type === 'checkbox') {
@@ -58,6 +65,7 @@ export class QAnswerComponent implements OnInit {
   textFieldInput(text: string) {
     // Maybe should've named this better
     this.emitAnswerClicked.emit(true);
+    console.log('testing text');
     if (text) {
       this.layout.answered = true;
     } else {
